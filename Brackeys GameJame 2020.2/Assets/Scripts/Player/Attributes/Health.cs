@@ -27,8 +27,8 @@ public class Health : MonoBehaviour
         //Reset Health (refill Health)
         ResetHealth();
 
-        //Change the Health UI Slider
-        ChangeHealthSlider();
+        //Changes the Health UI
+        ChangeHealthUI();
     }
 
     // Update is called once per frame
@@ -39,11 +39,18 @@ public class Health : MonoBehaviour
 
     public void ResetHealth()
     {
+        //Reset Health
+        #region RESET HEALTH
+
         currentHealthAmount = maxHealthAmount;
+
+        #endregion
     }
 
     public void ChangeHealth(int changeHealthAmount)
     {
+        #region CHANGE HEALTH
+
         if (changeHealthAmount > 0)
         {
             if (changeHealthAmount + currentHealthAmount <= maxHealthAmount)
@@ -67,18 +74,32 @@ public class Health : MonoBehaviour
             }
         }
 
-        ChangeHealthSlider();
+        #endregion
+
+        //Changes the Health UI
+        ChangeHealthUI();
     }
 
     float CalculateHealth()
     {
+        //Calculate Health
         return currentHealthAmount / maxHealthAmount;
     }
 
-    public void ChangeHealthSlider()
+    public void ChangeHealthUI()
     {
-        healthSlider.value = CalculateHealth();
+        //Change Health UI
+        #region CHANGE HEALTH SLIDER
 
-        healthText.text = currentHealthAmount + " / " + maxHealthAmount;
+        if(isPlayer)
+        {
+            //Change Health Slider Value
+            healthSlider.value = CalculateHealth();
+
+            //Change Health Text
+            healthText.text = currentHealthAmount + " / " + maxHealthAmount;
+        }
+
+        #endregion
     }
 }

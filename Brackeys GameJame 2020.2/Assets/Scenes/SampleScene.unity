@@ -121,6 +121,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &149663287 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5344524540656217132, guid: fce9b6a8b8b174544bac4f64531ce756,
+    type: 3}
+  m_PrefabInstance: {fileID: 5344524539334543790}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &253870421
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,6 +199,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &269004768 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5344524539538066147, guid: fce9b6a8b8b174544bac4f64531ce756,
+    type: 3}
+  m_PrefabInstance: {fileID: 5344524539334543790}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &400469933 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5344524539288805496, guid: fce9b6a8b8b174544bac4f64531ce756,
@@ -756,6 +780,31 @@ PrefabInstance:
       propertyPath: healthText
       value: 
       objectReference: {fileID: 400469933}
+    - target: {fileID: 366926411289235663, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: isPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125142600467279684, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: rewindSlider
+      value: 
+      objectReference: {fileID: 149663287}
+    - target: {fileID: 4125142600467279684, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: rewindText
+      value: 
+      objectReference: {fileID: 269004768}
+    - target: {fileID: 4125142600467279684, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: isPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125142600467279684, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: maxRewindAmount
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4158a3d9fb49744c945a783f706fac4, type: 3}
 --- !u!1001 &5344524539334543790
@@ -765,6 +814,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 559046206}
     m_Modifications:
+    - target: {fileID: 5344524539288805496, guid: fce9b6a8b8b174544bac4f64531ce756,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
+    - target: {fileID: 5344524539538066147, guid: fce9b6a8b8b174544bac4f64531ce756,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
+    - target: {fileID: 5344524539538066149, guid: fce9b6a8b8b174544bac4f64531ce756,
+        type: 3}
+      propertyPath: m_Name
+      value: RewindText (TMP)
+      objectReference: {fileID: 0}
     - target: {fileID: 5344524540128695201, guid: fce9b6a8b8b174544bac4f64531ce756,
         type: 3}
       propertyPath: m_AnchorMax.x
