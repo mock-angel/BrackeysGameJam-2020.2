@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlatformerMovement : MonoBehaviour
 {
     #region VARIABLES
 
     private Rigidbody2D rigidbody2d;
+    private Animator animator;
+    private SpriteRenderer spriterenderer;
 
     //Movement Variables
     public float moveSpeed = 5f;
@@ -35,6 +38,8 @@ public class PlatformerMovement : MonoBehaviour
         #region ASSIGN COMPONENTS
 
         rigidbody2d = gameObject.GetComponent<Rigidbody2D>();
+        animator = gameObject.GetComponent<Animator>();
+        spriterenderer = gameObject.GetComponent<SpriteRenderer>();
 
         #endregion
 
@@ -54,15 +59,16 @@ public class PlatformerMovement : MonoBehaviour
     {
         //Player Input
         PlayerInput();
+
+
+        //Animation
+        FlipPlayerSprite();
     }
 
     void FixedUpdate()
     {
         //Player Movement
         PlayerMovement();
-
-        //Animation
-        FlipPlayerSprite();
     }
 
     public void PlayerInput()
@@ -93,7 +99,7 @@ public class PlatformerMovement : MonoBehaviour
         //Jump Longer
         else if (Input.GetKey(KeyCode.Space) && isJumping)
         {
-            if(jumpTimeCounter > 0)
+            if (jumpTimeCounter > 0)
             {
                 //Actually Jump
                 rigidbody2d.velocity = Vector2.up * jumpForce;
@@ -114,6 +120,17 @@ public class PlatformerMovement : MonoBehaviour
 
             //Decrease Jump Amount
             currentExtraJumpAmount--;
+        }
+
+        if(Input.GetKey(KeyCode.Space) && !isGrounded && jumpTimeCounter > 0)
+        {
+            //Jump Animation
+            animator.SetBool("isJumping", true);
+        }
+        else
+        {
+            //Jump Animation
+            animator.SetBool("isJumping", false);
         }
 
         //Stop Jumping
@@ -139,11 +156,16 @@ public class PlatformerMovement : MonoBehaviour
         //Check if is Grounded
         isGrounded = Physics2D.OverlapCircle(feetPosition.position, checkRadius, groundLayerMask);
 
+        //Fall, Land Animation
+        animator.SetBool("isGrounded", isGrounded);
+
         //When Player is Grounded
-        if(isGrounded)
+        if (isGrounded)
         {
             currentExtraJumpAmount = maxExtraJumpAmount;
-            //isJumping = false;
+
+            //Land Animation
+            animator.SetBool("isJumping", false);
         }
 
         #endregion
@@ -153,17 +175,24 @@ public class PlatformerMovement : MonoBehaviour
     {
         if (moveInput == 0)
         {
-            //Idle
+            //Idle Animation
+            animator.SetFloat("movementSpeed", Mathf.Abs(moveInput));
         }
         else if(moveInput > 0)
         {
+            //Walk Animation
+            animator.SetFloat("movementSpeed", Mathf.Abs(moveInput));
+
             //Look to the right
-            transform.localScale = new Vector3(5, 5, 1);
+            spriterenderer.flipX = false;
         }
         else if(moveInput < 0)
         {
+            //Walk Animation
+            animator.SetFloat("movementSpeed", Mathf.Abs(moveInput));
+
             //Look to the left
-            transform.localScale = new Vector3(-5, 5, 1);
+            spriterenderer.flipX = true;
         }
     }
 }
