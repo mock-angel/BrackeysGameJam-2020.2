@@ -15,20 +15,20 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void ChangeHealth(int changeHealthAmount)
     {
-        if(changeHealthAmount > 0)
+        if (changeHealthAmount > 0)
         {
-            if(changeHealthAmount + currentHealthAmount <= maxHealthAmount)
+            if (changeHealthAmount + currentHealthAmount <= maxHealthAmount)
             {
                 currentHealthAmount += changeHealthAmount;
             }
@@ -37,9 +37,9 @@ public class Health : MonoBehaviour
                 currentHealthAmount = maxHealthAmount;
             }
         }
-        else if(changeHealthAmount < 0)
+        else if (changeHealthAmount < 0)
         {
-            if(changeHealthAmount - currentHealthAmount >= 0)
+            if (changeHealthAmount - currentHealthAmount >= 0)
             {
                 currentHealthAmount -= changeHealthAmount;
             }
