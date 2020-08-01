@@ -12,8 +12,8 @@ public class PlatformerMovement : MonoBehaviour
     private SpriteRenderer spriterenderer;
 
     //Movement Variables
-    public float moveSpeed = 5f;
-    public float jumpForce = 15f;
+    public float moveSpeed = 6f;
+    public float jumpForce = 16f;
     public float moveInput;
 
     //Jump
@@ -51,7 +51,7 @@ public class PlatformerMovement : MonoBehaviour
         #endregion
 
         //Set Gravity
-        rigidbody2d.gravityScale = 14f;
+        rigidbody2d.gravityScale = 12f;
     }
 
     // Update is called once per frame
