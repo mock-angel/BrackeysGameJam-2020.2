@@ -35,9 +35,8 @@ public class PlatformerMovement : MonoBehaviour
 
         #endregion
 
-<<<<<<< Updated upstream:Brackeys GameJame 2020.2/Assets/Scripts/PlatformerMovement.cs
         //rigidbody2d.gravityScale = 8f;
-=======
+
         #region ASSIGN VARIABLES
 
         currentExtraJumpAmount = maxExtraJumpAmount;
@@ -46,7 +45,6 @@ public class PlatformerMovement : MonoBehaviour
 
         //Set Gravity
         rigidbody2d.gravityScale = 14f;
->>>>>>> Stashed changes:Brackeys GameJame 2020.2/Assets/Scripts/Player/PlatformerMovement.cs
     }
 
     // Update is called once per frame
@@ -77,12 +75,10 @@ public class PlatformerMovement : MonoBehaviour
             rigidbody2d.velocity = Vector2.up * jumpForce;
         }
 
-<<<<<<< Updated upstream:Brackeys GameJame 2020.2/Assets/Scripts/PlatformerMovement.cs
-        if (Input.GetKey(KeyCode.Space) && isJumping == true)
-=======
+        if (Input.GetKey(KeyCode.Space) && isJumping == true);
+
         //Jump Longer
         else if (Input.GetKey(KeyCode.Space) && isJumping)
->>>>>>> Stashed changes:Brackeys GameJame 2020.2/Assets/Scripts/Player/PlatformerMovement.cs
         {
             if(jumpTimeCounter > 0)
             {
