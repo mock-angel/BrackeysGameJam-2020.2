@@ -610,6 +610,7 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
+    Collab: 1
     UNet: 1
   luminIcon:
     m_Name: 
@@ -623,10 +624,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: e8babf77-66af-4e65-9e6d-2ecb07867d86
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: Brackeys GameJame 2020.2
+  organizationId: fynn-frings
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
