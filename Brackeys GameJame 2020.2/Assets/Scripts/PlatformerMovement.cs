@@ -14,6 +14,9 @@ public class PlatformerMovement : MonoBehaviour
     public float moveInput;
 
     //Jump
+    public int maxExtraJumpAmount = 1;
+    public int currentExtraJumpAmount;
+
     public bool isGrounded;
     public float checkRadius = 0.1f;
     public Transform feetPosition;
@@ -36,7 +39,6 @@ public class PlatformerMovement : MonoBehaviour
         #endregion
 
         //rigidbody2d.gravityScale = 8f;
-
         #region ASSIGN VARIABLES
 
         currentExtraJumpAmount = maxExtraJumpAmount;
@@ -62,36 +64,57 @@ public class PlatformerMovement : MonoBehaviour
 
     public void PlayerInput()
     {
-        #region PLAYER INPUT
-
         //Player Input
+
+        #region MOVING
+
+        //Player Move Input
         moveInput = Input.GetAxis("Horizontal");
 
+        #endregion
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
+        #region JUMPING
+
+        //Jump Once
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             isJumping = true;
+
+            //Reset JumpTimeCounter
             jumpTimeCounter = maxJumpTime;
+
+            //Actually Jump
             rigidbody2d.velocity = Vector2.up * jumpForce;
         }
-
-        if (Input.GetKey(KeyCode.Space) && isJumping == true);
 
         //Jump Longer
         else if (Input.GetKey(KeyCode.Space) && isJumping)
         {
             if(jumpTimeCounter > 0)
             {
+                //Actually Jump
                 rigidbody2d.velocity = Vector2.up * jumpForce;
+
+                //Decrease jumptime
                 jumpTimeCounter -= Time.deltaTime;
-            }
-            else
-            {
-                isJumping = false;
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        //Jump Multiple Times
+        if(Input.GetKeyDown(KeyCode.Space) && currentExtraJumpAmount > 0 && isJumping)
+        {
+            //Reset JumpTimeCounter
+            jumpTimeCounter = maxJumpTime;
+
+            //Actually Jump
+            rigidbody2d.velocity = Vector2.up * jumpForce;
+
+            //Decrease Jump Amount
+            currentExtraJumpAmount--;
+        }
+
+        //Stop Jumping
+        if (Input.GetKeyUp(KeyCode.Space) && currentExtraJumpAmount <= 0)
         {
             isJumping = false;
         }
@@ -110,7 +133,15 @@ public class PlatformerMovement : MonoBehaviour
 
         #region PLAYER JUMP
 
+        //Check if is Grounded
         isGrounded = Physics2D.OverlapCircle(feetPosition.position, checkRadius, groundLayerMask);
+
+        //When Player is Grounded
+        if(isGrounded)
+        {
+            currentExtraJumpAmount = maxExtraJumpAmount;
+            //isJumping = false;
+        }
 
         #endregion
     }
