@@ -10,7 +10,7 @@ public class PlatformerMovement : MonoBehaviour
 
     //Movement Variables
     public float moveSpeed = 5f;
-    public float jumpForce = 10f;
+    public float jumpForce = 15f;
     public float moveInput;
 
     //Jump
@@ -21,7 +21,7 @@ public class PlatformerMovement : MonoBehaviour
 
     public bool isJumping;
     public float jumpTimeCounter;
-    public float maxJumpTime = 0.25f;
+    public float maxJumpTime = 0.2f;
 
     #endregion
 
@@ -35,7 +35,18 @@ public class PlatformerMovement : MonoBehaviour
 
         #endregion
 
+<<<<<<< Updated upstream:Brackeys GameJame 2020.2/Assets/Scripts/PlatformerMovement.cs
         //rigidbody2d.gravityScale = 8f;
+=======
+        #region ASSIGN VARIABLES
+
+        currentExtraJumpAmount = maxExtraJumpAmount;
+
+        #endregion
+
+        //Set Gravity
+        rigidbody2d.gravityScale = 14f;
+>>>>>>> Stashed changes:Brackeys GameJame 2020.2/Assets/Scripts/Player/PlatformerMovement.cs
     }
 
     // Update is called once per frame
@@ -66,7 +77,12 @@ public class PlatformerMovement : MonoBehaviour
             rigidbody2d.velocity = Vector2.up * jumpForce;
         }
 
+<<<<<<< Updated upstream:Brackeys GameJame 2020.2/Assets/Scripts/PlatformerMovement.cs
         if (Input.GetKey(KeyCode.Space) && isJumping == true)
+=======
+        //Jump Longer
+        else if (Input.GetKey(KeyCode.Space) && isJumping)
+>>>>>>> Stashed changes:Brackeys GameJame 2020.2/Assets/Scripts/Player/PlatformerMovement.cs
         {
             if(jumpTimeCounter > 0)
             {
