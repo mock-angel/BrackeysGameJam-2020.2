@@ -110,8 +110,10 @@ public class PlatformerMovement : MonoBehaviour
         }
 
         //Jump Multiple Times
-        if(Input.GetKeyDown(KeyCode.Space) && currentExtraJumpAmount > 0 && isJumping)
+        if(Input.GetKeyDown(KeyCode.Space) && currentExtraJumpAmount > 0)
         {
+            isJumping = true;
+
             //Reset JumpTimeCounter
             jumpTimeCounter = maxJumpTime;
 

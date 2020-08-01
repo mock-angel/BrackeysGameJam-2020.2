@@ -1905,11 +1905,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Dummy Cube '
       objectReference: {fileID: 0}
-    - target: {fileID: 366926411289235662, guid: f4158a3d9fb49744c945a783f706fac4,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: f666432084e92bc428d620ba7c930c6f, type: 2}
     - target: {fileID: 366926411289235663, guid: f4158a3d9fb49744c945a783f706fac4,
         type: 3}
       propertyPath: healthSlider
