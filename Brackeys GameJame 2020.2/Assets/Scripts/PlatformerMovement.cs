@@ -60,6 +60,9 @@ public class PlatformerMovement : MonoBehaviour
     {
         //Player Movement
         PlayerMovement();
+
+        //Animation
+        FlipPlayerSprite();
     }
 
     public void PlayerInput()
@@ -144,5 +147,23 @@ public class PlatformerMovement : MonoBehaviour
         }
 
         #endregion
+    }
+
+    public void FlipPlayerSprite()
+    {
+        if (moveInput == 0)
+        {
+            //Idle
+        }
+        else if(moveInput > 0)
+        {
+            //Look to the right
+            transform.localScale = new Vector3(5, 5, 1);
+        }
+        else if(moveInput < 0)
+        {
+            //Look to the left
+            transform.localScale = new Vector3(-5, 5, 1);
+        }
     }
 }
