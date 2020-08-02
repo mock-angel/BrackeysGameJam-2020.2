@@ -20,11 +20,14 @@ public class FlyInAnimation : MonoBehaviour
     //Variables
     [Header("Variables")]
     public float animationTime = 0.25f; //How long the Animation lasts in Seconds
-    public float waitTime = 0f;  //How long to wait till Animation starts in Seconds (AFTER first frame)
+    public float waitTime = 0.05f;  //How long to wait till Animation starts in Seconds (AFTER first frame of Animation)
     public bool onEnable;
-    private TMP_Text text;
-    private Image image;
-    private Color color;
+
+    //Can be assigned. Don't need to
+    [Header("Leave blank if not needed")]
+    public TMP_Text text;
+    public Image image;
+    public Color color;
 
     private Vector3 startPos;
 
@@ -119,12 +122,16 @@ public class FlyInAnimation : MonoBehaviour
 
             #endregion
 
+            #region WAIT FOR ANIMATION TO START
+
             //Wait until Start of Animation (AFTER first Frame)
-            if(waitTime > 0)
+            if (waitTime > 0)
             {
                 yield return new WaitForSecondsRealtime(waitTime);
                 waitTime = 0f;
             }
+
+            #endregion
 
             yield return null;
         }
