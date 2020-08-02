@@ -7,6 +7,8 @@ public class PlatformerMovement : MonoBehaviour
 {
     #region VARIABLES
 
+    public static PlatformerMovement Instance;
+
     private Rigidbody2D rigidbody2d;
     private Animator animator;
     private SpriteRenderer spriterenderer;
@@ -31,6 +33,9 @@ public class PlatformerMovement : MonoBehaviour
 
     #endregion
 
+    void Awake(){
+        Instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +51,7 @@ public class PlatformerMovement : MonoBehaviour
         //rigidbody2d.gravityScale = 8f;
         #region ASSIGN VARIABLES
 
+        Instance = this;
         currentExtraJumpAmount = maxExtraJumpAmount;
 
         #endregion
