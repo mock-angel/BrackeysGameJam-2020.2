@@ -61,9 +61,6 @@ public class PlatformerMovement : MonoBehaviour
         currentExtraJumpAmount = maxExtraJumpAmount;
 
         #endregion
-
-        //Set Gravity
-        //rigidbody2d.gravityScale = 12f;
     }
 
     // Update is called once per frame
@@ -96,6 +93,18 @@ public class PlatformerMovement : MonoBehaviour
 
         #region JUMPING
 
+        //Jump When Falling
+        if (Input.GetKeyDown(KeyCode.Space) && !isGrounded && !isJumping && currentExtraJumpAmount == maxExtraJumpAmount)
+        {
+            isJumping = true;
+
+            //Actually Jump
+            rigidbody2d.velocity = Vector2.up * jumpForce;
+
+            //Decrease Jump Amount
+            currentExtraJumpAmount = 0;
+        }
+
         //Jump Once
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
@@ -126,7 +135,7 @@ public class PlatformerMovement : MonoBehaviour
         }
 
         //Jump Multiple Times
-        if(Input.GetKeyDown(KeyCode.Space) && currentExtraJumpAmount > 0 && !isGrounded)
+        if(Input.GetKeyDown(KeyCode.Space) && currentExtraJumpAmount > 0 && currentExtraJumpAmount < maxExtraJumpAmount && !isGrounded)
         {
             isJumping = true;
 
@@ -140,8 +149,8 @@ public class PlatformerMovement : MonoBehaviour
             currentExtraJumpAmount--;
         }
 
-        //Jump When Falling
-        if(Input.GetKey(KeyCode.Space) && !isGrounded && jumpTimeCounter > 0)
+        //Animation
+        if (Input.GetKey(KeyCode.Space) && !isGrounded && !isJumping)
         {
             //Jump Animation
             animator.SetBool("isJumping", true);
@@ -210,8 +219,16 @@ public class PlatformerMovement : MonoBehaviour
         #endregion
     }
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(feetPosition.position, checkRadius);
+    }
+
     public void FlipPlayerSprite()
     {
+        #region FLIP PLAYER & IDLE, WALK ANIMATION
+
         if (moveInput == 0)
         {
             //Idle Animation
@@ -233,5 +250,7 @@ public class PlatformerMovement : MonoBehaviour
             //Look to the left
             spriterenderer.flipX = true;
         }
+
+        #endregion
     }
 }
