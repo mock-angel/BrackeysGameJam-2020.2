@@ -1845,15 +1845,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 366926411289235649, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 366926411289235651, guid: f4158a3d9fb49744c945a783f706fac4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.17
       objectReference: {fileID: 0}
     - target: {fileID: 366926411289235651, guid: f4158a3d9fb49744c945a783f706fac4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.89
       objectReference: {fileID: 0}
     - target: {fileID: 366926411289235651, guid: f4158a3d9fb49744c945a783f706fac4,
         type: 3}
@@ -1904,6 +1909,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 'Dummy Cube '
+      objectReference: {fileID: 0}
+    - target: {fileID: 366926411289235662, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.067664266
+      objectReference: {fileID: 0}
+    - target: {fileID: 366926411289235662, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.017103
+      objectReference: {fileID: 0}
+    - target: {fileID: 366926411289235662, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -0.000000014901161
+      objectReference: {fileID: 0}
+    - target: {fileID: 366926411289235662, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.25899377
       objectReference: {fileID: 0}
     - target: {fileID: 366926411289235663, guid: f4158a3d9fb49744c945a783f706fac4,
         type: 3}
