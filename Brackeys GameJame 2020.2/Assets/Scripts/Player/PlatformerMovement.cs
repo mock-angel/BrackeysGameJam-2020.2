@@ -14,12 +14,14 @@ public class PlatformerMovement : MonoBehaviour
     private SpriteRenderer spriterenderer;
 
     //Movement Variables
+    [Header("Movement")]
     public float moveSpeed = 6f;
     public float jumpForce = 16f;
     public float moveInput;
 
     //Jump
-    public int maxExtraJumpAmount = 1;
+    [Header("Jump")]
+    public int maxExtraJumpAmount = 2;
     public int currentExtraJumpAmount;
 
     public bool isGrounded;
@@ -30,6 +32,11 @@ public class PlatformerMovement : MonoBehaviour
     public bool isJumping;
     public float jumpTimeCounter;
     public float maxJumpTime = 0.2f;
+
+    //Optimised Jump
+    [Header("Optimized Jump")]
+    public float fallMultiplier = 8f;
+    public float lowJumpMultiplier = 7f;
 
     #endregion
 
@@ -48,7 +55,6 @@ public class PlatformerMovement : MonoBehaviour
 
         #endregion
 
-        //rigidbody2d.gravityScale = 8f;
         #region ASSIGN VARIABLES
 
         Instance = this;
@@ -89,36 +95,38 @@ public class PlatformerMovement : MonoBehaviour
         #endregion
 
         #region JUMPING
-        //Test the other jumping mechanic under PlayerJump Script.
-        return;
 
         //Jump Once
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             isJumping = true;
 
-            //Reset JumpTimeCounter
-            jumpTimeCounter = maxJumpTime;
-
             //Actually Jump
             rigidbody2d.velocity = Vector2.up * jumpForce;
+
+            //Decrease Jump Amount
+            currentExtraJumpAmount--;
         }
 
         //Jump Longer
-        else if (Input.GetKey(KeyCode.Space) && isJumping)
+        else if (Input.GetKey(KeyCode.Space) && isJumping && !isGrounded)
         {
-            if (jumpTimeCounter > 0)
+            if (jumpTimeCounter > 0 && currentExtraJumpAmount == maxExtraJumpAmount - 1)
             {
-                //Actually Jump
-                rigidbody2d.velocity = Vector2.up * jumpForce;
-
                 //Decrease jumptime
                 jumpTimeCounter -= Time.deltaTime;
+
+                //Actually Jump
+                rigidbody2d.velocity = Vector2.up * jumpForce;
+            }
+            else
+            {
+                rigidbody2d.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
             }
         }
 
         //Jump Multiple Times
-        if(Input.GetKeyDown(KeyCode.Space) && currentExtraJumpAmount > 0)
+        if(Input.GetKeyDown(KeyCode.Space) && currentExtraJumpAmount > 0 && !isGrounded)
         {
             isJumping = true;
 
@@ -132,6 +140,7 @@ public class PlatformerMovement : MonoBehaviour
             currentExtraJumpAmount--;
         }
 
+        //Jump When Falling
         if(Input.GetKey(KeyCode.Space) && !isGrounded && jumpTimeCounter > 0)
         {
             //Jump Animation
@@ -144,9 +153,25 @@ public class PlatformerMovement : MonoBehaviour
         }
 
         //Stop Jumping
-        if (Input.GetKeyUp(KeyCode.Space) && currentExtraJumpAmount <= 0)
+        if (Input.GetKeyUp(KeyCode.Space) && currentExtraJumpAmount < maxExtraJumpAmount)
         {
             isJumping = false;
+        }
+
+        #endregion
+
+        #region OPTIMISED JUMPING
+
+        //When Player is Falling
+        if (rigidbody2d.velocity.y < 0)
+        {
+            rigidbody2d.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+
+        //When Player is Rising
+        else if (rigidbody2d.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
+        {
+            rigidbody2d.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
 
         #endregion
@@ -170,8 +195,12 @@ public class PlatformerMovement : MonoBehaviour
         animator.SetBool("isGrounded", isGrounded);
 
         //When Player is Grounded
-        if (isGrounded)
+        if (isGrounded && !isJumping)
         {
+            //Reset JumpTimeCounter
+            jumpTimeCounter = maxJumpTime;
+
+            //Reset Jump Amount
             currentExtraJumpAmount = maxExtraJumpAmount;
 
             //Land Animation
