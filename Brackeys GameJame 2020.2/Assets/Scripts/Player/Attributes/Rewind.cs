@@ -10,6 +10,8 @@ public class Rewind : MonoBehaviour
 
     #region VARIABLES
 
+    PlatformerMovement platformermovementscript;
+
     //UI
     public bool isPlayer; //FOR UI
     public Slider rewindSlider;
@@ -24,6 +26,12 @@ public class Rewind : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        #region ASSIGN COMPONENTS
+
+        platformermovementscript = gameObject.GetComponent<PlatformerMovement>();
+
+        #endregion
+
         //Reset Rewind (refill Rewind)
         ResetRewind();
 
@@ -35,6 +43,26 @@ public class Rewind : MonoBehaviour
     void Update()
     {
 
+        //If Player is going forwards
+        if(platformermovementscript.moveInput > 0  && currentRewindAmount <= maxRewindAmount)
+        {
+            currentRewindAmount += platformermovementscript.moveInput / 2;
+        }
+
+        //If Player is going backwards
+        else if(platformermovementscript.moveInput < 0 && currentRewindAmount >= 0)
+        {
+            currentRewindAmount += platformermovementscript.moveInput;
+        }
+
+        //If Player is standing still
+        else if (platformermovementscript.moveInput == 0 && currentRewindAmount >= 0)
+        {
+            currentRewindAmount -= 0.25f;
+        }
+
+        //Changes the Rewind UI
+        ChangeRewindUI();
     }
 
     public void ResetRewind()

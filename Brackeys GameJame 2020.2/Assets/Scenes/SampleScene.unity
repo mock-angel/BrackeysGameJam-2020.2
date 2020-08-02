@@ -3786,6 +3786,11 @@ PrefabInstance:
       propertyPath: rewindText
       value: 
       objectReference: {fileID: 269004768}
+    - target: {fileID: 4125142600467279684, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: maxRewindAmount
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4158a3d9fb49744c945a783f706fac4, type: 3}
 --- !u!1001 &5344524539334543790
