@@ -43,22 +43,16 @@ public class Rewind : MonoBehaviour
     void Update()
     {
 
-        //If Player is going forwards
-        if(platformermovementscript.moveInput > 0  && currentRewindAmount <= maxRewindAmount)
+        //If Player is moving
+        if(platformermovementscript.moveInput != 0  && currentRewindAmount <= maxRewindAmount)
         {
-            currentRewindAmount += platformermovementscript.moveInput / 2;
-        }
-
-        //If Player is going backwards
-        else if(platformermovementscript.moveInput < 0 && currentRewindAmount >= 0)
-        {
-            currentRewindAmount += platformermovementscript.moveInput;
+            currentRewindAmount += Mathf.Abs(platformermovementscript.moveInput) / 2;
         }
 
         //If Player is standing still
         else if (platformermovementscript.moveInput == 0 && currentRewindAmount >= 0)
         {
-            currentRewindAmount -= 0.25f;
+            currentRewindAmount -= 1;
         }
 
         //Changes the Rewind UI
