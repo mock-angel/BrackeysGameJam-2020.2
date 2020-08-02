@@ -18,6 +18,8 @@ GameObject:
   - component: {fileID: 1636233747}
   - component: {fileID: 2643750635641253143}
   - component: {fileID: 1599369674752641173}
+  - component: {fileID: 430513807}
+  - component: {fileID: 430513806}
   m_Layer: 0
   m_Name: 'Dummy Cube '
   m_TagString: Untagged
@@ -167,7 +169,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 12
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -225,7 +227,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 366926411289235653}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8f407e408afa45b2bc4e4ee8b0856af, type: 3}
   m_Name: 
@@ -254,6 +256,37 @@ MonoBehaviour:
     type: 3}
   bulletForce: 30
   gun: {fileID: 6769294689940916124}
+--- !u!114 &430513807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366926411289235653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79ae635a5be7f0135ac50ee59b41cf05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpVelocity: 8.63
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  feetPosition: {fileID: 366926412977992500}
+--- !u!114 &430513806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366926411289235653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36e2c82415a0c38078877645e27fe84e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallMultiplier: 3
+  lowJumpMultiplier: 2
 --- !u!1 &366926412977992503
 GameObject:
   m_ObjectHideFlags: 0
