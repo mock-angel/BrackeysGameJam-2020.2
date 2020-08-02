@@ -96,8 +96,6 @@ public class PlatformerMovement : MonoBehaviour
         //Jump When Falling
         if (Input.GetKeyDown(KeyCode.Space) && !isGrounded && !isJumping && currentExtraJumpAmount == maxExtraJumpAmount)
         {
-            Debug.Log("test");
-
             isJumping = true;
 
             //Actually Jump

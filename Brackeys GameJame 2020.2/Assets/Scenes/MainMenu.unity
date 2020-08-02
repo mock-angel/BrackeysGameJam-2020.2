@@ -263,8 +263,11 @@ MonoBehaviour:
   fadeIn: 0
   zoomIn: 1
   animationTime: 0.4
-  waitTime: 0
+  waitTime: 0.05
   onEnable: 0
+  text: {fileID: 0}
+  image: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!222 &93183072
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -747,8 +750,11 @@ MonoBehaviour:
   fadeIn: 0
   zoomIn: 1
   animationTime: 0.4
-  waitTime: 0
+  waitTime: 0.05
   onEnable: 0
+  text: {fileID: 0}
+  image: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1628035174
 GameObject:
   m_ObjectHideFlags: 0
