@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
   m_Name: Ground Obstacle
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: 6764056571868605769, guid: 0fd5c512afefdda5e8a46c770257d71d,
+  m_DefaultSprite: {fileID: -1535180304276117719, guid: 0fd5c512afefdda5e8a46c770257d71d,
     type: 3}
   m_DefaultGameObject: {fileID: 0}
   m_DefaultColliderType: 1
