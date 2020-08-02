@@ -58,7 +58,7 @@ MonoBehaviour:
   isPlayer: 1
   rewindSlider: {fileID: 0}
   rewindText: {fileID: 0}
-  maxRewindAmount: 10
+  maxRewindAmount: 1000
   currentRewindAmount: 0
 --- !u!114 &366926411289235663
 MonoBehaviour:
