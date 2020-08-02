@@ -57,7 +57,7 @@ public class PlatformerMovement : MonoBehaviour
         #endregion
 
         //Set Gravity
-        rigidbody2d.gravityScale = 12f;
+        //rigidbody2d.gravityScale = 12f;
     }
 
     // Update is called once per frame
@@ -89,6 +89,8 @@ public class PlatformerMovement : MonoBehaviour
         #endregion
 
         #region JUMPING
+        //Test the other jumping mechanic under PlayerJump Script.
+        return;
 
         //Jump Once
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)

@@ -1848,7 +1848,7 @@ PrefabInstance:
     - target: {fileID: 366926411289235649, guid: f4158a3d9fb49744c945a783f706fac4,
         type: 3}
       propertyPath: m_GravityScale
-      value: 9
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 366926411289235651, guid: f4158a3d9fb49744c945a783f706fac4,
         type: 3}
@@ -1920,11 +1920,6 @@ PrefabInstance:
       propertyPath: healthText
       value: 
       objectReference: {fileID: 400469933}
-    - target: {fileID: 2643750635641253143, guid: f4158a3d9fb49744c945a783f706fac4,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4125142600467279684, guid: f4158a3d9fb49744c945a783f706fac4,
         type: 3}
       propertyPath: rewindSlider
