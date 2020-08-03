@@ -43,24 +43,16 @@ public class Rewind : MonoBehaviour
 
         //Changes the Rewind UI
         ChangeRewindUI();
-
-        InvokeRepeating("RepeatTime", 1f, 0.005f);  //seconds delay, repeat every time in seconds
     }
 
     // Update is called once per frame
     void Update()
     {
         //The Rewind Mechanic (Curve and Math)
-        //RewindMechanic();
-
-        //Changes the Rewind UI
-        ChangeRewindUI();
-    }
-
-    private void RepeatTime()
-    {
-        //The Rewind Mechanic (Curve and Math)
         RewindMechanic();
+
+        //Changes the Stages
+        ChangePlayerStage();
     }
 
     private void RewindMechanic()
@@ -72,13 +64,13 @@ public class Rewind : MonoBehaviour
         if (platformermovementscript.moveInput != 0 && currentRewindAmount <= maxRewindAmount)
         {
             //Does not go below certain float
-            if (Mathf.Abs(CalculateRewind() - 1) < rewindCurveCap)
+            if (Mathf.Abs(CalculateRewind() - 1) < rewindCurveCap / 1.25f)
             {
-                currentRewindAmount += Mathf.Abs(rewindCurveCap);
+                ChangeRewind(Mathf.Abs(rewindCurveCap) / 1.25f);
             }
             else
             {
-                currentRewindAmount += Mathf.Abs(CalculateRewind() - 1);
+                ChangeRewind(Mathf.Abs(CalculateRewind() - 1) / 1.5f);
             }
         }
 
@@ -88,12 +80,40 @@ public class Rewind : MonoBehaviour
             //Does not go below certain float
             if (CalculateRewind() < rewindCurveCap)
             {
-                currentRewindAmount -= rewindCurveCap;
+                ChangeRewind(-rewindCurveCap);
             }
             else
             {
-                currentRewindAmount -= CalculateRewind();
+                ChangeRewind(-CalculateRewind());
             }
+        }
+
+        #endregion
+    }
+
+    public void ChangePlayerStage()
+    {
+        #region CHANGE PLAYER STAGE
+
+        //Stage 3
+        if (currentRewindPercentage > 0.7f && currentRewindPercentage < 1.0f)
+        {
+            platformermovementscript.characterStage = 3;
+        }
+        //Stage 2
+        else if (currentRewindPercentage > 0.4 && currentRewindPercentage < 0.7f)
+        {
+            platformermovementscript.characterStage = 2;
+        }
+        //Stage 1
+        else if (currentRewindPercentage > 0.1 && currentRewindPercentage < 0.4f)
+        {
+            platformermovementscript.characterStage = 1;
+        }
+        //Stage 0
+        else if (currentRewindPercentage > 0 && currentRewindPercentage < 0.1f)
+        {
+            platformermovementscript.characterStage = 0;
         }
 
         #endregion
@@ -109,13 +129,13 @@ public class Rewind : MonoBehaviour
         #endregion
     }
 
-    public void ChangeRewind(int ChangeRewindAmount)
+    public void ChangeRewind(float ChangeRewindAmount)
     {
         #region CHANGE REWIND
 
         if (ChangeRewindAmount > 0)
         {
-            if (ChangeRewindAmount + currentRewindAmount <= maxRewindAmount)
+            if (ChangeRewindAmount + currentRewindAmount < maxRewindAmount)
             {
                 currentRewindAmount += ChangeRewindAmount;
             }
@@ -126,9 +146,9 @@ public class Rewind : MonoBehaviour
         }
         else if (ChangeRewindAmount < 0)
         {
-            if (ChangeRewindAmount - currentRewindAmount >= 0)
+            if (ChangeRewindAmount + currentRewindAmount > 0)
             {
-                currentRewindAmount -= ChangeRewindAmount;
+                currentRewindAmount += ChangeRewindAmount;
             }
             else
             {
@@ -160,7 +180,7 @@ public class Rewind : MonoBehaviour
             rewindSlider.value = CalculateRewind();
 
             //Change Rewind Text
-            rewindText.text = (currentRewindAmount).ToString("0.0") + " / " + maxRewindAmount;
+            rewindText.text = currentRewindAmount.ToString("0.0") + " / " + maxRewindAmount;
         }
 
         #endregion
