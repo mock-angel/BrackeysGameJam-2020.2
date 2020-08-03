@@ -16,12 +16,11 @@ GameObject:
   - component: {fileID: 366926411289235649}
   - component: {fileID: 366926411289235662}
   - component: {fileID: 1636233747}
-  - component: {fileID: 2643750635641253143}
   - component: {fileID: 1599369674752641173}
   - component: {fileID: 430513807}
   - component: {fileID: 430513806}
   m_Layer: 0
-  m_Name: 'Dummy Cube '
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,24 +221,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2643750635641253143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 366926411289235653}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8f407e408afa45b2bc4e4ee8b0856af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rps: 2
-  firePoint: {fileID: 4968522005552271184}
-  bulletPrefab: {fileID: 3592918496044551732, guid: 139fd771b1ad4d9368910ccb9a54d9ac,
-    type: 3}
-  bulletForce: 30
-  maxRange: 4
 --- !u!114 &1599369674752641173
 MonoBehaviour:
   m_ObjectHideFlags: 0
