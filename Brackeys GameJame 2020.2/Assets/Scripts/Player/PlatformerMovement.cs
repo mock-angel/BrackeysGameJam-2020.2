@@ -7,7 +7,7 @@ public class PlatformerMovement : MonoBehaviour
 {
     #region VARIABLES
 
-    public static PlatformerMovement Instance;
+    public static PlatformerMovement Instance{get; private set;}
 
     private Rigidbody2D rigidbody2d;
     private Animator animator;
