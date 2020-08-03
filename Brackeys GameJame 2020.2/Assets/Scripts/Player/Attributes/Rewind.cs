@@ -18,6 +18,7 @@ public class Rewind : MonoBehaviour
     public float rewindCurveCap = 0.2f;
     public float maxRewindAmount;
     public float currentRewindAmount;
+    public float currentRewindPercentage;
 
     //UI
     [Header("UI")]
@@ -136,7 +137,8 @@ public class Rewind : MonoBehaviour
     float CalculateRewind()
     {
         //Calculate Rewind
-        return currentRewindAmount / maxRewindAmount;
+        currentRewindPercentage = currentRewindAmount / maxRewindAmount;
+        return currentRewindPercentage;
     }
 
     public void ChangeRewindUI()

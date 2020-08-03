@@ -127,7 +127,7 @@ public class FlyInAnimation : MonoBehaviour
             //Wait until Start of Animation (AFTER first Frame)
             if (waitTime > 0)
             {
-                yield return new WaitForSecondsRealtime(waitTime);
+                yield return new WaitForSeconds(waitTime);
                 waitTime = 0f;
             }
 
@@ -135,6 +135,8 @@ public class FlyInAnimation : MonoBehaviour
 
             yield return null;
         }
+
+        transform.localPosition = startPos;
     }
 }
 
