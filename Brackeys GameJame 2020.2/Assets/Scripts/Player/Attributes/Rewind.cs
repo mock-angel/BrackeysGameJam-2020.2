@@ -12,14 +12,19 @@ public class Rewind : MonoBehaviour
 
     PlatformerMovement platformermovementscript;
 
+    //Rewind
+    [Header("REWIND MECHANIC")]
+    [Range(0, 1)]
+    public float rewindCurveCap = 0.2f;
+    public float maxRewindAmount;
+    public float currentRewindAmount;
+
     //UI
+    [Header("UI")]
     public bool isPlayer; //FOR UI
     public Slider rewindSlider;
     public TMP_Text rewindText;
 
-    //Rewind
-    public float maxRewindAmount;
-    public float currentRewindAmount;
 
     #endregion
 
@@ -42,21 +47,47 @@ public class Rewind : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //The Rewind Mechanic (Curve and Math)
+        RewindMechanic();
+
+        //Changes the Rewind UI
+        ChangeRewindUI();
+    }
+
+    private void RewindMechanic()
+    {
+        //The Rewind Mechanic (Curve and Math)
+        #region REWIND MECHANIC
 
         //If Player is moving
-        if(platformermovementscript.moveInput != 0  && currentRewindAmount <= maxRewindAmount)
+        if (platformermovementscript.moveInput != 0 && currentRewindAmount <= maxRewindAmount)
         {
-            currentRewindAmount += Mathf.Abs(platformermovementscript.moveInput) / 2;
+            //Does not go below certain float
+            if (Mathf.Abs(CalculateRewind() - 1) < rewindCurveCap)
+            {
+                currentRewindAmount += Mathf.Abs(rewindCurveCap);
+            }
+            else
+            {
+                currentRewindAmount += Mathf.Abs(CalculateRewind() - 1);
+            }
         }
 
         //If Player is standing still
         else if (platformermovementscript.moveInput == 0 && currentRewindAmount >= 0)
         {
-            currentRewindAmount -= 1;
+            //Does not go below certain float
+            if (CalculateRewind() < rewindCurveCap)
+            {
+                currentRewindAmount -= rewindCurveCap;
+            }
+            else
+            {
+                currentRewindAmount -= CalculateRewind();
+            }
         }
 
-        //Changes the Rewind UI
-        ChangeRewindUI();
+        #endregion
     }
 
     public void ResetRewind()
