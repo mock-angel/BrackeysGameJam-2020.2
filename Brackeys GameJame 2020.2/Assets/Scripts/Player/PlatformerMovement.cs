@@ -150,7 +150,7 @@ public class PlatformerMovement : MonoBehaviour
         }
 
         //Animation
-        if (Input.GetKey(KeyCode.Space) && !isGrounded && !isJumping)
+        if (Input.GetKey(KeyCode.Space) && !isGrounded && isJumping)
         {
             //Jump Animation
             animator.SetBool("isJumping", true);

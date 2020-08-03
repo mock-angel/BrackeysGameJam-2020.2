@@ -43,16 +43,24 @@ public class Rewind : MonoBehaviour
 
         //Changes the Rewind UI
         ChangeRewindUI();
+
+        InvokeRepeating("RepeatTime", 1f, 0.005f);  //seconds delay, repeat every time in seconds
     }
 
     // Update is called once per frame
     void Update()
     {
         //The Rewind Mechanic (Curve and Math)
-        RewindMechanic();
+        //RewindMechanic();
 
         //Changes the Rewind UI
         ChangeRewindUI();
+    }
+
+    private void RepeatTime()
+    {
+        //The Rewind Mechanic (Curve and Math)
+        RewindMechanic();
     }
 
     private void RewindMechanic()
@@ -152,7 +160,7 @@ public class Rewind : MonoBehaviour
             rewindSlider.value = CalculateRewind();
 
             //Change Rewind Text
-            rewindText.text = currentRewindAmount + " / " + maxRewindAmount;
+            rewindText.text = (currentRewindAmount).ToString("0.0") + " / " + maxRewindAmount;
         }
 
         #endregion
