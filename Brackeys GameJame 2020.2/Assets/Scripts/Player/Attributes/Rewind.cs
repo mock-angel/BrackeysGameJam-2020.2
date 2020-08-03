@@ -66,11 +66,11 @@ public class Rewind : MonoBehaviour
             //Does not go below certain float
             if (Mathf.Abs(CalculateRewind() - 1) < rewindCurveCap / 1.25f)
             {
-                ChangeRewind(Mathf.Abs(rewindCurveCap) / 1.25f);
+                ChangeRewind((Mathf.Abs(rewindCurveCap) / 1.25f));
             }
             else
             {
-                ChangeRewind(Mathf.Abs(CalculateRewind() - 1) / 1.5f);
+                ChangeRewind((Mathf.Abs((CalculateRewind() - 1) / 1.5f) * Mathf.Abs(platformermovementscript.moveInput)));
             }
         }
 
