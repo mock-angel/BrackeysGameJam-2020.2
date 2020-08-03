@@ -13,6 +13,10 @@ public class PlatformerMovement : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriterenderer;
 
+    //Character Stages
+    [Header("Character Stages")]
+    public int characterStage;
+
     //Movement Variables
     [Header("Movement")]
     public float moveSpeed = 6f;
@@ -66,9 +70,11 @@ public class PlatformerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Change Character Stage
+        ChangeCharacterStage();
+
         //Player Input
         PlayerInput();
-
 
         //Animation
         FlipPlayerSprite();
@@ -78,6 +84,30 @@ public class PlatformerMovement : MonoBehaviour
     {
         //Player Movement
         PlayerMovement();
+    }
+
+    public void ChangeCharacterStage()
+    {
+        #region CHARACTER STAGES
+
+        if (characterStage == 0)
+        {
+
+        }
+        else if (characterStage == 1)
+        {
+
+        }
+        else if (characterStage == 2)
+        {
+
+        }
+        else if (characterStage == 3)
+        {
+
+        }
+
+        #endregion
     }
 
     public void PlayerInput()
@@ -150,7 +180,7 @@ public class PlatformerMovement : MonoBehaviour
         }
 
         //Animation
-        if (Input.GetKey(KeyCode.Space) && !isGrounded && isJumping)
+        if (Input.GetKey(KeyCode.Space) && !isGrounded && !isJumping)
         {
             //Jump Animation
             animator.SetBool("isJumping", true);
