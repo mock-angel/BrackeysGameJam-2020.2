@@ -70,7 +70,7 @@ public class Rewind : MonoBehaviour
             }
             else
             {
-                ChangeRewind((Mathf.Abs((CalculateRewind() - 1) / 1.5f) * platformermovementscript.moveInput));
+                ChangeRewind((Mathf.Abs((CalculateRewind() - 1) / 1.5f) * Mathf.Abs(platformermovementscript.moveInput)));
             }
         }
 
