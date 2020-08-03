@@ -54,11 +54,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eff366f5646deb4381c61d74d21e92d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rewindCurveCap: 0.2
+  maxRewindAmount: 1000
+  currentRewindAmount: 0
+  currentRewindPercentage: 0
   isPlayer: 1
   rewindSlider: {fileID: 0}
   rewindText: {fileID: 0}
-  maxRewindAmount: 1000
-  currentRewindAmount: 0
 --- !u!114 &366926411289235663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,11 +73,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b22a20b980f61b349a358f6d2a891e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 1
   healthSlider: {fileID: 0}
   healthText: {fileID: 0}
+  currentHealthPercentage: 0
   maxHealthAmount: 10
   currentHealthAmount: 0
+  maxLifeAmount: 3
+  currentLifeAmount: 0
 --- !u!114 &366926411289235648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,6 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdec019f51fecaa448fea0e080cd95ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterStage: 0
   moveSpeed: 6
   jumpForce: 16
   moveInput: 0
