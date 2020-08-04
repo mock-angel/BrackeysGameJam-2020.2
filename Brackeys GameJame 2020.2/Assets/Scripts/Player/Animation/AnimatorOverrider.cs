@@ -10,8 +10,8 @@ public class AnimatorOverrider : MonoBehaviour
     //Variables
     private Animator animator;
 
-    [SerializeField] private AnimatorOverrideController[] overrideControllers;
-    [SerializeField] private AnimatorOverrider overrider;
+    public AnimatorOverrideController[] overrideControllers;
+    public AnimatorOverrider overrider;
 
     #endregion
     // Start is called before the first frame update

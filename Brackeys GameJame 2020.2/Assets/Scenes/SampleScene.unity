@@ -613,34 +613,6 @@ PrefabInstance:
       propertyPath: lifeIconContainer
       value: 
       objectReference: {fileID: 2012623056}
-    - target: {fileID: 3124670577834516340, guid: f4158a3d9fb49744c945a783f706fac4,
-        type: 3}
-      propertyPath: overrideControllers.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3124670577834516340, guid: f4158a3d9fb49744c945a783f706fac4,
-        type: 3}
-      propertyPath: overrider
-      value: 
-      objectReference: {fileID: 366926412005467831}
-    - target: {fileID: 3124670577834516340, guid: f4158a3d9fb49744c945a783f706fac4,
-        type: 3}
-      propertyPath: overrideControllers.Array.data[0]
-      value: 
-      objectReference: {fileID: 22100000, guid: 11858941c4c72cd4aa448c9891815137,
-        type: 2}
-    - target: {fileID: 3124670577834516340, guid: f4158a3d9fb49744c945a783f706fac4,
-        type: 3}
-      propertyPath: overrideControllers.Array.data[1]
-      value: 
-      objectReference: {fileID: 22100000, guid: af0746e71148d424ca1f86dc2f0ddb8d,
-        type: 2}
-    - target: {fileID: 3124670577834516340, guid: f4158a3d9fb49744c945a783f706fac4,
-        type: 3}
-      propertyPath: overrideControllers.Array.data[2]
-      value: 
-      objectReference: {fileID: 22100000, guid: 3c0eccdcd6e61244588a77c5815176eb,
-        type: 2}
     - target: {fileID: 4125142600467279684, guid: f4158a3d9fb49744c945a783f706fac4,
         type: 3}
       propertyPath: rewindSlider
@@ -658,18 +630,6 @@ PrefabInstance:
       objectReference: {fileID: 839934232}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4158a3d9fb49744c945a783f706fac4, type: 3}
---- !u!114 &366926412005467831 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3124670577834516340, guid: f4158a3d9fb49744c945a783f706fac4,
-    type: 3}
-  m_PrefabInstance: {fileID: 366926412005467830}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad4932df780a377419bf6f9c937b36d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5440781858174680103
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -677,31 +637,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1559236521041822471, guid: b9374b6c80463f0898f9b29afe9498e9,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1559236521041822471, guid: b9374b6c80463f0898f9b29afe9498e9,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1559236521041822471, guid: b9374b6c80463f0898f9b29afe9498e9,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1559236521041822471, guid: b9374b6c80463f0898f9b29afe9498e9,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2385499559210069904, guid: b9374b6c80463f0898f9b29afe9498e9,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 300
-      objectReference: {fileID: 0}
     - target: {fileID: 2485771012196479875, guid: b9374b6c80463f0898f9b29afe9498e9,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -831,31 +766,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gameplay HUD Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 5583670107633473196, guid: b9374b6c80463f0898f9b29afe9498e9,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5583670107633473196, guid: b9374b6c80463f0898f9b29afe9498e9,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5583670107633473196, guid: b9374b6c80463f0898f9b29afe9498e9,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5583670107633473196, guid: b9374b6c80463f0898f9b29afe9498e9,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6510918177355997087, guid: b9374b6c80463f0898f9b29afe9498e9,
-        type: 3}
-      propertyPath: m_textAlignment
-      value: 514
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9374b6c80463f0898f9b29afe9498e9, type: 3}
