@@ -9,9 +9,11 @@ public class PlatformerMovement : MonoBehaviour
 
     public static PlatformerMovement Instance{get; private set;}
 
+    //Scripts & Components
     private Rigidbody2D rigidbody2d;
     private Animator animator;
     private SpriteRenderer spriterenderer;
+    private AnimatorOverrider animatoroverrider;
 
     //Character Stages
     [Header("Character Stages")]
@@ -56,6 +58,7 @@ public class PlatformerMovement : MonoBehaviour
         rigidbody2d = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
         spriterenderer = gameObject.GetComponent<SpriteRenderer>();
+        animatoroverrider = gameObject.GetComponent<AnimatorOverrider>();
 
         #endregion
 
@@ -105,21 +108,25 @@ public class PlatformerMovement : MonoBehaviour
     {
         #region CHARACTER STAGES
 
+
         if (characterStage == 0)
         {
 
         }
         else if (characterStage == 1)
         {
-
+            //Assign new Animation
+            animatoroverrider.SetAnimationToValueInList(0);
         }
         else if (characterStage == 2)
         {
-
+            //Assign new Animation
+            animatoroverrider.SetAnimationToValueInList(1);
         }
         else if (characterStage == 3)
         {
-
+            //Assign new Animation
+            animatoroverrider.SetAnimationToValueInList(2);
         }
 
         #endregion
