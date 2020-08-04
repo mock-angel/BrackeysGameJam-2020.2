@@ -538,6 +538,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 366926411289235650, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2670623775873376064, guid: 3106cdab0c8796440b46dcbf1649315a,
+        type: 3}
     - target: {fileID: 366926411289235651, guid: f4158a3d9fb49744c945a783f706fac4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -598,6 +604,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 366926411289235662, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 366926411289235662, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 366926411289235662, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 366926411289235663, guid: f4158a3d9fb49744c945a783f706fac4,
         type: 3}
       propertyPath: healthSlider
@@ -613,6 +634,11 @@ PrefabInstance:
       propertyPath: lifeIconContainer
       value: 
       objectReference: {fileID: 2012623056}
+    - target: {fileID: 366926412977992500, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4125142600467279684, guid: f4158a3d9fb49744c945a783f706fac4,
         type: 3}
       propertyPath: rewindSlider
@@ -628,6 +654,11 @@ PrefabInstance:
       propertyPath: characterText
       value: 
       objectReference: {fileID: 839934232}
+    - target: {fileID: 4125142600467279684, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: startRewindAmountPercentage
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4158a3d9fb49744c945a783f706fac4, type: 3}
 --- !u!1001 &5440781858174680103
@@ -637,6 +668,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1559236521041822471, guid: b9374b6c80463f0898f9b29afe9498e9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1559236521041822471, guid: b9374b6c80463f0898f9b29afe9498e9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1559236521041822471, guid: b9374b6c80463f0898f9b29afe9498e9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1559236521041822471, guid: b9374b6c80463f0898f9b29afe9498e9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2485771012196479875, guid: b9374b6c80463f0898f9b29afe9498e9,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -766,6 +817,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gameplay HUD Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5583670107633473196, guid: b9374b6c80463f0898f9b29afe9498e9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5583670107633473196, guid: b9374b6c80463f0898f9b29afe9498e9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5583670107633473196, guid: b9374b6c80463f0898f9b29afe9498e9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5583670107633473196, guid: b9374b6c80463f0898f9b29afe9498e9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9374b6c80463f0898f9b29afe9498e9, type: 3}
