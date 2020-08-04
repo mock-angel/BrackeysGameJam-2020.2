@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Falling_teenager
+  m_Name: Walking_cyborg
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,7 +20,16 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -7688136992274518143, guid: 3106cdab0c8796440b46dcbf1649315a,
+      value: {fileID: -2960103898776052636, guid: 7534f4da6ca70ab45934577fb7260334,
+        type: 3}
+    - time: 0.083333336
+      value: {fileID: 1528253017730745001, guid: 7534f4da6ca70ab45934577fb7260334,
+        type: 3}
+    - time: 0.16666667
+      value: {fileID: -7205095592214257764, guid: 7534f4da6ca70ab45934577fb7260334,
+        type: 3}
+    - time: 0.25
+      value: {fileID: -7480003997168052467, guid: 7534f4da6ca70ab45934577fb7260334,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -41,13 +50,16 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -7688136992274518143, guid: 3106cdab0c8796440b46dcbf1649315a, type: 3}
+    - {fileID: -2960103898776052636, guid: 7534f4da6ca70ab45934577fb7260334, type: 3}
+    - {fileID: 1528253017730745001, guid: 7534f4da6ca70ab45934577fb7260334, type: 3}
+    - {fileID: -7205095592214257764, guid: 7534f4da6ca70ab45934577fb7260334, type: 3}
+    - {fileID: -7480003997168052467, guid: 7534f4da6ca70ab45934577fb7260334, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.083333336
+    m_StopTime: 0.33333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Falling_teenager
+  m_Name: Landing_caveman
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,7 +20,7 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -7688136992274518143, guid: 3106cdab0c8796440b46dcbf1649315a,
+      value: {fileID: -904068972297507659, guid: 9a29babd6098c0e43a8a20c6bd7bdba8,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -41,7 +41,7 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -7688136992274518143, guid: 3106cdab0c8796440b46dcbf1649315a, type: 3}
+    - {fileID: -904068972297507659, guid: 9a29babd6098c0e43a8a20c6bd7bdba8, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

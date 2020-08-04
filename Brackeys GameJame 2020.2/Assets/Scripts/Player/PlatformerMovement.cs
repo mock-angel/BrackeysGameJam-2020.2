@@ -76,16 +76,20 @@ public class PlatformerMovement : MonoBehaviour
         //Player Input
         PlayerInput();
 
-        if(transform.localScale.x > 0 && moveInput < 0 && isGrounded)
+        #region FLIP PLAYER
+
+        if (transform.localScale.x > 0 && moveInput < 0 && isGrounded)
         {
-            //Animation
+            //Flip Player
             FlipPlayerSprite();
         }
         else if (transform.localScale.x < 0 && moveInput > 0 && isGrounded)
         {
-            //Animation
+            //Flip Player
             FlipPlayerSprite();
         }
+
+        #endregion
 
         //Animation
         animator.SetFloat("movementSpeed", Mathf.Abs(moveInput));
@@ -270,8 +274,6 @@ public class PlatformerMovement : MonoBehaviour
     public void FlipPlayerSprite()
     {
         #region FLIP PLAYER & IDLE, WALK ANIMATION
-
-        Debug.Log("test");
 
         //Turn Animation
         animator.SetTrigger("turn");
