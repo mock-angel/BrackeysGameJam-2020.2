@@ -61,8 +61,6 @@ public class EnemyBaseController : MonoBehaviour
                 StartCoroutine(StartRangedAttack());
             }
         }
-
-        
     }
 
     //Take damage from Player.
@@ -77,7 +75,7 @@ public class EnemyBaseController : MonoBehaviour
     public bool isMelee;
 
     [ConditionalField("isMelee")]
-    [Range(0f, 50f)] public float DamagePerHitMelee;
+    [Range(0f, 50f)] public int DamagePerHitMelee = 20;
 
     [ConditionalField("isMelee")]
     public bool isMeleeAttacking;//TODO: Make private.
@@ -121,7 +119,7 @@ public class EnemyBaseController : MonoBehaviour
     [Range(0f, 10f)] public float RangeRadius = 5f;
 
     [ConditionalField("isRanged")]
-    [Range(0f, 50f)] public float DamagePerHitRanged = 10;
+    [Range(0f, 50f)] public int DamagePerHitRanged = 10;
     
     [ConditionalField("isRanged")]
     public bool isRangedAttacking;//TODO: Make private.
@@ -132,7 +130,7 @@ public class EnemyBaseController : MonoBehaviour
     [ConditionalField("isRanged")]
     public bool throwAfterDuration = false;
 
-
+    [ConditionalField("isRanged")]
     private float nextRangedFire = 0f;
 
     IEnumerator StartRangedAttack(){
@@ -178,10 +176,14 @@ public class EnemyBaseController : MonoBehaviour
     {
         GameObject newProjectile = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
         
-        Rigidbody2D rb_projectile = newProjectile.GetComponent<Rigidbody2D>();
-        rb_projectile.AddForce( firePoint.transform.right * bulletForce, ForceMode2D.Impulse);
+        BulletScript bulletScript = newProjectile.GetComponent<BulletScript>();
         
-        Destroy(newProjectile, 5f);
+        bulletScript.SetBullet(DamagePerHitRanged, bulletForce, "Player");
+
+        Rigidbody2D rb_projectile = newProjectile.GetComponent<Rigidbody2D>();
+        //rb_projectile.AddForce( firePoint.transform.right * bulletForce, ForceMode2D.Impulse);
+        
+        Destroy( newProjectile, 5f );
     }
 
     private bool isPlayerInRangedAttackRadius(){

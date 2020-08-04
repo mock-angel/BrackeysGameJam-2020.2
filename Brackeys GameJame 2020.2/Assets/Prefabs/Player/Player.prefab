@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 430513806}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,13 +73,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b22a20b980f61b349a358f6d2a891e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthSlider: {fileID: 0}
-  healthText: {fileID: 0}
   currentHealthPercentage: 0
   maxHealthAmount: 10
   currentHealthAmount: 0
   maxLifeAmount: 3
   currentLifeAmount: 0
+  healthSlider: {fileID: 0}
+  healthText: {fileID: 0}
+  lifeIconContainer: {fileID: 0}
+  lifeIconPrefab: {fileID: 0}
+  lifeHeartsList: []
+  lifeText: {fileID: 0}
 --- !u!114 &366926411289235648
 MonoBehaviour:
   m_ObjectHideFlags: 0

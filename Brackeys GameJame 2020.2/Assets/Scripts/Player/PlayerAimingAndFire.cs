@@ -21,6 +21,8 @@ public class PlayerAimingAndFire : MonoBehaviour
     private GameObject newProjectile;
     public GameObject gun;
     
+    public int DamagePerSoot = 5; 
+
     // Update is called once per frame
     void Update()
     {
@@ -52,6 +54,9 @@ public class PlayerAimingAndFire : MonoBehaviour
     {
         newProjectile = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
         
+        BulletScript bulletScript = newProjectile.GetComponent<BulletScript>();
+        bulletScript.SetBullet(DamagePerSoot, bulletForce, "Enemy");
+
         Rigidbody2D rb_projectile = newProjectile.GetComponent<Rigidbody2D>();
         rb_projectile.AddForce( firePoint.transform.right * bulletForce, ForceMode2D.Impulse);
         
