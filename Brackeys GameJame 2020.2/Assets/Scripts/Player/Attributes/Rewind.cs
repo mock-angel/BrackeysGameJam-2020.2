@@ -20,6 +20,9 @@ public class Rewind : MonoBehaviour
     public float currentRewindAmount;
     public float currentRewindPercentage;
 
+    [Range(0, 1)]
+    public float startRewindAmountPercentage;
+
     //UI
     [Header("UI")]
     public bool isPlayer; //FOR UI
@@ -125,7 +128,7 @@ public class Rewind : MonoBehaviour
         //Reset Rewind
         #region RESET REWIND
 
-        currentRewindAmount = maxRewindAmount;
+        currentRewindAmount = maxRewindAmount * startRewindAmountPercentage;
 
         #endregion
     }
