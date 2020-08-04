@@ -76,8 +76,19 @@ public class PlatformerMovement : MonoBehaviour
         //Player Input
         PlayerInput();
 
+        if(transform.localScale.x > 0 && moveInput < 0 && isGrounded)
+        {
+            //Animation
+            FlipPlayerSprite();
+        }
+        else if (transform.localScale.x < 0 && moveInput > 0 && isGrounded)
+        {
+            //Animation
+            FlipPlayerSprite();
+        }
+
         //Animation
-        FlipPlayerSprite();
+        animator.SetFloat("movementSpeed", Mathf.Abs(moveInput));
     }
 
     void FixedUpdate()
@@ -180,7 +191,7 @@ public class PlatformerMovement : MonoBehaviour
         }
 
         //Animation
-        if (Input.GetKey(KeyCode.Space) && !isGrounded && !isJumping)
+        if (Input.GetKey(KeyCode.Space) && !isGrounded && isJumping)
         {
             //Jump Animation
             animator.SetBool("isJumping", true);
@@ -223,6 +234,7 @@ public class PlatformerMovement : MonoBehaviour
         //Player Movement
         rigidbody2d.velocity = new Vector2(moveInput * moveSpeed, rigidbody2d.velocity.y);
 
+
         #endregion
 
         #region PLAYER JUMP
@@ -259,26 +271,24 @@ public class PlatformerMovement : MonoBehaviour
     {
         #region FLIP PLAYER & IDLE, WALK ANIMATION
 
+        Debug.Log("test");
+
+        //Turn Animation
+        animator.SetTrigger("turn");
+
         if (moveInput == 0)
         {
-            //Idle Animation
-            animator.SetFloat("movementSpeed", Mathf.Abs(moveInput));
+
         }
         else if(moveInput > 0)
         {
-            //Walk Animation
-            animator.SetFloat("movementSpeed", Mathf.Abs(moveInput));
-
             //Look to the right
-            spriterenderer.flipX = false;
+            transform.localScale = new Vector3(1, 1, 1);
         }
         else if(moveInput < 0)
         {
-            //Walk Animation
-            animator.SetFloat("movementSpeed", Mathf.Abs(moveInput));
-
             //Look to the left
-            spriterenderer.flipX = true;
+            transform.localScale = new Vector3(-1, 1, 1);
         }
 
         #endregion
