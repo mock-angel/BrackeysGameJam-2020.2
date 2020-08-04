@@ -23,12 +23,17 @@ public class PlatformerMovement : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed = 6f;
     public float jumpForce = 16f;
+
+    public float currentMoveSpeed_Stage;
+    public float currentJumpForce_Stage;
     public float moveInput;
 
     //Jump
     [Header("Jump")]
-    public int maxExtraJumpAmount = 2;
-    public int currentExtraJumpAmount;
+    public int jumpAmount = 2;
+    public int currentJumpsAvailable;
+
+    public int currentJumpAmount_Stage;
 
     public bool isGrounded;
     public float checkRadius = 0.1f;
@@ -37,7 +42,9 @@ public class PlatformerMovement : MonoBehaviour
 
     public bool isJumping;
     public float jumpTimeCounter;
-    public float maxJumpTime = 0.2f;
+    public float jumpTime = 0.2f;
+
+    public float currentJumpTime_Stage;
 
     //Optimised Jump
     [Header("Optimized Jump")]
@@ -65,7 +72,13 @@ public class PlatformerMovement : MonoBehaviour
         #region ASSIGN VARIABLES
 
         Instance = this;
-        currentExtraJumpAmount = maxExtraJumpAmount;
+
+        currentJumpsAvailable = jumpAmount;
+
+        currentMoveSpeed_Stage = moveSpeed;
+        currentJumpForce_Stage = jumpForce;
+        currentJumpAmount_Stage = jumpAmount;
+        currentJumpTime_Stage = jumpTime;
 
         #endregion
     }
@@ -73,20 +86,17 @@ public class PlatformerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Change Character Stage
-        ChangeCharacterStage();
-
         //Player Input
         PlayerInput();
 
         #region FLIP PLAYER
 
-        if (transform.localScale.x > 0 && moveInput < 0 && isGrounded)
+        if (transform.localScale.x > 0 && moveInput < 0)
         {
             //Flip Player
             FlipPlayerSprite();
         }
-        else if (transform.localScale.x < 0 && moveInput > 0 && isGrounded)
+        else if (transform.localScale.x < 0 && moveInput > 0)
         {
             //Flip Player
             FlipPlayerSprite();
@@ -108,25 +118,46 @@ public class PlatformerMovement : MonoBehaviour
     {
         #region CHARACTER STAGES
 
-
+        //Death
         if (characterStage == 0)
         {
 
         }
+        //Caveman
         else if (characterStage == 1)
         {
             //Assign new Animation
             animatoroverrider.SetAnimationToValueInList(0);
+
+            //Assign Special skills
+            currentJumpForce_Stage = jumpForce * 1.2f;
+            currentMoveSpeed_Stage = moveSpeed * 1.2f;
+            currentJumpTime_Stage = jumpTime * 0.9f;
+            currentJumpAmount_Stage = jumpAmount + 0;
         }
+        //Teenager
         else if (characterStage == 2)
         {
             //Assign new Animation
             animatoroverrider.SetAnimationToValueInList(1);
+
+            //Assign Special skills
+            currentJumpForce_Stage = jumpForce * 1f;
+            currentMoveSpeed_Stage = moveSpeed * 1f;
+            currentJumpTime_Stage = jumpTime * 1f;
+            currentJumpAmount_Stage = jumpAmount + 0;
         }
+        //Cyborg
         else if (characterStage == 3)
         {
             //Assign new Animation
             animatoroverrider.SetAnimationToValueInList(2);
+
+            //Assign Special skills
+            currentJumpForce_Stage = jumpForce * 0.8f;
+            currentMoveSpeed_Stage = moveSpeed * 0.8f;
+            currentJumpTime_Stage = jumpTime * 0.9f;
+            currentJumpAmount_Stage = jumpAmount + 1;
         }
 
         #endregion
@@ -146,15 +177,15 @@ public class PlatformerMovement : MonoBehaviour
         #region JUMPING
 
         //Jump When Falling
-        if (Input.GetKeyDown(KeyCode.Space) && !isGrounded && !isJumping && currentExtraJumpAmount == maxExtraJumpAmount)
+        if (Input.GetKeyDown(KeyCode.Space) && !isGrounded && !isJumping && currentJumpsAvailable == currentJumpAmount_Stage)
         {
             isJumping = true;
 
             //Actually Jump
-            rigidbody2d.velocity = Vector2.up * jumpForce;
+            rigidbody2d.velocity = Vector2.up * currentJumpForce_Stage;
 
             //Decrease Jump Amount
-            currentExtraJumpAmount = 0;
+            currentJumpsAvailable = 0;
         }
 
         //Jump Once
@@ -163,22 +194,22 @@ public class PlatformerMovement : MonoBehaviour
             isJumping = true;
 
             //Actually Jump
-            rigidbody2d.velocity = Vector2.up * jumpForce;
+            rigidbody2d.velocity = Vector2.up * currentJumpForce_Stage;
 
             //Decrease Jump Amount
-            currentExtraJumpAmount--;
+            currentJumpsAvailable--;
         }
 
         //Jump Longer
         else if (Input.GetKey(KeyCode.Space) && isJumping && !isGrounded)
         {
-            if (jumpTimeCounter > 0 && currentExtraJumpAmount == maxExtraJumpAmount - 1)
+            if (jumpTimeCounter > 0 && currentJumpsAvailable == currentJumpAmount_Stage - 1)
             {
                 //Decrease jumptime
                 jumpTimeCounter -= Time.deltaTime;
 
                 //Actually Jump
-                rigidbody2d.velocity = Vector2.up * jumpForce;
+                rigidbody2d.velocity = Vector2.up * currentJumpForce_Stage;
             }
             else
             {
@@ -187,18 +218,18 @@ public class PlatformerMovement : MonoBehaviour
         }
 
         //Jump Multiple Times
-        if(Input.GetKeyDown(KeyCode.Space) && currentExtraJumpAmount > 0 && currentExtraJumpAmount < maxExtraJumpAmount && !isGrounded)
+        if(Input.GetKeyDown(KeyCode.Space) && currentJumpsAvailable > 0 && currentJumpsAvailable < currentJumpAmount_Stage && !isGrounded)
         {
             isJumping = true;
 
             //Reset JumpTimeCounter
-            jumpTimeCounter = maxJumpTime;
+            jumpTimeCounter = currentJumpTime_Stage;
 
             //Actually Jump
-            rigidbody2d.velocity = Vector2.up * jumpForce;
+            rigidbody2d.velocity = Vector2.up * currentJumpForce_Stage;
 
             //Decrease Jump Amount
-            currentExtraJumpAmount--;
+            currentJumpsAvailable--;
         }
 
         //Animation
@@ -214,7 +245,7 @@ public class PlatformerMovement : MonoBehaviour
         }
 
         //Stop Jumping
-        if (Input.GetKeyUp(KeyCode.Space) && currentExtraJumpAmount < maxExtraJumpAmount)
+        if (Input.GetKeyUp(KeyCode.Space) && currentJumpsAvailable < currentJumpAmount_Stage)
         {
             isJumping = false;
         }
@@ -243,7 +274,7 @@ public class PlatformerMovement : MonoBehaviour
         #region PLAYER MOVEMENT
 
         //Player Movement
-        rigidbody2d.velocity = new Vector2(moveInput * moveSpeed, rigidbody2d.velocity.y);
+        rigidbody2d.velocity = new Vector2(moveInput * currentMoveSpeed_Stage, rigidbody2d.velocity.y);
 
 
         #endregion
@@ -260,10 +291,10 @@ public class PlatformerMovement : MonoBehaviour
         if (isGrounded && !isJumping)
         {
             //Reset JumpTimeCounter
-            jumpTimeCounter = maxJumpTime;
+            jumpTimeCounter = currentJumpTime_Stage;
 
             //Reset Jump Amount
-            currentExtraJumpAmount = maxExtraJumpAmount;
+            currentJumpsAvailable = currentJumpAmount_Stage;
 
             //Land Animation
             animator.SetBool("isJumping", false);
@@ -282,8 +313,11 @@ public class PlatformerMovement : MonoBehaviour
     {
         #region FLIP PLAYER & IDLE, WALK ANIMATION
 
-        //Turn Animation
-        animator.SetTrigger("turn");
+        if (isGrounded)
+        {
+            //Turn Animation
+            animator.SetTrigger("turn");
+        }
 
         if (moveInput == 0)
         {
