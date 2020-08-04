@@ -293,4 +293,9 @@ public class PlatformerMovement : MonoBehaviour
 
         #endregion
     }
+
+    public void OnDamageTaken(int damage){
+        GetComponent<Health>().ChangeHealth(-damage);
+    }
+
 }
