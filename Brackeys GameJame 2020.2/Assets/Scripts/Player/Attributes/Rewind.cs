@@ -64,6 +64,8 @@ public class Rewind : MonoBehaviour
         //The Rewind Mechanic (Curve and Math)
         #region REWIND MECHANIC
 
+        float moveSpeedPercentage = platformermovementscript.currentMoveSpeed_Stage / platformermovementscript.moveSpeed;
+
         //If Player is moving
         if (platformermovementscript.moveInput != 0 && currentRewindAmount <= maxRewindAmount)
         {
@@ -74,7 +76,7 @@ public class Rewind : MonoBehaviour
             }
             else
             {
-                ChangeRewind((Mathf.Abs((CalculateRewind() - 1) / 1.5f) * Mathf.Abs(platformermovementscript.moveInput)));
+                ChangeRewind(((Mathf.Abs(CalculateRewind() - 1) * Mathf.Abs(platformermovementscript.moveInput) * moveSpeedPercentage)) / 1.5f);
             }
         }
 
@@ -88,7 +90,7 @@ public class Rewind : MonoBehaviour
             }
             else
             {
-                ChangeRewind(-CalculateRewind());
+                ChangeRewind((-CalculateRewind() / moveSpeedPercentage) * 1.25f);
             }
         }
 
@@ -100,24 +102,36 @@ public class Rewind : MonoBehaviour
         #region CHANGE PLAYER STAGE
 
         //Stage 3
-        if (currentRewindPercentage > 0.7f && currentRewindPercentage < 1.0f)
+        if (currentRewindPercentage > 0.8f && currentRewindPercentage < 1.0f)
         {
             platformermovementscript.characterStage = 3;
+
+            //Change Character Stage
+            platformermovementscript.ChangeCharacterStage();
         }
         //Stage 2
-        else if (currentRewindPercentage > 0.4 && currentRewindPercentage < 0.7f)
+        else if (currentRewindPercentage > 0.4 && currentRewindPercentage < 0.8f)
         {
             platformermovementscript.characterStage = 2;
+
+            //Change Character Stage
+            platformermovementscript.ChangeCharacterStage();
         }
         //Stage 1
-        else if (currentRewindPercentage > 0.1 && currentRewindPercentage < 0.4f)
+        else if (currentRewindPercentage > 0.05 && currentRewindPercentage < 0.4f)
         {
             platformermovementscript.characterStage = 1;
+
+            //Change Character Stage
+            platformermovementscript.ChangeCharacterStage();
         }
         //Stage 0
-        else if (currentRewindPercentage > 0 && currentRewindPercentage < 0.1f)
+        else if (currentRewindPercentage > 0 && currentRewindPercentage < 0.05f)
         {
             platformermovementscript.characterStage = 0;
+
+            //Change Character Stage
+            platformermovementscript.ChangeCharacterStage();
         }
 
         #endregion
