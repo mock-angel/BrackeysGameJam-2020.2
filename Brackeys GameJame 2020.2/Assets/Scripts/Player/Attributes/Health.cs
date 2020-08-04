@@ -12,8 +12,8 @@ public class Health : MonoBehaviour
 
     //Health
     [Header("HEALTH")]
-    public float currentHealthPercentage;
     public int maxHealthAmount;
+    public float currentHealthPercentage;
     public int currentHealthAmount;
 
     //Life
@@ -73,43 +73,46 @@ public class Health : MonoBehaviour
 
     public void InstantiateLifeIcons()
     {
-        //Instantiates Heart Icons based on maxLifeHeartAmount and adds them to list
-        #region INSTANTIATE & ADD TO LIST
-
-        if (lifeIconPrefab != null && lifeIconContainer != null)
+        if (lifeIconContainer != null && lifeIconPrefab != null)
         {
-            //Heart are deleted
-            for (int i = 0; i < lifeHeartsList.Count; i++)
+            //Instantiates Heart Icons based on maxLifeHeartAmount and adds them to list
+            #region INSTANTIATE & ADD TO LIST
+
+            if (lifeIconPrefab != null && lifeIconContainer != null)
             {
-                Destroy(lifeHeartsList[i].gameObject);
-            }
-
-            //Hearts are instantiated
-            for (int i = 0; i < maxLifeAmount; i++)
-            {
-                //instantiate
-                GameObject InstantiatedLifeIcon = Instantiate(lifeIconPrefab, transform.position, Quaternion.identity);
-
-                //Set Parent
-                InstantiatedLifeIcon.transform.SetParent(lifeIconContainer.transform, false);
-
-                if (i < currentLifeAmount)
+                //Heart are deleted
+                for (int i = 0; i < lifeHeartsList.Count; i++)
                 {
-                    //Change Color
-                    InstantiatedLifeIcon.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
-                }
-                else if (i >= currentLifeAmount)
-                {
-                    //Change Color
-                    InstantiatedLifeIcon.GetComponent<Image>().color = new Color32(25, 0, 0, 255);
+                    Destroy(lifeHeartsList[i].gameObject);
                 }
 
-                //Add to List
-                lifeHeartsList.Add(InstantiatedLifeIcon);
+                //Hearts are instantiated
+                for (int i = 0; i < maxLifeAmount; i++)
+                {
+                    //instantiate
+                    GameObject InstantiatedLifeIcon = Instantiate(lifeIconPrefab, transform.position, Quaternion.identity);
+
+                    //Set Parent
+                    InstantiatedLifeIcon.transform.SetParent(lifeIconContainer.transform, false);
+
+                    if (i < currentLifeAmount)
+                    {
+                        //Change Color
+                        InstantiatedLifeIcon.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
+                    }
+                    else if (i >= currentLifeAmount)
+                    {
+                        //Change Color
+                        InstantiatedLifeIcon.GetComponent<Image>().color = new Color32(25, 0, 0, 255);
+                    }
+
+                    //Add to List
+                    lifeHeartsList.Add(InstantiatedLifeIcon);
+                }
             }
+
+            #endregion
         }
-
-        #endregion
     }
 
     public void ChangeHealth(int changeHealthAmount)
