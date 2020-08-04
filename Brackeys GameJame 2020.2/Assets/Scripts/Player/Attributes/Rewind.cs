@@ -15,7 +15,7 @@ public class Rewind : MonoBehaviour
     //Rewind
     [Header("REWIND MECHANIC")]
     [Range(0, 1)]
-    public float rewindCurveCap = 0.2f;
+    public float rewindCurveCap = 0.25f;
     public float maxRewindAmount;
     public float currentRewindAmount;
     public float currentRewindPercentage;
@@ -76,7 +76,7 @@ public class Rewind : MonoBehaviour
             }
             else
             {
-                ChangeRewind(((Mathf.Abs(CalculateRewind() - 1) * Mathf.Abs(platformermovementscript.moveInput) * moveSpeedPercentage)) / 1.5f);
+                ChangeRewind((((Mathf.Abs(CalculateRewind() - 1) / 1.5f) * Mathf.Abs(platformermovementscript.moveInput) * moveSpeedPercentage)) / 1.5f);
             }
         }
 
@@ -90,7 +90,7 @@ public class Rewind : MonoBehaviour
             }
             else
             {
-                ChangeRewind((-CalculateRewind() / moveSpeedPercentage) * 1.25f);
+                ChangeRewind(((-CalculateRewind() * 1.5f) / moveSpeedPercentage) * 1.5f);
             }
         }
 
@@ -155,7 +155,7 @@ public class Rewind : MonoBehaviour
         {
             if (ChangeRewindAmount + currentRewindAmount < maxRewindAmount)
             {
-                currentRewindAmount += ChangeRewindAmount;
+                currentRewindAmount += ChangeRewindAmount * Time.timeScale;
             }
             else
             {
@@ -166,7 +166,7 @@ public class Rewind : MonoBehaviour
         {
             if (ChangeRewindAmount + currentRewindAmount > 0)
             {
-                currentRewindAmount += ChangeRewindAmount;
+                currentRewindAmount += ChangeRewindAmount * Time.timeScale;
             }
             else
             {
