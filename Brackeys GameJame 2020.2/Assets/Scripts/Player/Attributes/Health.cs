@@ -12,8 +12,8 @@ public class Health : MonoBehaviour
 
     //Health
     [Header("HEALTH")]
-    public float currentHealthPercentage;
     public int maxHealthAmount;
+    public float currentHealthPercentage;
     public int currentHealthAmount;
 
     //Life

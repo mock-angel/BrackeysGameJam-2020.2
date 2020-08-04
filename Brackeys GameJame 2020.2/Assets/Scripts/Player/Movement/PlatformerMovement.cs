@@ -15,10 +15,6 @@ public class PlatformerMovement : MonoBehaviour
     private SpriteRenderer spriterenderer;
     private AnimatorOverrider animatoroverrider;
 
-    //Attack
-    [Header("Attack")]
-    public GameObject AttackContainer;
-
     //Character Stages
     [Header("Character Stages")]
     public int characterStage;
@@ -85,12 +81,12 @@ public class PlatformerMovement : MonoBehaviour
 
         #region FLIP PLAYER
 
-        if (!spriterenderer.flipX && moveInput < 0)
+        if (transform.localScale.x > 0 && moveInput < 0 && isGrounded)
         {
             //Flip Player
             FlipPlayerSprite();
         }
-        else if (spriterenderer.flipX && moveInput > 0)
+        else if (transform.localScale.x < 0 && moveInput > 0 && isGrounded)
         {
             //Flip Player
             FlipPlayerSprite();
@@ -286,34 +282,22 @@ public class PlatformerMovement : MonoBehaviour
     {
         #region FLIP PLAYER & IDLE, WALK ANIMATION
 
-        if(isGrounded)
-        {
-            //Turn Animation
-            animator.SetTrigger("turn");
-        }
+        //Turn Animation
+        animator.SetTrigger("turn");
 
-        //Stand still
         if (moveInput == 0)
         {
 
         }
-        //Look to the right
-        else if (moveInput > 0)
+        else if(moveInput > 0)
         {
-            //Flip Attack Container
-            AttackContainer.transform.localScale = new Vector3(1, 1, 1);
-
-            //Flip Player Sprite
-            spriterenderer.flipX = false;
+            //Look to the right
+            transform.localScale = new Vector3(1, 1, 1);
         }
-        //Look to the left
-        else if (moveInput < 0)
+        else if(moveInput < 0)
         {
-            //Flip Attack Container
-            AttackContainer.transform.localScale = new Vector3(-1, 1, 1);
-
-            //Flip Player Sprite
-            spriterenderer.flipX = true;
+            //Look to the left
+            transform.localScale = new Vector3(-1, 1, 1);
         }
 
         #endregion
