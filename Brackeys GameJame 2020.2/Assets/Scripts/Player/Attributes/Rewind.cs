@@ -25,6 +25,7 @@ public class Rewind : MonoBehaviour
     public bool isPlayer; //FOR UI
     public Slider rewindSlider;
     public TMP_Text rewindText;
+    public TMP_Text characterText;
 
 
     #endregion
@@ -181,6 +182,24 @@ public class Rewind : MonoBehaviour
 
             //Change Rewind Text
             rewindText.text = currentRewindAmount.ToString("0.0") + " / " + maxRewindAmount;
+
+            //Change Character Text
+            if(platformermovementscript.characterStage == 0)
+            {
+                characterText.text = "You rewinded too much (Looses Life)";
+            }
+            else if(platformermovementscript.characterStage == 1)
+            {
+                characterText.text = "Caveman";
+            }
+            else if (platformermovementscript.characterStage == 2)
+            {
+                characterText.text = "Teenager";
+            }
+            else if (platformermovementscript.characterStage == 3)
+            {
+                characterText.text = "Cyborg";
+            }
         }
 
         #endregion

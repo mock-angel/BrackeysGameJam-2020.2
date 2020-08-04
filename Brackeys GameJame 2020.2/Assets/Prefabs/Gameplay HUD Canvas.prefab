@@ -165,7 +165,7 @@ MonoBehaviour:
   fadeIn: 0
   zoomIn: 1
   animationTime: 1
-  waitTime: 0.05
+  waitTime: 0
   onEnable: 0
   text: {fileID: 0}
   image: {fileID: 0}
