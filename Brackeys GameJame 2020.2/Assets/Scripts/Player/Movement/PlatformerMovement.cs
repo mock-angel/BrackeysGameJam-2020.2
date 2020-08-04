@@ -14,6 +14,7 @@ public class PlatformerMovement : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriterenderer;
     private AnimatorOverrider animatoroverrider;
+    private Health healthscript;
 
     //Character Stages
     [Header("Character Stages")]
@@ -66,6 +67,7 @@ public class PlatformerMovement : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
         spriterenderer = gameObject.GetComponent<SpriteRenderer>();
         animatoroverrider = gameObject.GetComponent<AnimatorOverrider>();
+        healthscript = gameObject.GetComponent<Health>();
 
         #endregion
 
@@ -86,26 +88,29 @@ public class PlatformerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Player Input
-        PlayerInput();
-
-        #region FLIP PLAYER
-
-        if (transform.localScale.x > 0 && moveInput < 0)
+        if (Time.timeScale > 0)
         {
-            //Flip Player
-            FlipPlayerSprite();
-        }
-        else if (transform.localScale.x < 0 && moveInput > 0)
-        {
-            //Flip Player
-            FlipPlayerSprite();
-        }
+            //Player Input
+            PlayerInput();
 
-        #endregion
+            #region FLIP PLAYER
 
-        //Animation
-        animator.SetFloat("movementSpeed", Mathf.Abs(moveInput));
+            if (transform.localScale.x > 0 && moveInput < 0)
+            {
+                //Flip Player
+                FlipPlayerSprite();
+            }
+            else if (transform.localScale.x < 0 && moveInput > 0)
+            {
+                //Flip Player
+                FlipPlayerSprite();
+            }
+
+            #endregion
+
+            //Animation
+            animator.SetFloat("movementSpeed", Mathf.Abs(moveInput));
+        }
     }
 
     void FixedUpdate()
@@ -121,7 +126,7 @@ public class PlatformerMovement : MonoBehaviour
         //Death
         if (characterStage == 0)
         {
-
+            
         }
         //Caveman
         else if (characterStage == 1)
@@ -134,6 +139,8 @@ public class PlatformerMovement : MonoBehaviour
             currentMoveSpeed_Stage = moveSpeed * 1.2f;
             currentJumpTime_Stage = jumpTime * 0.9f;
             currentJumpAmount_Stage = jumpAmount + 0;
+
+            healthscript.maxHealthAmount = 8;
         }
         //Teenager
         else if (characterStage == 2)
@@ -146,6 +153,8 @@ public class PlatformerMovement : MonoBehaviour
             currentMoveSpeed_Stage = moveSpeed * 1f;
             currentJumpTime_Stage = jumpTime * 1f;
             currentJumpAmount_Stage = jumpAmount + 0;
+
+            healthscript.maxHealthAmount = 10;
         }
         //Cyborg
         else if (characterStage == 3)
@@ -158,6 +167,8 @@ public class PlatformerMovement : MonoBehaviour
             currentMoveSpeed_Stage = moveSpeed * 0.8f;
             currentJumpTime_Stage = jumpTime * 0.9f;
             currentJumpAmount_Stage = jumpAmount + 1;
+
+            healthscript.maxHealthAmount = 12;
         }
 
         #endregion
@@ -177,7 +188,7 @@ public class PlatformerMovement : MonoBehaviour
         #region JUMPING
 
         //Jump When Falling
-        if (Input.GetKeyDown(KeyCode.Space) && !isGrounded && !isJumping && currentJumpsAvailable == currentJumpAmount_Stage)
+        if (Input.GetKeyDown(KeyCode.Space) && !isGrounded && !isJumping && currentJumpsAvailable > 0)
         {
             isJumping = true;
 
@@ -185,7 +196,7 @@ public class PlatformerMovement : MonoBehaviour
             rigidbody2d.velocity = Vector2.up * currentJumpForce_Stage;
 
             //Decrease Jump Amount
-            currentJumpsAvailable = 0;
+            currentJumpsAvailable--;
         }
 
         //Jump Once
