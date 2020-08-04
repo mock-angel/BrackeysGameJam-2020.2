@@ -60,6 +60,7 @@ MonoBehaviour:
   isPlayer: 1
   rewindSlider: {fileID: 0}
   rewindText: {fileID: 0}
+  characterText: {fileID: 0}
 --- !u!114 &366926411289235663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +224,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4932df780a377419bf6f9c937b36d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  overrideControllers:
+  - {fileID: 22100000, guid: 11858941c4c72cd4aa448c9891815137, type: 2}
+  - {fileID: 22100000, guid: af0746e71148d424ca1f86dc2f0ddb8d, type: 2}
+  - {fileID: 22100000, guid: 3c0eccdcd6e61244588a77c5815176eb, type: 2}
+  overrider: {fileID: 3124670577834516340}
 --- !u!95 &1636233747
 Animator:
   serializedVersion: 3

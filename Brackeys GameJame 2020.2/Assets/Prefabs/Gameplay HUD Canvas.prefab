@@ -303,6 +303,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3392053591881369829, guid: fce9b6a8b8b174544bac4f64531ce756,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 514
+      objectReference: {fileID: 0}
     - target: {fileID: 4050069987453862358, guid: fce9b6a8b8b174544bac4f64531ce756,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -702,6 +707,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6076319511207508202, guid: fce9b6a8b8b174544bac4f64531ce756,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6284395888319292665, guid: fce9b6a8b8b174544bac4f64531ce756,
         type: 3}
