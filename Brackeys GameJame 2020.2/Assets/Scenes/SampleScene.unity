@@ -538,12 +538,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 366926411289235650, guid: f4158a3d9fb49744c945a783f706fac4,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -2670623775873376064, guid: 3106cdab0c8796440b46dcbf1649315a,
-        type: 3}
     - target: {fileID: 366926411289235651, guid: f4158a3d9fb49744c945a783f706fac4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -604,21 +598,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 366926411289235662, guid: f4158a3d9fb49744c945a783f706fac4,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 1.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 366926411289235662, guid: f4158a3d9fb49744c945a783f706fac4,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: -0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 366926411289235662, guid: f4158a3d9fb49744c945a783f706fac4,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.7
-      objectReference: {fileID: 0}
     - target: {fileID: 366926411289235663, guid: f4158a3d9fb49744c945a783f706fac4,
         type: 3}
       propertyPath: healthSlider
@@ -634,11 +613,6 @@ PrefabInstance:
       propertyPath: lifeIconContainer
       value: 
       objectReference: {fileID: 2012623056}
-    - target: {fileID: 366926412977992500, guid: f4158a3d9fb49744c945a783f706fac4,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 4125142600467279684, guid: f4158a3d9fb49744c945a783f706fac4,
         type: 3}
       propertyPath: rewindSlider
@@ -654,11 +628,6 @@ PrefabInstance:
       propertyPath: characterText
       value: 
       objectReference: {fileID: 839934232}
-    - target: {fileID: 4125142600467279684, guid: f4158a3d9fb49744c945a783f706fac4,
-        type: 3}
-      propertyPath: startRewindAmountPercentage
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4158a3d9fb49744c945a783f706fac4, type: 3}
 --- !u!1001 &5440781858174680103
@@ -847,6 +816,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5889325722038530120, guid: 8a7fe162cef41e058ae6b021aedfcbcc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43a28f9d143255045a66be9208b8b247, type: 2}
     - target: {fileID: 5889325722038530123, guid: 8a7fe162cef41e058ae6b021aedfcbcc,
         type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.size
@@ -1495,7 +1469,7 @@ PrefabInstance:
     - target: {fileID: 5889325722038530123, guid: 8a7fe162cef41e058ae6b021aedfcbcc,
         type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[3].Array.data[0].X
-      value: -160000000
+      value: -120000000
       objectReference: {fileID: 0}
     - target: {fileID: 5889325722038530123, guid: 8a7fe162cef41e058ae6b021aedfcbcc,
         type: 3}
@@ -1505,7 +1479,7 @@ PrefabInstance:
     - target: {fileID: 5889325722038530123, guid: 8a7fe162cef41e058ae6b021aedfcbcc,
         type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[3].Array.data[1].X
-      value: -180000000
+      value: -140000000
       objectReference: {fileID: 0}
     - target: {fileID: 5889325722038530123, guid: 8a7fe162cef41e058ae6b021aedfcbcc,
         type: 3}
@@ -1515,7 +1489,7 @@ PrefabInstance:
     - target: {fileID: 5889325722038530123, guid: 8a7fe162cef41e058ae6b021aedfcbcc,
         type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[3].Array.data[2].X
-      value: -180000000
+      value: -140000000
       objectReference: {fileID: 0}
     - target: {fileID: 5889325722038530123, guid: 8a7fe162cef41e058ae6b021aedfcbcc,
         type: 3}
@@ -1525,7 +1499,7 @@ PrefabInstance:
     - target: {fileID: 5889325722038530123, guid: 8a7fe162cef41e058ae6b021aedfcbcc,
         type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[3].Array.data[3].X
-      value: -160000000
+      value: -120000000
       objectReference: {fileID: 0}
     - target: {fileID: 5889325722038530123, guid: 8a7fe162cef41e058ae6b021aedfcbcc,
         type: 3}
@@ -1906,6 +1880,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.data[8].Array.data[3].y
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889325722038530123, guid: 8a7fe162cef41e058ae6b021aedfcbcc,
+        type: 3}
+      propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[4].Array.data[0].X
+      value: -160000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889325722038530123, guid: 8a7fe162cef41e058ae6b021aedfcbcc,
+        type: 3}
+      propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[4].Array.data[1].X
+      value: -180000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889325722038530123, guid: 8a7fe162cef41e058ae6b021aedfcbcc,
+        type: 3}
+      propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[4].Array.data[2].X
+      value: -180000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5889325722038530123, guid: 8a7fe162cef41e058ae6b021aedfcbcc,
+        type: 3}
+      propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[4].Array.data[3].X
+      value: -160000000
       objectReference: {fileID: 0}
     - target: {fileID: 5889325722702902921, guid: 8a7fe162cef41e058ae6b021aedfcbcc,
         type: 3}
