@@ -56,6 +56,9 @@ public class PlatformerMovement : MonoBehaviour
     public float currentHangTime;
     public bool isFalling;
 
+    //Rewind
+    public bool isRewinding;
+
     #endregion
 
     void Awake()
@@ -93,8 +96,10 @@ public class PlatformerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.timeScale > 0)
+        if (Time.timeScale > 0 && !isRewinding)
         {
+            Debug.Log("test");
+
             //Player Input
             PlayerInput();
 
@@ -112,10 +117,11 @@ public class PlatformerMovement : MonoBehaviour
             }
 
             #endregion
-
-            //Animation
-            animator.SetFloat("movementSpeed", Mathf.Abs(moveInput));
         }
+
+
+        //Animation
+        animator.SetFloat("movementSpeed", Mathf.Abs(moveInput));
     }
 
     void FixedUpdate()

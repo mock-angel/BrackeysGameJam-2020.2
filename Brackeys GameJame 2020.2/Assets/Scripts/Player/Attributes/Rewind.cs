@@ -184,6 +184,7 @@ public class Rewind : MonoBehaviour
     {
         //Calculate Rewind
         currentRewindPercentage = currentRewindAmount / maxRewindAmount;
+
         return currentRewindPercentage;
     }
 
