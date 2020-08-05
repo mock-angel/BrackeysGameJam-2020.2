@@ -52,6 +52,10 @@ public class PlatformerMovement : MonoBehaviour
     public float fallMultiplier = 8f;
     public float lowJumpMultiplier = 7f;
 
+    public float hangTime = 0.2f;
+    public float currentHanGTime;
+    public bool isFalling;
+
     #endregion
 
     void Awake(){
@@ -163,7 +167,7 @@ public class PlatformerMovement : MonoBehaviour
             animatoroverrider.SetAnimationToValueInList(2);
 
             //Assign Special skills
-            currentJumpForce_Stage = jumpForce * 0.8f;
+            currentJumpForce_Stage = jumpForce * 0.9f;
             currentMoveSpeed_Stage = moveSpeed * 0.8f;
             currentJumpTime_Stage = jumpTime * 0.9f;
             currentJumpAmount_Stage = jumpAmount + 1;
@@ -187,20 +191,8 @@ public class PlatformerMovement : MonoBehaviour
 
         #region JUMPING
 
-        //Jump When Falling
-        if (Input.GetKeyDown(KeyCode.Space) && !isGrounded && !isJumping && currentJumpsAvailable > 0)
-        {
-            isJumping = true;
-
-            //Actually Jump
-            rigidbody2d.velocity = Vector2.up * currentJumpForce_Stage;
-
-            //Decrease Jump Amount
-            currentJumpsAvailable--;
-        }
-
         //Jump Once
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && currentHanGTime > 0 && currentJumpsAvailable == currentJumpAmount_Stage)
         {
             isJumping = true;
 
@@ -229,12 +221,26 @@ public class PlatformerMovement : MonoBehaviour
         }
 
         //Jump Multiple Times
-        if(Input.GetKeyDown(KeyCode.Space) && currentJumpsAvailable > 0 && currentJumpsAvailable < currentJumpAmount_Stage && !isGrounded)
+        else if (Input.GetKeyDown(KeyCode.Space) && currentJumpsAvailable > 0 && currentJumpsAvailable < currentJumpAmount_Stage && !isGrounded && !isFalling)
         {
+            Debug.Log("test");
             isJumping = true;
 
             //Reset JumpTimeCounter
             jumpTimeCounter = currentJumpTime_Stage;
+
+            //Actually Jump
+            rigidbody2d.velocity = Vector2.up * currentJumpForce_Stage;
+
+            //Decrease Jump Amount
+            currentJumpsAvailable--;
+        }
+
+        //Jump When Falling
+        else if (Input.GetKeyDown(KeyCode.Space) && currentHanGTime < 0 && !isJumping && currentJumpsAvailable > 1)
+        {
+            //Is Falling
+            isFalling = true;
 
             //Actually Jump
             rigidbody2d.velocity = Vector2.up * currentJumpForce_Stage;
@@ -272,7 +278,7 @@ public class PlatformerMovement : MonoBehaviour
         }
 
         //When Player is Rising
-        else if (rigidbody2d.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
+        else if (rigidbody2d.velocity.y > 0)
         {
             rigidbody2d.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
@@ -309,6 +315,17 @@ public class PlatformerMovement : MonoBehaviour
 
             //Land Animation
             animator.SetBool("isJumping", false);
+        }
+
+        //Hang Time
+        if (isGrounded)
+        {
+            currentHanGTime = hangTime;
+            isFalling = false;
+        }
+        else
+        {
+            currentHanGTime -= Time.deltaTime;
         }
 
         #endregion

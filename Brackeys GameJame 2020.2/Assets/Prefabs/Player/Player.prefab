@@ -100,10 +100,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterStage: 0
   moveSpeed: 6
-  jumpForce: 16
+  jumpForce: 18
+  currentMoveSpeed_Stage: 0
+  currentJumpForce_Stage: 0
   moveInput: 0
-  maxExtraJumpAmount: 2
-  currentExtraJumpAmount: 0
+  jumpAmount: 2
+  currentJumpsAvailable: 0
+  currentJumpAmount_Stage: 0
   isGrounded: 1
   checkRadius: 0.1
   feetPosition: {fileID: 366926412977992500}
@@ -112,9 +115,12 @@ MonoBehaviour:
     m_Bits: 256
   isJumping: 0
   jumpTimeCounter: 0
-  maxJumpTime: 0.2
+  jumpTime: 0.2
+  currentJumpTime_Stage: 0
   fallMultiplier: 8
   lowJumpMultiplier: 7
+  hangTime: 0.2
+  currentHanGTime: 0
 --- !u!212 &366926411289235650
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -353,7 +359,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6769294689940916124}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.183, y: -0.167, z: 0}
+  m_LocalPosition: {x: 0.4, y: 0, z: 0}
   m_LocalScale: {x: 0.4180115, y: 0.07454309, z: 1}
   m_Children:
   - {fileID: 2927933799940453934}
