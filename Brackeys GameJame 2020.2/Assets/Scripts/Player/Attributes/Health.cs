@@ -10,15 +10,25 @@ public class Health : MonoBehaviour
 
     #region VARIABLES
 
+    //Components & Scripts
+    CheckPoint checkpointscript;
+
+    //General
+    [Header("GENERAL")]
+    public bool isPlayer;
+
     //Health
     [Header("HEALTH")]
-    public int maxHealthAmount;
+    public int maxHealthAmount = 10;
     public float currentHealthPercentage;
     public int currentHealthAmount;
 
+    public float invincibleTime = 0.5f;
+    public float isInvincibleCounter;
+
     //Life
     [Header("LIFE")]
-    public int maxLifeAmount;
+    public int maxLifeAmount = 1;
     public int currentLifeAmount;
 
     //Health UI
@@ -38,6 +48,9 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Assign Components & Scripts
+        checkpointscript = gameObject.GetComponent<CheckPoint>();
+
         //List
         lifeHeartsList = new List<GameObject>();
 
@@ -57,6 +70,12 @@ public class Health : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.H))
         {
             ChangeHealth(-1);
+        }
+
+        //Reset invincibility
+        if(isInvincibleCounter > 0)
+        {
+            isInvincibleCounter -= Time.deltaTime;
         }
     }
 
@@ -123,6 +142,7 @@ public class Health : MonoBehaviour
         //If gaining Health
         if (changeHealthAmount > 0)
         {
+            //Change Health
             if (changeHealthAmount + currentHealthAmount < maxHealthAmount)
             {
                 currentHealthAmount += changeHealthAmount;
@@ -134,8 +154,12 @@ public class Health : MonoBehaviour
         }
 
         //If loosing Health
-        else if (changeHealthAmount < 0)
+        else if (changeHealthAmount < 0 && isInvincibleCounter <= 0)
         {
+            //Player is invincible
+            isInvincibleCounter = invincibleTime;
+
+            //Change Health
             if (changeHealthAmount + currentHealthAmount > 0)
             {
                 currentHealthAmount += changeHealthAmount;
@@ -154,11 +178,6 @@ public class Health : MonoBehaviour
                 if(currentLifeAmount > 0)
                 {
                     currentHealthAmount = maxHealthAmount;
-                }
-                else
-                {
-                    //GAME OVER
-                    Debug.Log("Game Over (Lost all Lifes)");
                 }
 
                 #endregion
@@ -194,13 +213,30 @@ public class Health : MonoBehaviour
         //If loosing Life
         else if (changeLifeAmount < 0)
         {
-            if (changeLifeAmount + currentLifeAmount >= 0)
+            if (changeLifeAmount + currentLifeAmount > 0)
             {
                 currentLifeAmount += changeLifeAmount;
             }
             else
             {
+                #region PLAYER DIES
+
                 currentLifeAmount = 0;
+
+                if (isPlayer)
+                {
+                    //Move To CheckPoint
+                    checkpointscript.MoveToCheckPoint(gameObject);
+
+                    //Reset Health
+                    ResetHealthLife();
+
+                    //GAME OVER
+                    Debug.Log("Game Over (Lost all Lifes)");
+                }
+
+                #endregion
+
             }
         }
 
