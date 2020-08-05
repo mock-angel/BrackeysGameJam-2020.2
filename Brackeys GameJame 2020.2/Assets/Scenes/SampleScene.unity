@@ -385,7 +385,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.00000035762787, y: -0.00000020861626, z: -10}
+  m_LocalPosition: {x: 0.0000002682209, y: -0.00000020861626, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1801469210}
@@ -647,6 +647,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1559236521041822471, guid: b9374b6c80463f0898f9b29afe9498e9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1559236521041822471, guid: b9374b6c80463f0898f9b29afe9498e9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1559236521041822471, guid: b9374b6c80463f0898f9b29afe9498e9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1559236521041822471, guid: b9374b6c80463f0898f9b29afe9498e9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2485771012196479875, guid: b9374b6c80463f0898f9b29afe9498e9,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -776,6 +796,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gameplay HUD Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5583670107633473196, guid: b9374b6c80463f0898f9b29afe9498e9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5583670107633473196, guid: b9374b6c80463f0898f9b29afe9498e9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5583670107633473196, guid: b9374b6c80463f0898f9b29afe9498e9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5583670107633473196, guid: b9374b6c80463f0898f9b29afe9498e9,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9374b6c80463f0898f9b29afe9498e9, type: 3}
@@ -2034,7 +2074,7 @@ PrefabInstance:
     - target: {fileID: 849951271424311645, guid: b8be8659226628ba59256abb644c8931,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.9375
+      value: 2.125
       objectReference: {fileID: 0}
     - target: {fileID: 849951271424311645, guid: b8be8659226628ba59256abb644c8931,
         type: 3}

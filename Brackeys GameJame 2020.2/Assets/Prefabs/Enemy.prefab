@@ -167,19 +167,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 100
-  RatePerSecond: 0
   MoveSpeed: 5
   SeekRange: 10
   isMelee: 0
   DamagePerHitMelee: 0
+  MeleeRadius: 1
   isMeleeAttacking: 0
   isRanged: 1
   bulletPrefab: {fileID: 3592918496044551732, guid: 139fd771b1ad4d9368910ccb9a54d9ac,
     type: 3}
   firePoint: {fileID: 5345645203965238979}
   gun: {fileID: 5993563410537911823}
+  RangedAttackRPS: 1
   bulletForce: 30
-  RangeRadius: 0
+  RangeRadius: 10
   DamagePerHitRanged: 0
   isRangedAttacking: 0
   rangedAttackDuration: 1

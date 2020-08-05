@@ -14,7 +14,6 @@ public class EnemyBaseController : MonoBehaviour
     
     //README: 
     // Seek depends on gameObject of this script.
-    // Either place the 
     #region universalMethods
 
     private Vector2 getPlayerPosition(){
@@ -76,6 +75,9 @@ public class EnemyBaseController : MonoBehaviour
 
     [ConditionalField("isMelee")]
     [Range(0f, 50f)] public int DamagePerHitMelee = 20;
+
+    [ConditionalField("isMelee")]
+    [Range(0f, 10f)] public float MeleeRadius = 1f;
 
     [ConditionalField("isMelee")]
     public bool isMeleeAttacking;//TODO: Make private.
@@ -186,8 +188,12 @@ public class EnemyBaseController : MonoBehaviour
         Destroy( newProjectile, 5f );
     }
 
+    private bool isPlayerInMeleeAttackRadius(){
+        return (Vector2.Distance(getPlayerPosition(), getThisEntityPosition())) <= RangeRadius ;
+    }
+
     private bool isPlayerInRangedAttackRadius(){
-        return (Vector2.Distance(getPlayerPosition(), getThisEntityPosition())) >= RangeRadius ;
+        return (Vector2.Distance(getPlayerPosition(), getThisEntityPosition())) <= RangeRadius ;
     }
 
     #endregion rangedAttack
