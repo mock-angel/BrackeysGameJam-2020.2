@@ -12,14 +12,24 @@ public class Rewind : MonoBehaviour
 
     PlatformerMovement platformermovementscript;
 
+    //Rewind
+    [Header("REWIND MECHANIC")]
+    [Range(0, 1)]
+    public float rewindCurveCap = 0.25f;
+    public float maxRewindAmount;
+    public float currentRewindAmount;
+    public float currentRewindPercentage;
+
+    [Range(0, 1)]
+    public float startRewindAmountPercentage;
+
     //UI
+    [Header("UI")]
     public bool isPlayer; //FOR UI
     public Slider rewindSlider;
     public TMP_Text rewindText;
+    public TMP_Text characterText;
 
-    //Rewind
-    public float maxRewindAmount;
-    public float currentRewindAmount;
 
     #endregion
 
@@ -42,21 +52,89 @@ public class Rewind : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //The Rewind Mechanic (Curve and Math)
+        RewindMechanic();
+
+        //Changes the Stages
+        ChangePlayerStage();
+    }
+
+    private void RewindMechanic()
+    {
+        //The Rewind Mechanic (Curve and Math)
+        #region REWIND MECHANIC
+
+        float moveSpeedPercentage = platformermovementscript.currentMoveSpeed_Stage / platformermovementscript.moveSpeed;
 
         //If Player is moving
-        if(platformermovementscript.moveInput != 0  && currentRewindAmount <= maxRewindAmount)
+        if (platformermovementscript.moveInput != 0 && currentRewindAmount <= maxRewindAmount)
         {
-            currentRewindAmount += Mathf.Abs(platformermovementscript.moveInput) / 2;
+            //Does not go below certain float
+            if (Mathf.Abs(CalculateRewind() - 1) < rewindCurveCap / 1.25f)
+            {
+                ChangeRewind((Mathf.Abs(rewindCurveCap) / 1.25f));
+            }
+            else
+            {
+                ChangeRewind((((Mathf.Abs(CalculateRewind() - 1) / 1.5f) * Mathf.Abs(platformermovementscript.moveInput) * moveSpeedPercentage)) / 1.5f);
+            }
         }
 
         //If Player is standing still
         else if (platformermovementscript.moveInput == 0 && currentRewindAmount >= 0)
         {
-            currentRewindAmount -= 1;
+            //Does not go below certain float
+            if (CalculateRewind() < rewindCurveCap)
+            {
+                ChangeRewind(-rewindCurveCap);
+            }
+            else
+            {
+                ChangeRewind(((-CalculateRewind() * 1.5f) / moveSpeedPercentage) * 1.5f);
+            }
         }
 
-        //Changes the Rewind UI
-        ChangeRewindUI();
+        #endregion
+    }
+
+    public void ChangePlayerStage()
+    {
+        #region CHANGE PLAYER STAGE
+
+        //Stage 3
+        if (currentRewindPercentage > 0.8f && currentRewindPercentage < 1.0f)
+        {
+            platformermovementscript.characterStage = 3;
+
+            //Change Character Stage
+            platformermovementscript.ChangeCharacterStage();
+        }
+        //Stage 2
+        else if (currentRewindPercentage > 0.4 && currentRewindPercentage < 0.8f)
+        {
+            platformermovementscript.characterStage = 2;
+
+            //Change Character Stage
+            platformermovementscript.ChangeCharacterStage();
+        }
+        //Stage 1
+        else if (currentRewindPercentage > 0.05 && currentRewindPercentage < 0.4f)
+        {
+            platformermovementscript.characterStage = 1;
+
+            //Change Character Stage
+            platformermovementscript.ChangeCharacterStage();
+        }
+        //Stage 0
+        else if (currentRewindPercentage > 0 && currentRewindPercentage < 0.05f)
+        {
+            platformermovementscript.characterStage = 0;
+
+            //Change Character Stage
+            platformermovementscript.ChangeCharacterStage();
+        }
+
+        #endregion
     }
 
     public void ResetRewind()
@@ -64,20 +142,20 @@ public class Rewind : MonoBehaviour
         //Reset Rewind
         #region RESET REWIND
 
-        currentRewindAmount = maxRewindAmount;
+        currentRewindAmount = maxRewindAmount * startRewindAmountPercentage;
 
         #endregion
     }
 
-    public void ChangeRewind(int ChangeRewindAmount)
+    public void ChangeRewind(float ChangeRewindAmount)
     {
         #region CHANGE REWIND
 
         if (ChangeRewindAmount > 0)
         {
-            if (ChangeRewindAmount + currentRewindAmount <= maxRewindAmount)
+            if (ChangeRewindAmount + currentRewindAmount < maxRewindAmount)
             {
-                currentRewindAmount += ChangeRewindAmount;
+                currentRewindAmount += ChangeRewindAmount * Time.timeScale;
             }
             else
             {
@@ -86,9 +164,9 @@ public class Rewind : MonoBehaviour
         }
         else if (ChangeRewindAmount < 0)
         {
-            if (ChangeRewindAmount - currentRewindAmount >= 0)
+            if (ChangeRewindAmount + currentRewindAmount > 0)
             {
-                currentRewindAmount -= ChangeRewindAmount;
+                currentRewindAmount += ChangeRewindAmount * Time.timeScale;
             }
             else
             {
@@ -105,7 +183,8 @@ public class Rewind : MonoBehaviour
     float CalculateRewind()
     {
         //Calculate Rewind
-        return currentRewindAmount / maxRewindAmount;
+        currentRewindPercentage = currentRewindAmount / maxRewindAmount;
+        return currentRewindPercentage;
     }
 
     public void ChangeRewindUI()
@@ -119,7 +198,25 @@ public class Rewind : MonoBehaviour
             rewindSlider.value = CalculateRewind();
 
             //Change Rewind Text
-            rewindText.text = currentRewindAmount + " / " + maxRewindAmount;
+            rewindText.text = currentRewindAmount.ToString("0.0") + " / " + maxRewindAmount;
+
+            //Change Character Text
+            if(platformermovementscript.characterStage == 0)
+            {
+                characterText.text = "You rewinded too much (Looses Life)";
+            }
+            else if(platformermovementscript.characterStage == 1)
+            {
+                characterText.text = "Caveman";
+            }
+            else if (platformermovementscript.characterStage == 2)
+            {
+                characterText.text = "Teenager";
+            }
+            else if (platformermovementscript.characterStage == 3)
+            {
+                characterText.text = "Cyborg";
+            }
         }
 
         #endregion

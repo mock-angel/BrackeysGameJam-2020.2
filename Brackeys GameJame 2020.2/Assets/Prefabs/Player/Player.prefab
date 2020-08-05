@@ -15,13 +15,12 @@ GameObject:
   - component: {fileID: 366926411289235650}
   - component: {fileID: 366926411289235649}
   - component: {fileID: 366926411289235662}
+  - component: {fileID: 3124670577834516340}
   - component: {fileID: 1636233747}
   - component: {fileID: 1599369674752641173}
-  - component: {fileID: 430513807}
-  - component: {fileID: 430513806}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,11 +53,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eff366f5646deb4381c61d74d21e92d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rewindCurveCap: 0.2
+  maxRewindAmount: 1000
+  currentRewindAmount: 0
+  currentRewindPercentage: 0
+  startRewindAmountPercentage: 0.5
   isPlayer: 1
   rewindSlider: {fileID: 0}
   rewindText: {fileID: 0}
-  maxRewindAmount: 1000
-  currentRewindAmount: 0
+  characterText: {fileID: 0}
 --- !u!114 &366926411289235663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,11 +74,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b22a20b980f61b349a358f6d2a891e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 1
+  maxHealthAmount: 10
+  currentHealthPercentage: 0
+  currentHealthAmount: 0
+  maxLifeAmount: 3
+  currentLifeAmount: 0
   healthSlider: {fileID: 0}
   healthText: {fileID: 0}
-  maxHealthAmount: 10
-  currentHealthAmount: 0
+  lifeIconContainer: {fileID: 0}
+  lifeIconPrefab: {fileID: 8788932409475688379, guid: 10662dcb9475a254b898977aadca3148,
+    type: 3}
+  lifeHeartsList: []
+  lifeText: {fileID: 0}
 --- !u!114 &366926411289235648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdec019f51fecaa448fea0e080cd95ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterStage: 0
   moveSpeed: 6
   jumpForce: 16
   moveInput: 0
@@ -143,7 +154,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -3618405622361592109, guid: 9b9533d52bed39040abc623afa1c42d3,
+  m_Sprite: {fileID: -2670623775873376064, guid: 3106cdab0c8796440b46dcbf1649315a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -189,19 +200,36 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.000000014901161, y: 0.0027512312}
+  m_Offset: {x: 0, y: -0.2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.46666667, y: 1.0333333}
+    oldSize: {x: 1.9375, y: 2.125}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 0.25899377, y: 0.87627196}
+  m_Size: {x: 0.7, y: 1.55}
   m_EdgeRadius: 0.08
+--- !u!114 &3124670577834516340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366926411289235653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4932df780a377419bf6f9c937b36d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overrideControllers:
+  - {fileID: 22100000, guid: 11858941c4c72cd4aa448c9891815137, type: 2}
+  - {fileID: 22100000, guid: af0746e71148d424ca1f86dc2f0ddb8d, type: 2}
+  - {fileID: 22100000, guid: 3c0eccdcd6e61244588a77c5815176eb, type: 2}
+  overrider: {fileID: 3124670577834516340}
 --- !u!95 &1636233747
 Animator:
   serializedVersion: 3
@@ -239,37 +267,7 @@ MonoBehaviour:
     type: 3}
   bulletForce: 30
   gun: {fileID: 6769294689940916124}
---- !u!114 &430513807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 366926411289235653}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79ae635a5be7f0135ac50ee59b41cf05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpVelocity: 8.63
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  feetPosition: {fileID: 366926412977992500}
---- !u!114 &430513806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 366926411289235653}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36e2c82415a0c38078877645e27fe84e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fallMultiplier: 3
-  lowJumpMultiplier: 2
+  DamagePerSoot: 5
 --- !u!1 &366926412977992503
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,7 +292,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 366926412977992503}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: -0.15, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 366926411289235651}

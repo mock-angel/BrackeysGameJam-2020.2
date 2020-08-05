@@ -9,20 +9,32 @@ public class PlatformerMovement : MonoBehaviour
 
     public static PlatformerMovement Instance{get; private set;}
 
+    //Scripts & Components
     private Rigidbody2D rigidbody2d;
     private Animator animator;
     private SpriteRenderer spriterenderer;
+    private AnimatorOverrider animatoroverrider;
+    private Health healthscript;
+
+    //Character Stages
+    [Header("Character Stages")]
+    public int characterStage;
 
     //Movement Variables
     [Header("Movement")]
     public float moveSpeed = 6f;
     public float jumpForce = 16f;
+
+    public float currentMoveSpeed_Stage;
+    public float currentJumpForce_Stage;
     public float moveInput;
 
     //Jump
     [Header("Jump")]
-    public int maxExtraJumpAmount = 2;
-    public int currentExtraJumpAmount;
+    public int jumpAmount = 2;
+    public int currentJumpsAvailable;
+
+    public int currentJumpAmount_Stage;
 
     public bool isGrounded;
     public float checkRadius = 0.1f;
@@ -31,7 +43,9 @@ public class PlatformerMovement : MonoBehaviour
 
     public bool isJumping;
     public float jumpTimeCounter;
-    public float maxJumpTime = 0.2f;
+    public float jumpTime = 0.2f;
+
+    public float currentJumpTime_Stage;
 
     //Optimised Jump
     [Header("Optimized Jump")]
@@ -52,13 +66,21 @@ public class PlatformerMovement : MonoBehaviour
         rigidbody2d = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
         spriterenderer = gameObject.GetComponent<SpriteRenderer>();
+        animatoroverrider = gameObject.GetComponent<AnimatorOverrider>();
+        healthscript = gameObject.GetComponent<Health>();
 
         #endregion
 
         #region ASSIGN VARIABLES
 
         Instance = this;
-        currentExtraJumpAmount = maxExtraJumpAmount;
+
+        currentJumpsAvailable = jumpAmount;
+
+        currentMoveSpeed_Stage = moveSpeed;
+        currentJumpForce_Stage = jumpForce;
+        currentJumpAmount_Stage = jumpAmount;
+        currentJumpTime_Stage = jumpTime;
 
         #endregion
     }
@@ -66,18 +88,90 @@ public class PlatformerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Player Input
-        PlayerInput();
+        if (Time.timeScale > 0)
+        {
+            //Player Input
+            PlayerInput();
 
+            #region FLIP PLAYER
 
-        //Animation
-        FlipPlayerSprite();
+            if (transform.localScale.x > 0 && moveInput < 0)
+            {
+                //Flip Player
+                FlipPlayerSprite();
+            }
+            else if (transform.localScale.x < 0 && moveInput > 0)
+            {
+                //Flip Player
+                FlipPlayerSprite();
+            }
+
+            #endregion
+
+            //Animation
+            animator.SetFloat("movementSpeed", Mathf.Abs(moveInput));
+        }
     }
 
     void FixedUpdate()
     {
         //Player Movement
         PlayerMovement();
+    }
+
+    public void ChangeCharacterStage()
+    {
+        #region CHARACTER STAGES
+
+        //Death
+        if (characterStage == 0)
+        {
+            
+        }
+        //Caveman
+        else if (characterStage == 1)
+        {
+            //Assign new Animation
+            animatoroverrider.SetAnimationToValueInList(0);
+
+            //Assign Special skills
+            currentJumpForce_Stage = jumpForce * 1.2f;
+            currentMoveSpeed_Stage = moveSpeed * 1.2f;
+            currentJumpTime_Stage = jumpTime * 0.9f;
+            currentJumpAmount_Stage = jumpAmount + 0;
+
+            healthscript.maxHealthAmount = 8;
+        }
+        //Teenager
+        else if (characterStage == 2)
+        {
+            //Assign new Animation
+            animatoroverrider.SetAnimationToValueInList(1);
+
+            //Assign Special skills
+            currentJumpForce_Stage = jumpForce * 1f;
+            currentMoveSpeed_Stage = moveSpeed * 1f;
+            currentJumpTime_Stage = jumpTime * 1f;
+            currentJumpAmount_Stage = jumpAmount + 0;
+
+            healthscript.maxHealthAmount = 10;
+        }
+        //Cyborg
+        else if (characterStage == 3)
+        {
+            //Assign new Animation
+            animatoroverrider.SetAnimationToValueInList(2);
+
+            //Assign Special skills
+            currentJumpForce_Stage = jumpForce * 0.8f;
+            currentMoveSpeed_Stage = moveSpeed * 0.8f;
+            currentJumpTime_Stage = jumpTime * 0.9f;
+            currentJumpAmount_Stage = jumpAmount + 1;
+
+            healthscript.maxHealthAmount = 12;
+        }
+
+        #endregion
     }
 
     public void PlayerInput()
@@ -94,15 +188,15 @@ public class PlatformerMovement : MonoBehaviour
         #region JUMPING
 
         //Jump When Falling
-        if (Input.GetKeyDown(KeyCode.Space) && !isGrounded && !isJumping && currentExtraJumpAmount == maxExtraJumpAmount)
+        if (Input.GetKeyDown(KeyCode.Space) && !isGrounded && !isJumping && currentJumpsAvailable > 0)
         {
             isJumping = true;
 
             //Actually Jump
-            rigidbody2d.velocity = Vector2.up * jumpForce;
+            rigidbody2d.velocity = Vector2.up * currentJumpForce_Stage;
 
             //Decrease Jump Amount
-            currentExtraJumpAmount = 0;
+            currentJumpsAvailable--;
         }
 
         //Jump Once
@@ -111,22 +205,22 @@ public class PlatformerMovement : MonoBehaviour
             isJumping = true;
 
             //Actually Jump
-            rigidbody2d.velocity = Vector2.up * jumpForce;
+            rigidbody2d.velocity = Vector2.up * currentJumpForce_Stage;
 
             //Decrease Jump Amount
-            currentExtraJumpAmount--;
+            currentJumpsAvailable--;
         }
 
         //Jump Longer
         else if (Input.GetKey(KeyCode.Space) && isJumping && !isGrounded)
         {
-            if (jumpTimeCounter > 0 && currentExtraJumpAmount == maxExtraJumpAmount - 1)
+            if (jumpTimeCounter > 0 && currentJumpsAvailable == currentJumpAmount_Stage - 1)
             {
                 //Decrease jumptime
                 jumpTimeCounter -= Time.deltaTime;
 
                 //Actually Jump
-                rigidbody2d.velocity = Vector2.up * jumpForce;
+                rigidbody2d.velocity = Vector2.up * currentJumpForce_Stage;
             }
             else
             {
@@ -135,22 +229,22 @@ public class PlatformerMovement : MonoBehaviour
         }
 
         //Jump Multiple Times
-        if(Input.GetKeyDown(KeyCode.Space) && currentExtraJumpAmount > 0 && currentExtraJumpAmount < maxExtraJumpAmount && !isGrounded)
+        if(Input.GetKeyDown(KeyCode.Space) && currentJumpsAvailable > 0 && currentJumpsAvailable < currentJumpAmount_Stage && !isGrounded)
         {
             isJumping = true;
 
             //Reset JumpTimeCounter
-            jumpTimeCounter = maxJumpTime;
+            jumpTimeCounter = currentJumpTime_Stage;
 
             //Actually Jump
-            rigidbody2d.velocity = Vector2.up * jumpForce;
+            rigidbody2d.velocity = Vector2.up * currentJumpForce_Stage;
 
             //Decrease Jump Amount
-            currentExtraJumpAmount--;
+            currentJumpsAvailable--;
         }
 
         //Animation
-        if (Input.GetKey(KeyCode.Space) && !isGrounded && !isJumping)
+        if (Input.GetKey(KeyCode.Space) && !isGrounded && isJumping)
         {
             //Jump Animation
             animator.SetBool("isJumping", true);
@@ -162,7 +256,7 @@ public class PlatformerMovement : MonoBehaviour
         }
 
         //Stop Jumping
-        if (Input.GetKeyUp(KeyCode.Space) && currentExtraJumpAmount < maxExtraJumpAmount)
+        if (Input.GetKeyUp(KeyCode.Space) && currentJumpsAvailable < currentJumpAmount_Stage)
         {
             isJumping = false;
         }
@@ -191,7 +285,8 @@ public class PlatformerMovement : MonoBehaviour
         #region PLAYER MOVEMENT
 
         //Player Movement
-        rigidbody2d.velocity = new Vector2(moveInput * moveSpeed, rigidbody2d.velocity.y);
+        rigidbody2d.velocity = new Vector2(moveInput * currentMoveSpeed_Stage, rigidbody2d.velocity.y);
+
 
         #endregion
 
@@ -207,10 +302,10 @@ public class PlatformerMovement : MonoBehaviour
         if (isGrounded && !isJumping)
         {
             //Reset JumpTimeCounter
-            jumpTimeCounter = maxJumpTime;
+            jumpTimeCounter = currentJumpTime_Stage;
 
             //Reset Jump Amount
-            currentExtraJumpAmount = maxExtraJumpAmount;
+            currentJumpsAvailable = currentJumpAmount_Stage;
 
             //Land Animation
             animator.SetBool("isJumping", false);
@@ -229,28 +324,32 @@ public class PlatformerMovement : MonoBehaviour
     {
         #region FLIP PLAYER & IDLE, WALK ANIMATION
 
+        if (isGrounded)
+        {
+            //Turn Animation
+            animator.SetTrigger("turn");
+        }
+
         if (moveInput == 0)
         {
-            //Idle Animation
-            animator.SetFloat("movementSpeed", Mathf.Abs(moveInput));
+
         }
         else if(moveInput > 0)
         {
-            //Walk Animation
-            animator.SetFloat("movementSpeed", Mathf.Abs(moveInput));
-
             //Look to the right
-            spriterenderer.flipX = false;
+            transform.localScale = new Vector3(1, 1, 1);
         }
         else if(moveInput < 0)
         {
-            //Walk Animation
-            animator.SetFloat("movementSpeed", Mathf.Abs(moveInput));
-
             //Look to the left
-            spriterenderer.flipX = true;
+            transform.localScale = new Vector3(-1, 1, 1);
         }
 
         #endregion
     }
+
+    public void OnDamageTaken(int damage){
+        GetComponent<Health>().ChangeHealth(-damage);
+    }
+
 }
