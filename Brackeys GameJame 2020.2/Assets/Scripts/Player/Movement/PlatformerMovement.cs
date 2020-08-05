@@ -7,7 +7,7 @@ public class PlatformerMovement : MonoBehaviour
 {
     #region VARIABLES
 
-    public static PlatformerMovement Instance{get; private set;}
+    public static PlatformerMovement Instance { get; private set; }
 
     //Scripts & Components
     private Rigidbody2D rigidbody2d;
@@ -23,7 +23,7 @@ public class PlatformerMovement : MonoBehaviour
     //Movement Variables
     [Header("Movement")]
     public float moveSpeed = 6f;
-    public float jumpForce = 16f;
+    public float jumpForce = 18f;
 
     public float currentMoveSpeed_Stage;
     public float currentJumpForce_Stage;
@@ -53,12 +53,13 @@ public class PlatformerMovement : MonoBehaviour
     public float lowJumpMultiplier = 7f;
 
     public float hangTime = 0.2f;
-    public float currentHanGTime;
+    public float currentHangTime;
     public bool isFalling;
 
     #endregion
 
-    void Awake(){
+    void Awake()
+    {
         Instance = this;
     }
 
@@ -130,7 +131,7 @@ public class PlatformerMovement : MonoBehaviour
         //Death
         if (characterStage == 0)
         {
-            
+
         }
         //Caveman
         else if (characterStage == 1)
@@ -139,7 +140,7 @@ public class PlatformerMovement : MonoBehaviour
             animatoroverrider.SetAnimationToValueInList(0);
 
             //Assign Special skills
-            currentJumpForce_Stage = jumpForce * 1.2f;
+            currentJumpForce_Stage = jumpForce * 1.1f;
             currentMoveSpeed_Stage = moveSpeed * 1.2f;
             currentJumpTime_Stage = jumpTime * 0.9f;
             currentJumpAmount_Stage = jumpAmount + 0;
@@ -192,7 +193,7 @@ public class PlatformerMovement : MonoBehaviour
         #region JUMPING
 
         //Jump Once
-        if (Input.GetKeyDown(KeyCode.Space) && currentHanGTime > 0 && currentJumpsAvailable == currentJumpAmount_Stage)
+        if (Input.GetButtonDown("Jump") && currentHangTime > 0 && currentJumpsAvailable == currentJumpAmount_Stage)
         {
             isJumping = true;
 
@@ -204,7 +205,7 @@ public class PlatformerMovement : MonoBehaviour
         }
 
         //Jump Longer
-        else if (Input.GetKey(KeyCode.Space) && isJumping && !isGrounded)
+        else if (Input.GetButton("Jump") && isJumping && !isGrounded)
         {
             if (jumpTimeCounter > 0 && currentJumpsAvailable == currentJumpAmount_Stage - 1)
             {
@@ -221,7 +222,7 @@ public class PlatformerMovement : MonoBehaviour
         }
 
         //Jump Multiple Times
-        else if (Input.GetKeyDown(KeyCode.Space) && currentJumpsAvailable > 0 && currentJumpsAvailable < currentJumpAmount_Stage && !isGrounded && !isFalling)
+        else if (Input.GetButtonDown("Jump") && currentJumpsAvailable > 0 && currentJumpsAvailable < currentJumpAmount_Stage && !isGrounded && !isFalling)
         {
             Debug.Log("test");
             isJumping = true;
@@ -237,7 +238,7 @@ public class PlatformerMovement : MonoBehaviour
         }
 
         //Jump When Falling
-        else if (Input.GetKeyDown(KeyCode.Space) && currentHanGTime < 0 && !isJumping && currentJumpsAvailable > 1)
+        else if (Input.GetButtonDown("Jump") && currentHangTime < 0 && !isJumping && currentJumpsAvailable > 1)
         {
             //Is Falling
             isFalling = true;
@@ -250,7 +251,7 @@ public class PlatformerMovement : MonoBehaviour
         }
 
         //Animation
-        if (Input.GetKey(KeyCode.Space) && !isGrounded && isJumping)
+        if (Input.GetButton("Jump") && !isGrounded && isJumping)
         {
             //Jump Animation
             animator.SetBool("isJumping", true);
@@ -262,7 +263,7 @@ public class PlatformerMovement : MonoBehaviour
         }
 
         //Stop Jumping
-        if (Input.GetKeyUp(KeyCode.Space) && currentJumpsAvailable < currentJumpAmount_Stage)
+        if (Input.GetButtonUp("Jump") && currentJumpsAvailable < currentJumpAmount_Stage)
         {
             isJumping = false;
         }
@@ -320,12 +321,12 @@ public class PlatformerMovement : MonoBehaviour
         //Hang Time
         if (isGrounded)
         {
-            currentHanGTime = hangTime;
+            currentHangTime = hangTime;
             isFalling = false;
         }
         else
         {
-            currentHanGTime -= Time.deltaTime;
+            currentHangTime -= Time.deltaTime;
         }
 
         #endregion
@@ -351,12 +352,12 @@ public class PlatformerMovement : MonoBehaviour
         {
 
         }
-        else if(moveInput > 0)
+        else if (moveInput > 0)
         {
             //Look to the right
             transform.localScale = new Vector3(1, 1, 1);
         }
-        else if(moveInput < 0)
+        else if (moveInput < 0)
         {
             //Look to the left
             transform.localScale = new Vector3(-1, 1, 1);
@@ -365,7 +366,8 @@ public class PlatformerMovement : MonoBehaviour
         #endregion
     }
 
-    public void OnDamageTaken(int damage){
+    public void OnDamageTaken(int damage)
+    {
         GetComponent<Health>().ChangeHealth(-damage);
     }
 
