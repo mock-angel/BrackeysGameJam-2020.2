@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 1636233747}
   - component: {fileID: 1599369674752641173}
   - component: {fileID: 1086458848}
+  - component: {fileID: 100757551}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -123,9 +124,10 @@ MonoBehaviour:
   currentJumpTime_Stage: 0
   fallMultiplier: 8
   lowJumpMultiplier: 7
-  hangTime: 0.2
+  hangTime: 0.15
   currentHangTime: 0
   isFalling: 0
+  isRewinding: 0
 --- !u!212 &366926411289235650
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -292,6 +294,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkPointGameObject: {fileID: 0}
+--- !u!114 &100757551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366926411289235653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbe4687712d02f343980e61ad7515126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRewinding: 0
+  positions: []
 --- !u!1 &366926412977992503
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +392,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6769294689940916124}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.4, y: 0, z: 0}
   m_LocalScale: {x: 0.4180115, y: 0.07454309, z: 1}
   m_Children:

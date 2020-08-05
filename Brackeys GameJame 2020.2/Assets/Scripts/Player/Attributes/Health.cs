@@ -105,6 +105,9 @@ public class Health : MonoBehaviour
                     Destroy(lifeHeartsList[i].gameObject);
                 }
 
+                //Clear list
+                lifeHeartsList.Clear();
+
                 //Hearts are instantiated
                 for (int i = 0; i < maxLifeAmount; i++)
                 {
