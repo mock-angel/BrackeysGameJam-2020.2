@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 3124670577834516340}
   - component: {fileID: 1636233747}
   - component: {fileID: 1599369674752641173}
+  - component: {fileID: 1086458848}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -74,9 +75,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b22a20b980f61b349a358f6d2a891e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 1
   maxHealthAmount: 10
   currentHealthPercentage: 0
   currentHealthAmount: 0
+  invincibleTime: 0.25
+  isInvincibleCounter: 0
   maxLifeAmount: 3
   currentLifeAmount: 0
   healthSlider: {fileID: 0}
@@ -100,10 +104,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterStage: 0
   moveSpeed: 6
-  jumpForce: 16
+  jumpForce: 18
+  currentMoveSpeed_Stage: 0
+  currentJumpForce_Stage: 0
   moveInput: 0
-  maxExtraJumpAmount: 2
-  currentExtraJumpAmount: 0
+  jumpAmount: 2
+  currentJumpsAvailable: 0
+  currentJumpAmount_Stage: 0
   isGrounded: 1
   checkRadius: 0.1
   feetPosition: {fileID: 366926412977992500}
@@ -112,9 +119,13 @@ MonoBehaviour:
     m_Bits: 256
   isJumping: 0
   jumpTimeCounter: 0
-  maxJumpTime: 0.2
+  jumpTime: 0.2
+  currentJumpTime_Stage: 0
   fallMultiplier: 8
   lowJumpMultiplier: 7
+  hangTime: 0.2
+  currentHangTime: 0
+  isFalling: 0
 --- !u!212 &366926411289235650
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -268,6 +279,19 @@ MonoBehaviour:
   bulletForce: 30
   gun: {fileID: 6769294689940916124}
   DamagePerSoot: 5
+--- !u!114 &1086458848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366926411289235653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3856e745b01d34a4e9a9edb0a417c7f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkPointGameObject: {fileID: 0}
 --- !u!1 &366926412977992503
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,7 +377,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6769294689940916124}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.183, y: -0.167, z: 0}
+  m_LocalPosition: {x: 0.4, y: 0, z: 0}
   m_LocalScale: {x: 0.4180115, y: 0.07454309, z: 1}
   m_Children:
   - {fileID: 2927933799940453934}
