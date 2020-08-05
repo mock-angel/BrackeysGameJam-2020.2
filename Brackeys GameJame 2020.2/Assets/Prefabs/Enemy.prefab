@@ -186,7 +186,7 @@ MonoBehaviour:
   RangedAttackRPS: 1
   bulletForce: 30
   RangeRadius: 10
-  DamagePerHitRanged: 0
+  DamagePerHitRanged: 4
   rangedAttackDuration: 1
   ThrowAfterDuration: 1
 --- !u!1 &849951272914854564

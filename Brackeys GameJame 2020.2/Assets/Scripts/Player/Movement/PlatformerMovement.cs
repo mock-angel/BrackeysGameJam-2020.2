@@ -105,16 +105,16 @@ public class PlatformerMovement : MonoBehaviour
 
             #region FLIP PLAYER
 
-            if (transform.localScale.x > 0 && moveInput < 0)
-            {
+            //if (transform.localScale.x > 0 && moveInput < 0)
+            //{
+            //    //Flip Player
+            if(moveInput != 0) FlipPlayerSprite();
+            //}
+            //else if (transform.localScale.x < 0 && moveInput > 0)
+            //{
                 //Flip Player
-                FlipPlayerSprite();
-            }
-            else if (transform.localScale.x < 0 && moveInput > 0)
-            {
-                //Flip Player
-                FlipPlayerSprite();
-            }
+            //    FlipPlayerSprite();
+            //}
 
             #endregion
         }
@@ -344,6 +344,8 @@ public class PlatformerMovement : MonoBehaviour
         Gizmos.DrawSphere(feetPosition.position, checkRadius);
     }
 
+    public bool isFacingRight = true;
+
     public void FlipPlayerSprite()
     {
         #region FLIP PLAYER & IDLE, WALK ANIMATION
@@ -351,22 +353,32 @@ public class PlatformerMovement : MonoBehaviour
         if (isGrounded)
         {
             //Turn Animation
-            animator.SetTrigger("turn");
+            //animator.SetTrigger("turn");
         }
 
-        if (moveInput == 0)
-        {
-
-        }
-        else if (moveInput > 0)
+        //if (moveInput == 0);
+        if (moveInput > 0)
         {
             //Look to the right
-            transform.localScale = new Vector3(1, 1, 1);
+            //transform.localScale = new Vector3(1, 1, 1);
+            if(!isFacingRight){
+                transform.Rotate(0, 180, 0);
+
+                if(isGrounded) animator.SetTrigger("turn");
+                isFacingRight = true;
+            }
         }
-        else if (moveInput < 0)
+        if (moveInput < 0)
         {
             //Look to the left
-            transform.localScale = new Vector3(-1, 1, 1);
+            //transform.localScale = new Vector3(-1, 1, 1);
+
+            if(isFacingRight){
+                transform.Rotate(0, 180, 0);
+
+                if(isGrounded) animator.SetTrigger("turn");
+                isFacingRight = false;
+            }
         }
 
         #endregion
