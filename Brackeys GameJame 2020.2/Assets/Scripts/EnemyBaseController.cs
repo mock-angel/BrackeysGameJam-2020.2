@@ -14,7 +14,6 @@ public class EnemyBaseController : MonoBehaviour
     
     //README: 
     // Seek depends on gameObject of this script.
-    // Either place the 
     #region universalMethods
 
     private Vector2 getPlayerPosition(){
@@ -49,10 +48,15 @@ public class EnemyBaseController : MonoBehaviour
             //Move towards player logic.
         }
 
-        //if(isPlayerInRangedAttackRadius() && isRanged){
-        //    StartCoroutine(StartRangedAttack());
-        //}
-        
+        if (entityTime >= nextMeleeFire)
+        {
+            if(isPlayerInMeleeAttackRadius() && isMelee){
+                nextMeleeFire = entityTime + 1f/MeleeAttackRPS;
+
+                StartCoroutine(StartMeleeAttack());
+            }
+        }
+
         if (entityTime >= nextRangedFire)
         {
             if(isPlayerInRangedAttackRadius() && isRanged){
@@ -75,20 +79,64 @@ public class EnemyBaseController : MonoBehaviour
     public bool isMelee;
 
     [ConditionalField("isMelee")]
-    [Range(0f, 50f)] public int DamagePerHitMelee = 20;
+    public GameObject meleeSword;
+    
+    [ConditionalField("isMelee")]
+    [Range(0f, 5f)] public float MeleeAttackRPS = 1; //Melee Attack Rate Per Second.
+
+    [ConditionalField("isMelee")]
+    [Range(0f, 50f)] public int DamagePerHitMelee = 3;
+
+    [ConditionalField("isMelee")]
+    [Range(0f, 10f)] public float MeleeRadius = 1f;
+
+    [ConditionalField("isMelee")]
+    [Range(0f, 50f)] public float meleeAttackDuration = 1f;
+
+    [ConditionalField("isMelee")]
+    public bool DamageAfterDurationMelee = true;
 
     [ConditionalField("isMelee")]
     public bool isMeleeAttacking;//TODO: Make private.
 
+    [ConditionalField("isMelee")]
+    [Range(0f, 10f)] public float MeleeRange = 1f;
+
+    [ConditionalField("isMelee")]
+    private float nextMeleeFire = 0f;
+
+    private bool isPlayerInMeleeAttackRadius(){
+        return (Vector2.Distance(getPlayerPosition(), getThisEntityPosition())) <= MeleeRange ;
+    }
+
+    IEnumerator StartMeleeAttack(){
+        OnStartMeleeAttack();
+
+        yield return new WaitForSeconds(meleeAttackDuration);
+
+        OnEndMeleeAttack();
+    }
+
     public void OnStartMeleeAttack()
-    {
+    {   
+        print("Enemy: Start Melee Attack");
+
+        //Start Melee animation
         isMeleeAttacking = true;
+        
+        SwingSword();
+
+        if(!DamageAfterDurationMelee) CauseMeleeDamage();
         //transform.GetChild(1).gameObject.tag = "Untagged";
     }
 
     public void OnEndMeleeAttack()
-    {
+    {   
+        print("Enemy: End Melee Attack");
+
         isMeleeAttacking = false;
+
+        if(DamageAfterDurationMelee) CauseMeleeDamage();
         //transform.GetChild(1).gameObject.tag = "Enemy";
     }
 
@@ -119,16 +167,16 @@ public class EnemyBaseController : MonoBehaviour
     [Range(0f, 10f)] public float RangeRadius = 5f;
 
     [ConditionalField("isRanged")]
-    [Range(0f, 50f)] public int DamagePerHitRanged = 10;
+    [Range(0f, 50f)] public int DamagePerHitRanged = 1;
     
-    [ConditionalField("isRanged")]
-    public bool isRangedAttacking;//TODO: Make private.
+    //[ConditionalField("isRanged")]
+    //public bool isRangedAttacking;//TODO: Make private.
 
     [ConditionalField("isRanged")]
     [Range(0f, 50f)] public float rangedAttackDuration = 1f;
 
     [ConditionalField("isRanged")]
-    public bool throwAfterDuration = false;
+    public bool ThrowAfterDuration = true;
 
     [ConditionalField("isRanged")]
     private float nextRangedFire = 0f;
@@ -140,15 +188,25 @@ public class EnemyBaseController : MonoBehaviour
 
         OnEndRangedAttack();
     }
+    
+    private void SwingSword(){
+        //TODO: Start swing sword animation.
+    }
+
+    private void CauseMeleeDamage(){
+        //TODO: Check if trigger collider is hit on player.
+
+        //TODO: If its true then cause damage.
+    }
 
     public void OnStartRangedAttack()
     {
-        if(!throwAfterDuration) ThrowProjectile();
+        if(!ThrowAfterDuration) ThrowProjectile();
     }
 
     public void OnEndRangedAttack()
     {
-        if(throwAfterDuration) ThrowProjectile();
+        if(ThrowAfterDuration) ThrowProjectile();
     }
 
     
@@ -187,11 +245,12 @@ public class EnemyBaseController : MonoBehaviour
     }
 
     private bool isPlayerInRangedAttackRadius(){
-        return (Vector2.Distance(getPlayerPosition(), getThisEntityPosition())) >= RangeRadius ;
+        return (Vector2.Distance(getPlayerPosition(), getThisEntityPosition())) <= RangeRadius ;
     }
 
     #endregion rangedAttack
 
+    /*
     #region kamikaze
     [Header("Kamikaze Attack")]
 
@@ -202,4 +261,7 @@ public class EnemyBaseController : MonoBehaviour
     //public bool ActivelySeekPlayer;
     
     #endregion kamikaze
+    */
+
+    
 }
