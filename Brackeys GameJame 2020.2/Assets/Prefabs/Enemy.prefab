@@ -170,9 +170,14 @@ MonoBehaviour:
   MoveSpeed: 5
   SeekRange: 10
   isMelee: 0
-  DamagePerHitMelee: 0
+  meleeSword: {fileID: 0}
+  MeleeAttackRPS: 1
+  DamagePerHitMelee: 8
   MeleeRadius: 1
+  meleeAttackDuration: 1
+  DamageAfterDurationMelee: 1
   isMeleeAttacking: 0
+  MeleeRange: 1
   isRanged: 1
   bulletPrefab: {fileID: 3592918496044551732, guid: 139fd771b1ad4d9368910ccb9a54d9ac,
     type: 3}
@@ -182,11 +187,8 @@ MonoBehaviour:
   bulletForce: 30
   RangeRadius: 10
   DamagePerHitRanged: 0
-  isRangedAttacking: 0
   rangedAttackDuration: 1
-  throwAfterDuration: 0
-  kamikaze: 0
-  kamikazeAttackDamage: 0
+  ThrowAfterDuration: 1
 --- !u!1 &849951272914854564
 GameObject:
   m_ObjectHideFlags: 0

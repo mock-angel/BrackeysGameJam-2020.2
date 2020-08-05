@@ -33,7 +33,7 @@ public class PlayerAimingAndFire : MonoBehaviour
         lookDir.y = mousePos.y - objectPos.y;
         
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-        gun.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        //gun.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         
         //
         spriteTime = spriteTime + Time.deltaTime;
