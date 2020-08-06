@@ -38,7 +38,7 @@ public class EnemyBaseController : MonoBehaviour
     }
 
     private void DoMovement(){
-        if(isPlayerInSeekRange{
+        if(isPlayerInSeekRange){
 
         }
     }
