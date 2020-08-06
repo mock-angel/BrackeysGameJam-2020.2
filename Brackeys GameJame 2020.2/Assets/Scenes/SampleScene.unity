@@ -598,7 +598,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0000004172325, y: -0.00000020861626, z: -10}
+  m_LocalPosition: {x: 0.00000035762787, y: -0.00000020861626, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1801469210}
@@ -1379,6 +1379,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gameplay HUD Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5440781859983573667, guid: b9374b6c80463f0898f9b29afe9498e9,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440781859983573667, guid: b9374b6c80463f0898f9b29afe9498e9,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5583670107633473196, guid: b9374b6c80463f0898f9b29afe9498e9,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1568,27 +1578,37 @@ PrefabInstance:
     - target: {fileID: 8792482809048051639, guid: b9374b6c80463f0898f9b29afe9498e9,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 8792482809048051639, guid: b9374b6c80463f0898f9b29afe9498e9,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8792482809048051639, guid: b9374b6c80463f0898f9b29afe9498e9,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8792482809048051639, guid: b9374b6c80463f0898f9b29afe9498e9,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8792482809048051639, guid: b9374b6c80463f0898f9b29afe9498e9,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792482809048051639, guid: b9374b6c80463f0898f9b29afe9498e9,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792482809048051639, guid: b9374b6c80463f0898f9b29afe9498e9,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6407165837356821327, guid: b9374b6c80463f0898f9b29afe9498e9, type: 3}
