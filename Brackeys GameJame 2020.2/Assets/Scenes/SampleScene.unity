@@ -21738,8 +21738,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6861218829617829865, guid: b8be8659226628ba59256abb644c8931,
         type: 3}
-      propertyPath: Health
-      value: 2.3
+      propertyPath: SeekRange
+      value: 4.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861218829617829865, guid: b8be8659226628ba59256abb644c8931,
+        type: 3}
+      propertyPath: MoveSpeed
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 7545790858463995537, guid: b8be8659226628ba59256abb644c8931,
         type: 3}
