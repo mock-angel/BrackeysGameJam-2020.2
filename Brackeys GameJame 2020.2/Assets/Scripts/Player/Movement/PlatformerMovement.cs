@@ -164,7 +164,7 @@ public class PlatformerMovement : MonoBehaviour
         {
             //Assign new Animation
             animatoroverrider.SetAnimationToValueInList(0);
-
+            
             //Assign Special skills
             currentJumpForce_Stage = jumpForce * 1.1f;
             currentMoveSpeed_Stage = moveSpeed * 1.2f;
@@ -378,7 +378,7 @@ public class PlatformerMovement : MonoBehaviour
             //animator.SetTrigger("turn");
         }
 
-        //if (moveInput == 0);
+        if (moveInput == 0) MovingParticles.Stop();
         if (moveInput > 0)
         {
             //Look to the right
@@ -389,6 +389,7 @@ public class PlatformerMovement : MonoBehaviour
                 if(isGrounded) animator.SetTrigger("turn");
                 isFacingRight = true;
             }
+            MovingParticles.Play();
         }
         if (moveInput < 0)
         {
@@ -401,6 +402,7 @@ public class PlatformerMovement : MonoBehaviour
                 if(isGrounded) animator.SetTrigger("turn");
                 isFacingRight = false;
             }
+            MovingParticles.Play();
         }
 
         #endregion
