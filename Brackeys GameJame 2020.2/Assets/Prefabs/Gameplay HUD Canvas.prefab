@@ -873,6 +873,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3049458948606400486, guid: fce9b6a8b8b174544bac4f64531ce756,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3049458948606400486, guid: fce9b6a8b8b174544bac4f64531ce756,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3392053591881369829, guid: fce9b6a8b8b174544bac4f64531ce756,
         type: 3}
       propertyPath: m_textAlignment
@@ -1386,6 +1396,16 @@ PrefabInstance:
     - target: {fileID: 7445001543075702458, guid: fce9b6a8b8b174544bac4f64531ce756,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8902661457950079145, guid: fce9b6a8b8b174544bac4f64531ce756,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8902661457950079145, guid: fce9b6a8b8b174544bac4f64531ce756,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9169781601339035497, guid: fce9b6a8b8b174544bac4f64531ce756,
