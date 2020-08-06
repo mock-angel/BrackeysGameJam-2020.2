@@ -56,6 +56,8 @@ public class EnemyBaseController : MonoBehaviour
     void Update(){
         if(!isAlive) return;
 
+        DoMovement();
+
         entityTime += Time.deltaTime;
 
         if(isPlayerInSeekRange){
@@ -82,7 +84,10 @@ public class EnemyBaseController : MonoBehaviour
         }
     }
 
+    
     private bool isAlive = true;
+    
+    [Header("Death Controls")]
     [Range(0, 10f)] public float DeathAnimationDuration = 3;
     public bool destroyAfterDeath = true;
 
