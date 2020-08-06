@@ -102,15 +102,15 @@ public class Rewind : MonoBehaviour
         #region CHANGE PLAYER STAGE
 
         //Stage 3
-        if (currentRewindPercentage > 0.8f && currentRewindPercentage < 1.0f)
+        if (currentRewindPercentage > 0.825f && currentRewindPercentage < 1.0f)
         {
             platformermovementscript.characterStage = 3;
 
-            //Change Character Stage
+            //Change Character Stag5
             platformermovementscript.ChangeCharacterStage();
         }
         //Stage 2
-        else if (currentRewindPercentage > 0.4 && currentRewindPercentage < 0.8f)
+        else if (currentRewindPercentage > 0.25 && currentRewindPercentage < 0.825f)
         {
             platformermovementscript.characterStage = 2;
 
@@ -118,7 +118,7 @@ public class Rewind : MonoBehaviour
             platformermovementscript.ChangeCharacterStage();
         }
         //Stage 1
-        else if (currentRewindPercentage > 0.05 && currentRewindPercentage < 0.4f)
+        else if (currentRewindPercentage > 0 && currentRewindPercentage < 0.25f)
         {
             platformermovementscript.characterStage = 1;
 
@@ -126,7 +126,7 @@ public class Rewind : MonoBehaviour
             platformermovementscript.ChangeCharacterStage();
         }
         //Stage 0
-        else if (currentRewindPercentage > 0 && currentRewindPercentage < 0.05f)
+        else if (currentRewindPercentage <= 0)
         {
             platformermovementscript.characterStage = 0;
 
