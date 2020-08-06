@@ -25,5 +25,7 @@ public class CheckPoint : MonoBehaviour
     public void MoveToCheckPoint(GameObject player)
     {
         player.transform.position = checkPointGameObject.transform.position;
+
+        PlatformerMovement.Instance.CheckpointParticles.Play();
     }
 }

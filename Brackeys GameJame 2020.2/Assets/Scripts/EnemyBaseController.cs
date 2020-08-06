@@ -6,7 +6,7 @@ using MyAttributes;
 
 public class EnemyBaseController : MonoBehaviour
 {
-    [Range(0,100)]
+    [Range(0, 100)]
     public float Health = 100f;
 
     //[Range(0f, 5f)] public float RatePerSecond;
@@ -31,15 +31,21 @@ public class EnemyBaseController : MonoBehaviour
     
     [Range(0f, 10f)] public float SeekRange = 10f;
 
+    public Rigidbody2D rigidbody2d;
+
+    private float moveInput;
+
     private bool isPlayerInSeekRange{
         get {
+            moveInput = (getPlayerPosition() - getThisEntityPosition()).x;
+             
             return (Vector2.Distance(getPlayerPosition(), getThisEntityPosition())) >= SeekRange ;
         }
     }
 
     private void DoMovement(){
         if(isPlayerInSeekRange){
-
+            rigidbody2d.velocity = new Vector2(moveInput * MoveSpeed, rigidbody2d.velocity.y);
         }
     }
 
@@ -48,6 +54,8 @@ public class EnemyBaseController : MonoBehaviour
     float entityTime = 0f;
 
     void Update(){
+        if(!isAlive) return;
+
         entityTime += Time.deltaTime;
 
         if(isPlayerInSeekRange){
@@ -74,10 +82,33 @@ public class EnemyBaseController : MonoBehaviour
         }
     }
 
+    private bool isAlive = true;
+    [Range(0, 10f)] public float DeathAnimationDuration = 3;
+    public bool destroyAfterDeath = true;
+
     //Take damage from Player.
     public void OnDamageTaken(float damage)
     {
         Health -= damage;
+        if(Health<=0) {
+            Health = 0;
+
+            OnDeath();
+        }
+    }
+
+    private void OnDeath(){
+        StartCoroutine(StartDeathSequence());
+    }
+
+    IEnumerator StartDeathSequence(){
+        //Start Death Animation
+        //anim.SetBool();
+        isAlive = false;
+
+        yield return new WaitForSeconds(DeathAnimationDuration);
+
+        if(destroyAfterDeath) Destroy(gameObject);
     }
 
     #region meleeAttack
@@ -121,7 +152,7 @@ public class EnemyBaseController : MonoBehaviour
 
         yield return new WaitForSeconds(meleeAttackDuration);
 
-        OnEndMeleeAttack();
+        if(isAlive) OnEndMeleeAttack();
     }
 
     public void OnStartMeleeAttack()

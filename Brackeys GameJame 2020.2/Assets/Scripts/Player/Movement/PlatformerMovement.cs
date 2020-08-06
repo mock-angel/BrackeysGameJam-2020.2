@@ -9,6 +9,16 @@ public class PlatformerMovement : MonoBehaviour
 
     public static PlatformerMovement Instance { get; private set; }
 
+    [Header("ParticleSystem")]
+    public ParticleSystem CheckpointParticles;
+    public ParticleSystem LoseLifeParticles;
+    public ParticleSystem GainLifeParticles;
+    public ParticleSystem LoseHealthParticles;
+    public ParticleSystem GainHealthParticles;
+
+    public ParticleSystem MovingParticles;
+    public ParticleSystem JumpParticles;
+
     //Scripts & Components
     private Rigidbody2D rigidbody2d;
     private Animator animator;
@@ -68,7 +78,17 @@ public class PlatformerMovement : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+
+        CheckpointParticles.Stop();
+        LoseLifeParticles.Stop();
+        GainLifeParticles.Stop();
+
+        LoseHealthParticles.Stop();
+        GainHealthParticles.Stop();
+        MovingParticles.Stop();
+        JumpParticles.Stop();
+
         #region ASSIGN COMPONENTS
 
         rigidbody2d = gameObject.GetComponent<Rigidbody2D>();
@@ -208,6 +228,8 @@ public class PlatformerMovement : MonoBehaviour
 
             //Decrease Jump Amount
             currentJumpsAvailable--;
+
+            JumpParticles.Play();
         }
 
         //Jump Longer
