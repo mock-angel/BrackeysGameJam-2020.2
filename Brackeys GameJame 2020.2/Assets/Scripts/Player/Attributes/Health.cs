@@ -154,6 +154,8 @@ public class Health : MonoBehaviour
             {
                 currentHealthAmount = maxHealthAmount;
             }
+
+            PlatformerMovement.Instance.GainHealthParticles.Play();
         }
 
         //If loosing Health
@@ -182,9 +184,12 @@ public class Health : MonoBehaviour
                 {
                     currentHealthAmount = maxHealthAmount;
                 }
-
+                
+                PlatformerMovement.Instance.LoseLifeParticles.Play();
                 #endregion
             }
+
+
         }
 
         InstantiateLifeIcons();
@@ -211,6 +216,8 @@ public class Health : MonoBehaviour
             {
                 currentLifeAmount = maxLifeAmount;
             }
+
+            PlatformerMovement.Instance.GainLifeParticles.Play();
         }
 
         //If loosing Life
@@ -241,6 +248,8 @@ public class Health : MonoBehaviour
                 #endregion
 
             }
+
+            PlatformerMovement.Instance.LoseLifeParticles.Play();
         }
 
         #endregion
