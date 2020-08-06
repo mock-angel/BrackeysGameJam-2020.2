@@ -214,6 +214,11 @@ public class PlatformerMovement : MonoBehaviour
         //Player Move Input
         moveInput = Input.GetAxis("Horizontal");
 
+        if(moveInput != 0) {
+            if(!MovingParticles.isPlaying) MovingParticles.Play();
+        }
+        else if(MovingParticles.isPlaying) MovingParticles.Stop();
+
         #endregion
 
         #region JUMPING
@@ -378,7 +383,7 @@ public class PlatformerMovement : MonoBehaviour
             //animator.SetTrigger("turn");
         }
 
-        if (moveInput == 0) MovingParticles.Stop();
+        //if (moveInput == 0) MovingParticles.Stop();
         if (moveInput > 0)
         {
             //Look to the right
@@ -389,7 +394,8 @@ public class PlatformerMovement : MonoBehaviour
                 if(isGrounded) animator.SetTrigger("turn");
                 isFacingRight = true;
             }
-            MovingParticles.Play();
+           //MovingParticles.Stop();
+            //MovingParticles.Play();
         }
         if (moveInput < 0)
         {
@@ -402,7 +408,8 @@ public class PlatformerMovement : MonoBehaviour
                 if(isGrounded) animator.SetTrigger("turn");
                 isFacingRight = false;
             }
-            MovingParticles.Play();
+            //MovingParticles.Stop();
+            //MovingParticles.Play();
         }
 
         #endregion
