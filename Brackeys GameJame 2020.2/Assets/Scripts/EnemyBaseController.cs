@@ -37,7 +37,13 @@ public class EnemyBaseController : MonoBehaviour
         }
     }
 
-    #endregion
+    private void DoMovement(){
+        if(isPlayerInSeekRange()){
+
+        }
+    }
+
+    #endregion movement
 
     float entityTime = 0f;
 
