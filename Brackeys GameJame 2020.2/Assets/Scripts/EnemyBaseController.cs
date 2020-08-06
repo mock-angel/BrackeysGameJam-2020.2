@@ -33,19 +33,26 @@ public class EnemyBaseController : MonoBehaviour
 
     public Rigidbody2D rigidbody2d;
 
-    private float moveInput;
+    public float moveInput;
 
     private bool isPlayerInSeekRange{
         get {
             moveInput = (getPlayerPosition() - getThisEntityPosition()).x;
-             
-            return (Vector2.Distance(getPlayerPosition(), getThisEntityPosition())) >= SeekRange ;
+            if(moveInput > 0) moveInput = 1;
+            else if(moveInput < 0) moveInput = -1;
+            else moveInput = 0;
+
+            return (Vector2.Distance(getPlayerPosition(), getThisEntityPosition())) <= SeekRange ;
         }
     }
 
     private void DoMovement(){
         if(isPlayerInSeekRange){
-            rigidbody2d.velocity = new Vector2(moveInput * MoveSpeed, rigidbody2d.velocity.y);
+            //Is moving.
+            transform.position = new Vector2(transform.position.x + Time.deltaTime * moveInput * MoveSpeed, transform.position.y);
+        }
+        else{
+            //Not moving.
         }
     }
 
