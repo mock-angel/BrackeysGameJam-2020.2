@@ -89,6 +89,9 @@ public class Health : MonoBehaviour
         currentHealthAmount = maxHealthAmount;
         currentLifeAmount = maxLifeAmount;
 
+        ChangeHealthUI();
+        InstantiateLifeIcons();
+
         #endregion
     }
 
@@ -231,24 +234,8 @@ public class Health : MonoBehaviour
             }
             else
             {
-                #region PLAYER DIES
-
-                currentLifeAmount = 0;
-
-                if (isPlayer)
-                {
-                    //Move To CheckPoint
-                    checkpointscript.MoveToCheckPoint(gameObject);
-
-                    //Reset Health
-                    ResetHealthLife();
-
-                    //GAME OVER
-                    Debug.Log("Game Over (Lost all Lifes)");
-                }
-
-                #endregion
-
+                //Player Dies
+                PlayerDies();
             }
 
             PlatformerMovement.Instance.LoseLifeParticles.Play();
@@ -258,6 +245,27 @@ public class Health : MonoBehaviour
 
         //Changes the Health UI
         ChangeHealthUI();
+    }
+
+    public void PlayerDies()
+    {
+        #region PLAYER DIES
+
+        currentLifeAmount = 0;
+
+        if (isPlayer)
+        {
+            //Move To CheckPoint
+            checkpointscript.MoveToCheckPoint(gameObject);
+
+            //Reset Health
+            ResetHealthLife();
+
+            //GAME OVER
+            Debug.Log("Game Over (Lost all Lifes)");
+        }
+
+        #endregion
     }
 
     float CalculateHealth()
