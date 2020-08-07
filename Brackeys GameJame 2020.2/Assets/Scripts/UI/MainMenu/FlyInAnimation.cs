@@ -29,6 +29,7 @@ public class FlyInAnimation : MonoBehaviour
     public Image image;
     public Color color;
 
+    public bool animationDone;
     private Vector3 startPos;
 
     #endregion
@@ -38,6 +39,7 @@ public class FlyInAnimation : MonoBehaviour
     {
         //seconds = 0.15f;
         startPos = transform.localPosition;
+        animationDone = false;
 
 
         #region IF SCRIPT IS ON TEXT OR IMAGE
@@ -105,7 +107,7 @@ public class FlyInAnimation : MonoBehaviour
                 if (text != null)
                 {
                     text.gameObject.GetComponent<TextMeshProUGUI>().color = color;
-                    color.a += t * 1.5f;
+                    color.a = t * 1.5f;
                 }
                 if (image != null)
                 {
@@ -137,6 +139,7 @@ public class FlyInAnimation : MonoBehaviour
         }
 
         transform.localPosition = startPos;
+        animationDone = true;
     }
 }
 
