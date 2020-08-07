@@ -19,9 +19,9 @@ public class Health : MonoBehaviour
 
     //Health
     [Header("HEALTH")]
-    public int maxHealthAmount = 10;
+    public float maxHealthAmount = 10;
     public float currentHealthPercentage;
-    public int currentHealthAmount;
+    public float currentHealthAmount;
 
     public float invincibleTime = 0.5f;
     public float isInvincibleCounter;
@@ -33,7 +33,9 @@ public class Health : MonoBehaviour
 
     //Health UI
     [Header("HEALTH UI")]
-    public Slider healthSlider;
+    public GameObject healthIconContainer;
+    public GameObject healthIconPrefab;
+    public List<GameObject> healthIconList;
     public TMP_Text healthText;
 
     //Life UI
@@ -268,22 +270,52 @@ public class Health : MonoBehaviour
     public void ChangeHealthUI()
     {
         //Change Health UI
-        #region CHANGE HEALTH SLIDER
-
-        //Change HealthSlider
-        if (healthSlider != null)
+        if (healthIconContainer != null && healthIconPrefab != null)
         {
-            //Change Health Slider Value
-            healthSlider.value = CalculateHealth();
-        }
-        
-        //Change Health Text
-        if (healthText != null)
-        {
-            //Change Health Text
-            healthText.text = currentHealthAmount + " / " + maxHealthAmount;
-        }
+            //Instantiates Heart Icons based on maxHealthHeartAmount and adds them to list
+            #region INSTANTIATE & ADD TO LIST
 
-        #endregion
+            if (healthIconPrefab != null && healthIconContainer != null)
+            {
+                //Heart are deleted
+                for (int i = 0; i < healthIconList.Count; i++)
+                {
+                    Destroy(healthIconList[i].gameObject);
+                }
+
+                //Clear list
+                healthIconList.Clear();
+
+                //Health is instantiated
+                for (int i = 0; i < maxHealthAmount / 2; i++)
+                {
+                    //instantiate
+                    GameObject InstantiatedHealthIcon = Instantiate(healthIconPrefab, transform.position, Quaternion.identity);
+
+                    //Set Parent
+                    InstantiatedHealthIcon.transform.SetParent(healthIconContainer.transform, false);
+
+                    if (i < (currentHealthAmount / 2 - 0.5f))
+                    {
+                        //Change Color
+                        InstantiatedHealthIcon.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
+                    }
+                    else if (i < currentHealthAmount / 2)
+                    {
+                        //Change Color
+                        InstantiatedHealthIcon.GetComponent<Image>().color = new Color32(125, 150, 0, 255);
+                    }
+                    else
+                    {
+                        InstantiatedHealthIcon.SetActive(false);
+                    }
+
+                    //Add to List
+                    healthIconList.Add(InstantiatedHealthIcon);
+                }
+            }
+
+            #endregion
+        }
     }
 }
