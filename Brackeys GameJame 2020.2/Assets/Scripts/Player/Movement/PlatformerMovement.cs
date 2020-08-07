@@ -19,8 +19,6 @@ public class PlatformerMovement : MonoBehaviour
     public ParticleSystem MovingParticles;
     public ParticleSystem JumpParticles;
 
-    public ParticleSystem BloodSplatterParticles;
-
     //Scripts & Components
     private Rigidbody2D rigidbody2d;
     private Animator animator;
@@ -92,7 +90,6 @@ public class PlatformerMovement : MonoBehaviour
         MovingParticles.Stop();
         JumpParticles.Stop();
 
-        BloodSplatterParticles.Stop();
         #endregion
 
         #region ASSIGN COMPONENTS
@@ -420,12 +417,9 @@ public class PlatformerMovement : MonoBehaviour
         #endregion
     }
 
-    public void OnDamageTaken(int damage, GameObject obj = null)
+    public void OnDamageTaken(int damage)
     {
         GetComponent<Health>().ChangeHealth(-damage);
-        if(obj != null)
-            BloodSplatterParticles.transform.position = obj.transform.position;
-        BloodSplatterParticles.Play();
     }
 
 }

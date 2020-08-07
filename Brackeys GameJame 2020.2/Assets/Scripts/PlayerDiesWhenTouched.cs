@@ -12,6 +12,9 @@ public class PlayerDiesWhenTouched : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.GetComponent<Health>().PlayerDies();
+        if(collision.tag == "player")
+        {
+            collision.GetComponent<Health>().PlayerDies();
+        }
     }
 }
