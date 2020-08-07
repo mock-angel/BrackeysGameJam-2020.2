@@ -31,6 +31,8 @@ public class EnemyBaseController : MonoBehaviour
     
     [Range(0f, 10f)] public float SeekRange = 10f;
 
+    [Range(0f, 10f)] public float SeekStopRange = 1f;
+
     public Rigidbody2D rigidbody2d;
 
     public float moveInput;
@@ -42,7 +44,8 @@ public class EnemyBaseController : MonoBehaviour
             else if(moveInput < 0) moveInput = -1;
             else moveInput = 0;
 
-            return (Vector2.Distance(getPlayerPosition(), getThisEntityPosition())) <= SeekRange ;
+            float distance = (Vector2.Distance(getPlayerPosition(), getThisEntityPosition()));
+            return distance <= SeekRange && distance >= SeekStopRange;
         }
     }
 
