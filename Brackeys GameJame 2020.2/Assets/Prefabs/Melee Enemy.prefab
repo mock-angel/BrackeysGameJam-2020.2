@@ -169,6 +169,7 @@ MonoBehaviour:
   Health: 100
   MoveSpeed: 5
   SeekRange: 10
+  SeekStopRange: 2.7
   rigidbody2d: {fileID: 3704880498077713304}
   moveInput: 0
   DeathAnimationDuration: 3
