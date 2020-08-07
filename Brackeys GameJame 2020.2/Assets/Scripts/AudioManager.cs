@@ -1,11 +1,29 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
+[System.Serializable]
+public class Sound{
+    public string name;
+    
+    public AudioClip clip;
 
+    [Range(0, 1)] 
+    public float volume = 1;
+
+    [Range(0.1f, 3f)] 
+    public float pitch = 1;
+
+    public bool loop;
+
+    [HideInInspector]
+    public AudioSource source;
+}
 
 public class AudioManager : MonoBehaviour
 {
@@ -18,7 +36,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource audioSourceSounds;
     [SerializeField] private AudioSource audioSourceMusic;
 
-    
+    public bool PlayTitleMusic;
     //[SerializeField] private SoundInfo soundInfo;
 
 
@@ -46,25 +64,34 @@ public class AudioManager : MonoBehaviour
         GAME_ENDED
     }*/
 
-    [System.Serializable]
-    public class AudioInfo{
-        public string audioName;
-        //public AudioEnum audioEnum;
-        public AudioClip audioClip;
-        [Range(0, 100)] public float audioVolume;
-    }
+    
 
     [Header("Music Info")]
-    public List<AudioInfo> musicAudioInfos;
+    //public Sound[] musicAudioInfos;
 
     public string mainMenuMusicName = "MainMenu Music";
 
     [Header("Sounds Info")]
-    public List<AudioInfo> soundAudioInfos;
+    public Sound[] sounds;
 
     void Awake()
     {
         Instance = this;
+
+        foreach (Sound s in sounds)
+        {
+            s.source = gameObject.AddComponent<AudioSource>();
+            s.source.clip = s.clip;
+
+            s.source.loop = s.loop;
+
+            s.source.volume = s.volume;
+            s.source.pitch = s.pitch;
+        }
+
+        if(PlayTitleMusic) Play(mainMenuMusicName);
+        
+
         //PlayTitleMusic();
     }
 
@@ -75,20 +102,22 @@ public class AudioManager : MonoBehaviour
 
     #region playSoundOrMusicMethods
 
-    public void PlaySound(string audioName)
+    public void Play(string name)
     {
         //numbOfPlayingSounds++;
-        AudioInfo searchedAudioInfo = GetAudioInfoSound(audioName);
+        Sound s = GetSound(name);
+        
+        for(int i = 0; i< sounds.Length; i++){
+            if(sounds[i].name == name) print("found key");
+            print(sounds[i].name);
+        }
 
-        audioSourceSounds.PlayOneShot(searchedAudioInfo.audioClip, searchedAudioInfo.audioVolume);
-    }
-
-    public void PlayMusic(string audioName)
-    {
-        //numbOfPlayingSounds++;
-        AudioInfo searchedAudioInfo = GetAudioInfoMusic(audioName);
-
-        audioSourceSounds.PlayOneShot(searchedAudioInfo.audioClip, searchedAudioInfo.audioVolume);
+        if(s == null)
+            Debug.LogWarning(string.Format("Sound: {0} not found.", name));
+        
+        else s.source.Play();
+        
+        //audioSourceSounds.PlayOneShot(s.clip, s.volume);
     }
 
     #endregion playSoundOrMusicMethods
@@ -98,10 +127,11 @@ public class AudioManager : MonoBehaviour
     
 
     #region customDefinedMusicCalls
+    /*
     public void PlayMainMusic()
     {
 
-        audioSourceMusic.clip = GetAudioInfoMusic(mainMenuMusicName).audioClip;
+        audioSourceMusic.clip = GetSound(mainMenuMusicName).clip;
         audioSourceMusic.loop = true;
         audioSourceMusic.Play();
 
@@ -110,7 +140,7 @@ public class AudioManager : MonoBehaviour
         //audioSourceNatureMusic.Play();
 
     }
-
+    */
     #endregion customDefinedMusicCalls
 
 
@@ -118,33 +148,11 @@ public class AudioManager : MonoBehaviour
 
     #region InternalSearchMethods
 
-    private AudioInfo GetAudioInfoSound(string audioName){
-        AudioInfo searchedAudioInfo = null;
-
-        for(int i = 0; i < soundAudioInfos.Count; i++) {
-            if(soundAudioInfos[i].audioName == audioName){
-                searchedAudioInfo = soundAudioInfos[i];
-
-                break;
-            }
-        }
-
-        return searchedAudioInfo;
+    private Sound GetSound(string name){
+        
+        return Array.Find(sounds, sound => sound.name == name);
     }
 
-    private AudioInfo GetAudioInfoMusic(string audioName){
-        AudioInfo searchedAudioInfo = null;
-
-        for(int i = 0; i < musicAudioInfos.Count; i++) {
-            if(musicAudioInfos[i].audioName == audioName){
-                searchedAudioInfo = musicAudioInfos[i];
-
-                break;
-            }
-        }
-
-        return searchedAudioInfo;
-    }
 
     #endregion InternalSearchMethods
 }
