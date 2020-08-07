@@ -19,14 +19,13 @@ public class PlatformerMovement : MonoBehaviour
     public ParticleSystem MovingParticles;
     public ParticleSystem JumpParticles;
 
-    public ParticleSystem BloodSplatterParticles;
-
     //Scripts & Components
     private Rigidbody2D rigidbody2d;
     private Animator animator;
     private SpriteRenderer spriterenderer;
     private AnimatorOverrider animatoroverrider;
     private Health healthscript;
+    private PlayerAimingAndFire playeramingandfirescript;
 
     //Character Stages
     [Header("Character Stages")]
@@ -92,7 +91,6 @@ public class PlatformerMovement : MonoBehaviour
         MovingParticles.Stop();
         JumpParticles.Stop();
 
-        BloodSplatterParticles.Stop();
         #endregion
 
         #region ASSIGN COMPONENTS
@@ -102,6 +100,7 @@ public class PlatformerMovement : MonoBehaviour
         spriterenderer = gameObject.GetComponent<SpriteRenderer>();
         animatoroverrider = gameObject.GetComponent<AnimatorOverrider>();
         healthscript = gameObject.GetComponent<Health>();
+        playeramingandfirescript = gameObject.GetComponent<PlayerAimingAndFire>();
 
         #endregion
 
@@ -180,6 +179,9 @@ public class PlatformerMovement : MonoBehaviour
                 currentMoveSpeed_Stage = moveSpeed * 1.2f;
                 currentJumpTime_Stage = jumpTime * 1f;
                 currentJumpAmount_Stage = jumpAmount + 0;
+
+                //Shooting
+                playeramingandfirescript.canShoot = false;
             }
             //Teenager
             else if (characterStage == 2)
@@ -192,6 +194,9 @@ public class PlatformerMovement : MonoBehaviour
                 currentMoveSpeed_Stage = moveSpeed * 1f;
                 currentJumpTime_Stage = jumpTime * 1f;
                 currentJumpAmount_Stage = jumpAmount + 0;
+
+                //Shooting
+                playeramingandfirescript.canShoot = true;
             }
             //Cyborg
             else if (characterStage == 3)
@@ -204,6 +209,9 @@ public class PlatformerMovement : MonoBehaviour
                 currentMoveSpeed_Stage = moveSpeed * 0.8f;
                 currentJumpTime_Stage = jumpTime * 0.9f;
                 currentJumpAmount_Stage = jumpAmount + 1;
+
+                //Shooting
+                playeramingandfirescript.canShoot = true;
             }
 
             #endregion#
@@ -420,12 +428,9 @@ public class PlatformerMovement : MonoBehaviour
         #endregion
     }
 
-    public void OnDamageTaken(int damage, GameObject obj = null)
+    public void OnDamageTaken(int damage)
     {
         GetComponent<Health>().ChangeHealth(-damage);
-        if(obj != null)
-            BloodSplatterParticles.transform.position = obj.transform.position;
-        BloodSplatterParticles.Play();
     }
 
 }
