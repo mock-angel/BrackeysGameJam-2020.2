@@ -152,55 +152,58 @@ public class PlatformerMovement : MonoBehaviour
 
     public void ChangeCharacterStage()
     {
-        #region CHARACTER STAGES
-
-        //Death
-        if (characterStage == 0)
+        if (isGrounded)
         {
-            if(healthscript.isInvincibleCounter > 0.05f)
+            #region CHARACTER STAGES
+
+            //Death
+            if (characterStage == 0)
             {
-                healthscript.isInvincibleCounter = 0.04f;
+                if (healthscript.isInvincibleCounter > 0.05f)
+                {
+                    healthscript.isInvincibleCounter = 0.04f;
+                }
+                healthscript.ChangeHealth(-1);
             }
-            healthscript.ChangeHealth(-1);
-        }
-        //Caveman
-        else if (characterStage == 1)
-        {
-            //Assign new Animation
-            animatoroverrider.SetAnimationToValueInList(0);
-            
-            //Assign Special skills
-            currentJumpForce_Stage = jumpForce * 1.1f;
-            currentMoveSpeed_Stage = moveSpeed * 1.2f;
-            currentJumpTime_Stage = jumpTime * 0.9f;
-            currentJumpAmount_Stage = jumpAmount + 0;
-        }
-        //Teenager
-        else if (characterStage == 2)
-        {
-            //Assign new Animation
-            animatoroverrider.SetAnimationToValueInList(1);
+            //Caveman
+            else if (characterStage == 1)
+            {
+                //Assign new Animation
+                animatoroverrider.SetAnimationToValueInList(0);
 
-            //Assign Special skills
-            currentJumpForce_Stage = jumpForce * 1f;
-            currentMoveSpeed_Stage = moveSpeed * 1f;
-            currentJumpTime_Stage = jumpTime * 1f;
-            currentJumpAmount_Stage = jumpAmount + 0;
-        }
-        //Cyborg
-        else if (characterStage == 3)
-        {
-            //Assign new Animation
-            animatoroverrider.SetAnimationToValueInList(2);
+                //Assign Special skills
+                currentJumpForce_Stage = jumpForce * 1.1f;
+                currentMoveSpeed_Stage = moveSpeed * 1.2f;
+                currentJumpTime_Stage = jumpTime * 0.9f;
+                currentJumpAmount_Stage = jumpAmount + 0;
+            }
+            //Teenager
+            else if (characterStage == 2)
+            {
+                //Assign new Animation
+                animatoroverrider.SetAnimationToValueInList(1);
 
-            //Assign Special skills
-            currentJumpForce_Stage = jumpForce * 0.9f;
-            currentMoveSpeed_Stage = moveSpeed * 0.8f;
-            currentJumpTime_Stage = jumpTime * 0.9f;
-            currentJumpAmount_Stage = jumpAmount + 1;
-        }
+                //Assign Special skills
+                currentJumpForce_Stage = jumpForce * 1f;
+                currentMoveSpeed_Stage = moveSpeed * 1f;
+                currentJumpTime_Stage = jumpTime * 1f;
+                currentJumpAmount_Stage = jumpAmount + 0;
+            }
+            //Cyborg
+            else if (characterStage == 3)
+            {
+                //Assign new Animation
+                animatoroverrider.SetAnimationToValueInList(2);
 
-        #endregion
+                //Assign Special skills
+                currentJumpForce_Stage = jumpForce * 0.9f;
+                currentMoveSpeed_Stage = moveSpeed * 0.8f;
+                currentJumpTime_Stage = jumpTime * 0.9f;
+                currentJumpAmount_Stage = jumpAmount + 1;
+            }
+
+            #endregion#
+        }
     }
 
     public void PlayerInput()
