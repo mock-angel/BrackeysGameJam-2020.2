@@ -153,6 +153,28 @@ public class PlatformerMovement : MonoBehaviour
         PlayerMovement();
     }
 
+    private string convertEnumToString(CustomSound SoundEnum){
+        string resultString = "";
+        switch(SoundEnum){
+            case CustomSound.CYBORG:
+                resultString = "Cyborg";
+                break;
+
+            case CustomSound.TEENAGER:
+                resultString = "Teenager";
+                break;
+
+            case CustomSound.MONKEY:
+                resultString = "Monkey";
+                break;
+        }
+
+        return resultString;
+    }
+    
+    int prevCharacterStage = -1;
+
+
     public void ChangeCharacterStage()
     {
         if (isGrounded)
@@ -167,6 +189,12 @@ public class PlatformerMovement : MonoBehaviour
                     healthscript.isInvincibleCounter = 0.04f;
                 }
                 healthscript.ChangeHealth(-1);
+
+                if(characterStage != prevCharacterStage){
+                    print("MONKEY");
+                    AudioManager.Instance.PlayCustomFadeTrack(convertEnumToString(CustomSound.MONKEY));
+                    prevCharacterStage = characterStage;
+                }
             }
             //Caveman
             else if (characterStage == 1)
@@ -182,6 +210,13 @@ public class PlatformerMovement : MonoBehaviour
 
                 //Shooting
                 playeramingandfirescript.canShoot = false;
+
+                if(characterStage != prevCharacterStage){
+                    print("CAVEMAN");
+                //AudioManager.Instance.PlayCustomFadeTrack(convertEnumToString(CustomSound.CAVEMAN));
+                    prevCharacterStage = characterStage;
+                }
+            
             }
             //Teenager
             else if (characterStage == 2)
@@ -197,6 +232,13 @@ public class PlatformerMovement : MonoBehaviour
 
                 //Shooting
                 playeramingandfirescript.canShoot = true;
+                
+                if(characterStage != prevCharacterStage){
+                    print("TEENAGER");
+                    AudioManager.Instance.PlayCustomFadeTrack(convertEnumToString(CustomSound.TEENAGER));
+                    prevCharacterStage = characterStage;
+                }
+            
             }
             //Cyborg
             else if (characterStage == 3)
@@ -212,6 +254,12 @@ public class PlatformerMovement : MonoBehaviour
 
                 //Shooting
                 playeramingandfirescript.canShoot = true;
+
+                if(characterStage != prevCharacterStage){
+                    print("CYBORG");
+                    AudioManager.Instance.PlayCustomFadeTrack(convertEnumToString(CustomSound.CYBORG));
+                    prevCharacterStage = characterStage;
+                }
             }
 
             #endregion#

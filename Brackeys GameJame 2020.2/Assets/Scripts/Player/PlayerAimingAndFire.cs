@@ -53,7 +53,9 @@ public class PlayerAimingAndFire : MonoBehaviour
     }
     
     void shoot()
-    {
+    {   
+        AudioManager.Instance.Play("Bullet");
+
         newProjectile = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
         
         BulletScript bulletScript = newProjectile.GetComponent<BulletScript>();
@@ -63,6 +65,8 @@ public class PlayerAimingAndFire : MonoBehaviour
         rb_projectile.AddForce( firePoint.transform.right * bulletForce, ForceMode2D.Impulse);
         
         Destroy(newProjectile, 5f);
+
+        
     }
     
 }
