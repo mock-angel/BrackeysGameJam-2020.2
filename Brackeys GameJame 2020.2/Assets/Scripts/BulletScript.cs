@@ -39,7 +39,7 @@ public class BulletScript : MonoBehaviour
         }
 
         //If not bullet
-        if(collision.tag != "Bullet" && !shotFromBoss)
+        if(collision.tag != "Bullet" && collision.tag != "Boss")
         {
             Destroy(gameObject);
         }

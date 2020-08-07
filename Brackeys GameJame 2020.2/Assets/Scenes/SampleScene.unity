@@ -654,6 +654,11 @@ PrefabInstance:
       propertyPath: rewindCurveCap
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 4125142600467279684, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4158a3d9fb49744c945a783f706fac4, type: 3}
 --- !u!82 &366926412005467831 stripped
