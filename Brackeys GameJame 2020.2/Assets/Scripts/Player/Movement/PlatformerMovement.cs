@@ -118,8 +118,6 @@ public class PlatformerMovement : MonoBehaviour
     {
         if (Time.timeScale > 0 && !isRewinding)
         {
-            Debug.Log("test");
-
             //Player Input
             PlayerInput();
 
@@ -172,9 +170,9 @@ public class PlatformerMovement : MonoBehaviour
                 animatoroverrider.SetAnimationToValueInList(0);
 
                 //Assign Special skills
-                currentJumpForce_Stage = jumpForce * 1.1f;
+                currentJumpForce_Stage = jumpForce * 1.2f;
                 currentMoveSpeed_Stage = moveSpeed * 1.2f;
-                currentJumpTime_Stage = jumpTime * 0.9f;
+                currentJumpTime_Stage = jumpTime * 1f;
                 currentJumpAmount_Stage = jumpAmount + 0;
             }
             //Teenager
