@@ -99,9 +99,18 @@ public class BossAttack : MonoBehaviour
 			proj.GetComponent<BulletScript>().Damage = 5;
 
 			//Shot from Boss
-			proj.GetComponent<BulletScript>().shotFromBoss = true;
+			proj.gameObject.GetComponent<BulletScript>().shotFromBoss = true;
+			proj.gameObject.GetComponent<SpriteRenderer>().color = new Color(33, 239, 206, 255);
 
 			angle += angleStep;
+		}
+	}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+		if (collision.tag == "Player")
+		{
+			collision.GetComponent<Health>().ChangeHealth(-5);
 		}
 	}
 
