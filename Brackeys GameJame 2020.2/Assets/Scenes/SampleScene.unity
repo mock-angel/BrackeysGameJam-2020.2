@@ -231,6 +231,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 849951271424311638, guid: b8be8659226628ba59256abb644c8931,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 849951271424311644, guid: b8be8659226628ba59256abb644c8931,
         type: 3}
       propertyPath: healthSlider
@@ -21655,6 +21660,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 849951271424311638, guid: b8be8659226628ba59256abb644c8931,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 849951271424311644, guid: b8be8659226628ba59256abb644c8931,
         type: 3}

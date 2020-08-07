@@ -109,7 +109,7 @@ public class Health : MonoBehaviour
                 lifeHeartsList.Clear();
 
                 //Hearts are instantiated
-                for (int i = 0; i < maxLifeAmount; i++)
+                for (int i = 0; i < currentLifeAmount; i++)
                 {
                     //instantiate
                     GameObject InstantiatedLifeIcon = Instantiate(lifeIconPrefab, transform.position, Quaternion.identity);

@@ -137,7 +137,8 @@ public class PlatformerMovement : MonoBehaviour
         //Death
         if (characterStage == 0)
         {
-
+            //Player looses Health
+            healthscript.ChangeLife(-1);
         }
         //Caveman
         else if (characterStage == 1)
@@ -150,8 +151,6 @@ public class PlatformerMovement : MonoBehaviour
             currentMoveSpeed_Stage = moveSpeed * 1.2f;
             currentJumpTime_Stage = jumpTime * 0.9f;
             currentJumpAmount_Stage = jumpAmount + 0;
-
-            healthscript.maxHealthAmount = 8;
         }
         //Teenager
         else if (characterStage == 2)
@@ -164,8 +163,6 @@ public class PlatformerMovement : MonoBehaviour
             currentMoveSpeed_Stage = moveSpeed * 1f;
             currentJumpTime_Stage = jumpTime * 1f;
             currentJumpAmount_Stage = jumpAmount + 0;
-
-            healthscript.maxHealthAmount = 10;
         }
         //Cyborg
         else if (characterStage == 3)
@@ -178,8 +175,6 @@ public class PlatformerMovement : MonoBehaviour
             currentMoveSpeed_Stage = moveSpeed * 0.8f;
             currentJumpTime_Stage = jumpTime * 0.9f;
             currentJumpAmount_Stage = jumpAmount + 1;
-
-            healthscript.maxHealthAmount = 12;
         }
 
         #endregion
