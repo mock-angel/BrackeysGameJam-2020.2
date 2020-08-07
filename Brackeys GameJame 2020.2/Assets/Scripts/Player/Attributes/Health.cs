@@ -50,28 +50,29 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Assign Components & Scripts
-        checkpointscript = gameObject.GetComponent<CheckPoint>();
 
-        //List
-        lifeHeartsList = new List<GameObject>();
+        if (isPlayer)
+        {
+            //Assign Components & Scripts
+            checkpointscript = gameObject.GetComponent<CheckPoint>();
+
+            //List
+            lifeHeartsList = new List<GameObject>();
+        }
 
         //Reset Health (refill Health)
         ResetHealthLife();
-
-        //Instantiate Life Icons
-        InstantiateLifeIcons();
-
-        //Changes the Health UI
-        ChangeHealthUI();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.H))
+        if(isPlayer)
         {
-            ChangeHealth(-1);
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                ChangeHealth(-1);
+            }
         }
 
         //Reset invincibility
@@ -85,12 +86,14 @@ public class Health : MonoBehaviour
     {
         //Reset Health
         #region RESET HEALTH
-
         currentHealthAmount = maxHealthAmount;
         currentLifeAmount = maxLifeAmount;
 
-        ChangeHealthUI();
-        InstantiateLifeIcons();
+        if (isPlayer)
+        {
+            ChangeHealthUI();
+            InstantiateLifeIcons();
+        }
 
         #endregion
     }
@@ -201,8 +204,11 @@ public class Health : MonoBehaviour
 
         #endregion
 
-        //Changes the Health UI
-        ChangeHealthUI();
+        if (isPlayer)
+        {
+            //Changes the Health UI
+            ChangeHealthUI();
+        }
     }
 
     public void ChangeLife(int changeLifeAmount)
@@ -243,8 +249,11 @@ public class Health : MonoBehaviour
 
         #endregion
 
-        //Changes the Health UI
-        ChangeHealthUI();
+        if (isPlayer)
+        {
+            //Changes the Health UI
+            ChangeHealthUI();
+        }
     }
 
     public void PlayerDies()

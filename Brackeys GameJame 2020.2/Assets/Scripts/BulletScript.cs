@@ -8,6 +8,8 @@ public class BulletScript : MonoBehaviour
     public int Damage;
     public string CollisionTag;
 
+    public bool shotFromBoss;
+
     public void SetBullet(int _damage, float BulletSpeed, string t_collisionTag)
     {
         CollisionTag = t_collisionTag;
@@ -19,8 +21,6 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.name);
-        
         if(collision.tag == CollisionTag || collision.tag == "Ground")
         {   
             if(collision.GetComponent<PlatformerMovement>() != null && CollisionTag == "Player")
@@ -29,6 +29,19 @@ public class BulletScript : MonoBehaviour
             if(collision.GetComponent<EnemyBaseController>() != null && CollisionTag == "Enemy")
                 collision.GetComponent<EnemyBaseController>().OnDamageTaken(Damage);
         }
-        Destroy(gameObject);
+
+        if(collision.tag == "Boss")
+        {
+            if(!shotFromBoss)
+            {
+                collision.GetComponent<Health>().ChangeHealth(-Damage);
+            }
+        }
+
+        //If not bullet
+        if(collision.tag != "Bullet" && !shotFromBoss)
+        {
+            Destroy(gameObject);
+        }
     }
 }
