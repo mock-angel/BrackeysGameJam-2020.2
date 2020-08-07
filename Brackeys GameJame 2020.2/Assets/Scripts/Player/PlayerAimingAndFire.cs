@@ -21,9 +21,7 @@ public class PlayerAimingAndFire : MonoBehaviour
     private GameObject newProjectile;
     public GameObject gun;
     
-    public int DamagePerSoot = 5;
-
-    public bool canShoot = true;
+    public int DamagePerSoot = 5; 
 
     // Update is called once per frame
     void Update()
@@ -41,7 +39,7 @@ public class PlayerAimingAndFire : MonoBehaviour
         spriteTime = spriteTime + Time.deltaTime;
         
         
-        if (Input.GetButton("Fire1") && canShoot)
+        if (Input.GetButton("Fire1") )
         {
             if (spriteTime >= nextFire)
             {
@@ -53,9 +51,7 @@ public class PlayerAimingAndFire : MonoBehaviour
     }
     
     void shoot()
-    {   
-        AudioManager.Instance.Play("Bullet");
-
+    {
         newProjectile = Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
         
         BulletScript bulletScript = newProjectile.GetComponent<BulletScript>();
@@ -65,8 +61,6 @@ public class PlayerAimingAndFire : MonoBehaviour
         rb_projectile.AddForce( firePoint.transform.right * bulletForce, ForceMode2D.Impulse);
         
         Destroy(newProjectile, 5f);
-
-        
     }
     
 }

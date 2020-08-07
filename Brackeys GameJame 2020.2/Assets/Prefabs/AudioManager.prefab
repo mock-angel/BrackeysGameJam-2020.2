@@ -47,8 +47,6 @@ MonoBehaviour:
   audioSourceSounds: {fileID: 0}
   audioSourceMusic: {fileID: 4505505857350856198}
   PlayTitleMusic: 0
-  PlayBackGroundMusic: 1
-  PlaySequenceMusic: 1
   mainMenuMusicName: MainMenu Music
   sounds:
   - name: MainMenu Music
@@ -56,67 +54,7 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 1
-    activateFade: 0
-    fadeInDuration: 3
-    fadeOutDuration: 3
     source: {fileID: 0}
-  - name: BackgroundMusic
-    clip: {fileID: 8300000, guid: dc9d7e881746dae38b5af446d22b3bc2, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 1
-    activateFade: 0
-    fadeInDuration: 3
-    fadeOutDuration: 3
-    source: {fileID: 0}
-  - name: Cyborg
-    clip: {fileID: 8300000, guid: 6791889e0f0db7862ae6fc123373d012, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 1
-    activateFade: 1
-    fadeInDuration: 3
-    fadeOutDuration: 3
-    source: {fileID: 0}
-  - name: Teenager
-    clip: {fileID: 8300000, guid: 9afe2bc968d50c9e6a949fd75ff1c67c, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 1
-    activateFade: 1
-    fadeInDuration: 3
-    fadeOutDuration: 3
-    source: {fileID: 0}
-  - name: Monkey
-    clip: {fileID: 8300000, guid: 7cf2c2a9f1e57ffccb44886da96ab176, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 1
-    activateFade: 1
-    fadeInDuration: 3
-    fadeOutDuration: 3
-    source: {fileID: 0}
-  - name: Caveman
-    clip: {fileID: 0}
-    volume: 1
-    pitch: 1
-    loop: 1
-    activateFade: 1
-    fadeInDuration: 3
-    fadeOutDuration: 3
-    source: {fileID: 0}
-  - name: Bullet
-    clip: {fileID: 8300000, guid: 84633e9311e22009396df47377729f9c, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    activateFade: 0
-    fadeInDuration: 3
-    fadeOutDuration: 3
-    source: {fileID: 0}
-  cyborgSoundName: Cyborg
-  teenagerSoundName: Teenager
-  monkeySoundName: Monkey
 --- !u!82 &4505505857350856198
 AudioSource:
   m_ObjectHideFlags: 0

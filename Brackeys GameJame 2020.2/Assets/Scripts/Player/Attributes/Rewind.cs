@@ -88,8 +88,7 @@ public class Rewind : MonoBehaviour
             }
             else
             {
-                Debug.Log("tesasdast");
-                ChangeRewind((((Mathf.Abs(CalculateRewind() - 1) * 1.5f) * Mathf.Abs(platformermovementscript.moveInput) * moveSpeedPercentage)) * 1.5f);
+                ChangeRewind((((Mathf.Abs(CalculateRewind() - 1) / 1.5f) * Mathf.Abs(platformermovementscript.moveInput) * moveSpeedPercentage)) / 1.5f);
             }
         }
 
