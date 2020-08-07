@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAimingAndFire : MonoBehaviour
-{   
-    public static PlayerAimingAndFire Instance { get; private set; }
-
+{
     //For aiming.
     Vector3 mousePos;
     Vector3 lookDir;
@@ -25,19 +23,6 @@ public class PlayerAimingAndFire : MonoBehaviour
     
     public int DamagePerSoot = 5; 
 
-    public bool canShoot = true;
-
-    void Awake()
-    {
-        Instance = this;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        Instance = this;
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -54,9 +39,9 @@ public class PlayerAimingAndFire : MonoBehaviour
         spriteTime = spriteTime + Time.deltaTime;
         
         
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") )
         {
-            if (spriteTime >= nextFire && canShoot)
+            if (spriteTime >= nextFire)
             {
                 nextFire = 1f/rps;
                 spriteTime = 0.0F;
