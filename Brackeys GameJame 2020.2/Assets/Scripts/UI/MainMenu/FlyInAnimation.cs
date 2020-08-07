@@ -31,6 +31,7 @@ public class FlyInAnimation : MonoBehaviour
 
     public bool animationDone;
     private Vector3 startPos;
+    private Vector3 startPosScale;
 
     #endregion
 
@@ -39,6 +40,7 @@ public class FlyInAnimation : MonoBehaviour
     {
         //seconds = 0.15f;
         startPos = transform.localPosition;
+        startPosScale = transform.localScale;
         animationDone = false;
 
 
@@ -119,7 +121,7 @@ public class FlyInAnimation : MonoBehaviour
             //Zoom In (Scale)
             if(zoomIn)
             {
-                transform.localScale = Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(1, 1, 1), Mathf.SmoothStep(0f, 1f, t));
+                transform.localScale = Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(startPosScale.x, startPosScale.y, startPosScale.z), Mathf.SmoothStep(0f, 1f, t));
             }
 
             #endregion
