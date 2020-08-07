@@ -30,6 +30,9 @@ public class Rewind : MonoBehaviour
     public TMP_Text rewindText;
     public TMP_Text characterText;
 
+    //wait
+    private float waitWhenGameStarted;
+
 
     #endregion
 
@@ -47,16 +50,25 @@ public class Rewind : MonoBehaviour
 
         //Changes the Rewind UI
         ChangeRewindUI();
+
+        waitWhenGameStarted = 2f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //The Rewind Mechanic (Curve and Math)
-        RewindMechanic();
+        if(waitWhenGameStarted < 0)
+        {
+            //The Rewind Mechanic (Curve and Math)
+            RewindMechanic();
 
-        //Changes the Stages
-        ChangePlayerStage();
+            //Changes the Stages
+            ChangePlayerStage();
+        }
+        else
+        {
+            waitWhenGameStarted -= Time.deltaTime;
+        }
     }
 
     private void RewindMechanic()
