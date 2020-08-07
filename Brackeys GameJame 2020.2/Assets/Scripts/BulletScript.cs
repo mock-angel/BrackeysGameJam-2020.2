@@ -24,7 +24,7 @@ public class BulletScript : MonoBehaviour
         if(collision.tag == CollisionTag || collision.tag == "Ground")
         {   
             if(collision.GetComponent<PlatformerMovement>() != null && CollisionTag == "Player")
-                collision.GetComponent<PlatformerMovement>().OnDamageTaken(Damage);
+                collision.GetComponent<PlatformerMovement>().OnDamageTaken(Damage, gameObject);
             
             if(collision.GetComponent<EnemyBaseController>() != null && CollisionTag == "Enemy")
                 collision.GetComponent<EnemyBaseController>().OnDamageTaken(Damage);
