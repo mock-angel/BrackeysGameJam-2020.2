@@ -169,6 +169,9 @@ MonoBehaviour:
   Health: 100
   MoveSpeed: 5
   SeekRange: 10
+  rigidbody2d: {fileID: 849951271424311634}
+  DeathAnimationDuration: 3
+  destroyAfterDeath: 1
   isMelee: 0
   meleeSword: {fileID: 0}
   MeleeAttackRPS: 1
