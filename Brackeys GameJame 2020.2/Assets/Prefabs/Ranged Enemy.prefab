@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 849951271424311645}
   - component: {fileID: 1070791892213375872}
   - component: {fileID: 6861218829617829865}
-  m_Layer: 0
-  m_Name: Enemy
-  m_TagString: Untagged
+  m_Layer: 10
+  m_Name: Ranged Enemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,9 +76,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -3618405622361592109, guid: 9b9533d52bed39040abc623afa1c42d3,
+  m_Sprite: {fileID: -7480003997168052467, guid: 7534f4da6ca70ab45934577fb7260334,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -122,18 +122,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.000000014901161, y: 0.0027512312}
+  m_Offset: {x: 0, y: -0.2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.46666667, y: 1.0333333}
+    oldSize: {x: 2.125, y: 2.125}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 0.25899377, y: 0.87627196}
+  m_Size: {x: 0.7, y: 1.55}
   m_EdgeRadius: 0.08
 --- !u!95 &1070791892213375872
 Animator:
@@ -167,15 +167,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 100
-  MoveSpeed: 5
-  SeekRange: 10
+  MoveSpeed: 0.85
+  SeekRange: 4.4
   rigidbody2d: {fileID: 849951271424311634}
+  moveInput: 0
   DeathAnimationDuration: 3
   destroyAfterDeath: 1
   isMelee: 0
   meleeSword: {fileID: 0}
   MeleeAttackRPS: 1
-  DamagePerHitMelee: 8
+  DamagePerHitMelee: 7
   MeleeRadius: 1
   meleeAttackDuration: 1
   DamageAfterDurationMelee: 1
@@ -201,7 +202,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 849951272914854567}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FeetPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +217,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 849951272914854564}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 849951271424311632}
@@ -231,7 +232,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2773702567852943293}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fire Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7545790858463995537}
   - component: {fileID: 4002702323953128193}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +278,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5993563410537911823}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.183, y: -0.167, z: 0}
+  m_LocalPosition: {x: 0.45, y: 0.1, z: 0}
   m_LocalScale: {x: 0.4180115, y: 0.07454309, z: 1}
   m_Children:
   - {fileID: 2773702567852943293}
