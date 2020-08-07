@@ -116,26 +116,65 @@ public class Rewind : MonoBehaviour
         //Stage 3
         if (currentRewindPercentage > 0.825f && currentRewindPercentage < 1.0f)
         {
-            platformermovementscript.characterStage = 3;
+            if(platformermovementscript.characterStage < 3)
+            {
+                if (Input.GetButtonDown("ChangeStage"))
+                {
+                    platformermovementscript.characterStage = 3;
 
-            //Change Character Stag5
-            platformermovementscript.ChangeCharacterStage();
+                    //Change Character Stag5
+                    platformermovementscript.ChangeCharacterStage();
+                }
+            }
+            else
+            {
+                platformermovementscript.characterStage = 3;
+
+                //Change Character Stage
+                platformermovementscript.ChangeCharacterStage();
+            }
         }
         //Stage 2
         else if (currentRewindPercentage > 0.25 && currentRewindPercentage < 0.825f)
         {
-            platformermovementscript.characterStage = 2;
+            if (platformermovementscript.characterStage < 2)
+            {
+                if (Input.GetButtonDown("ChangeStage"))
+                {
+                    platformermovementscript.characterStage = 2;
 
-            //Change Character Stage
-            platformermovementscript.ChangeCharacterStage();
+                    //Change Character Stag5
+                    platformermovementscript.ChangeCharacterStage();
+                }
+            }
+            else
+            {
+                platformermovementscript.characterStage = 2;
+
+                //Change Character Stage
+                platformermovementscript.ChangeCharacterStage();
+            }
         }
         //Stage 1
         else if (currentRewindPercentage > 0 && currentRewindPercentage < 0.25f)
         {
-            platformermovementscript.characterStage = 1;
+            if (platformermovementscript.characterStage < 1)
+            {
+                if (Input.GetButtonDown("ChangeStage"))
+                {
+                    platformermovementscript.characterStage = 1;
 
-            //Change Character Stage
-            platformermovementscript.ChangeCharacterStage();
+                    //Change Character Stag5
+                    platformermovementscript.ChangeCharacterStage();
+                }
+            }
+            else
+            {
+                platformermovementscript.characterStage = 1;
+
+                //Change Character Stage
+                platformermovementscript.ChangeCharacterStage();
+            }
         }
         //Stage 0
         else if (currentRewindPercentage <= 0)

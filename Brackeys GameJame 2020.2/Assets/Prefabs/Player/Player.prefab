@@ -4810,7 +4810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eff366f5646deb4381c61d74d21e92d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewindCurveCap: 0.1
+  rewindCurveCap: 0.2
   maxRewindAmount: 1000
   currentRewindAmount: 0
   currentRewindPercentage: 0
@@ -4868,7 +4868,7 @@ MonoBehaviour:
   GainHealthParticles: {fileID: 637341654363412282}
   MovingParticles: {fileID: 4953689582069679735}
   JumpParticles: {fileID: 3975802215190763306}
-  characterStage: 0
+  characterStage: 2
   moveSpeed: 6
   jumpForce: 18
   currentMoveSpeed_Stage: 0
