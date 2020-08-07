@@ -554,6 +554,16 @@ PrefabInstance:
       propertyPath: checkPointGameObject
       value: 
       objectReference: {fileID: 1305210429}
+    - target: {fileID: 366926411289235648, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: jumpForce
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 366926411289235649, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 366926411289235651, guid: f4158a3d9fb49744c945a783f706fac4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -771,7 +781,7 @@ PrefabInstance:
     - target: {fileID: 4505505857350856312, guid: f42d331fe24187f7c972b26b994e69e6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4505505857350856312, guid: f42d331fe24187f7c972b26b994e69e6,
         type: 3}

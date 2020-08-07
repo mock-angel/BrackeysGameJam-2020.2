@@ -78,7 +78,8 @@ public class PlatformerMovement : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {   
+    {
+        #region PARTICLE SYSTEM
 
         CheckpointParticles.Stop();
         LoseLifeParticles.Stop();
@@ -88,6 +89,8 @@ public class PlatformerMovement : MonoBehaviour
         GainHealthParticles.Stop();
         MovingParticles.Stop();
         JumpParticles.Stop();
+
+        #endregion
 
         #region ASSIGN COMPONENTS
 
