@@ -5049,6 +5049,7 @@ MonoBehaviour:
   bulletForce: 30
   gun: {fileID: 6769294689940916124}
   DamagePerSoot: 5
+  canShoot: 1
 --- !u!114 &1086458848
 MonoBehaviour:
   m_ObjectHideFlags: 0
