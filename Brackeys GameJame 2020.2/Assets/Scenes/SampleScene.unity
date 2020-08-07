@@ -616,35 +616,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 366926411289235663, guid: f4158a3d9fb49744c945a783f706fac4,
         type: 3}
-      propertyPath: healthSlider
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 366926411289235663, guid: f4158a3d9fb49744c945a783f706fac4,
-        type: 3}
-      propertyPath: healthText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 366926411289235663, guid: f4158a3d9fb49744c945a783f706fac4,
-        type: 3}
-      propertyPath: lifeIconContainer
-      value: 
-      objectReference: {fileID: 1583071584}
-    - target: {fileID: 366926411289235663, guid: f4158a3d9fb49744c945a783f706fac4,
-        type: 3}
       propertyPath: healthIconContainer
       value: 
       objectReference: {fileID: 700400896}
     - target: {fileID: 366926411289235663, guid: f4158a3d9fb49744c945a783f706fac4,
         type: 3}
-      propertyPath: healthIconPrefab
+      propertyPath: lifeIconContainer
       value: 
-      objectReference: {fileID: 3407626060456899857, guid: 01401e1e571389d4cb248fe497bfcb90,
-        type: 3}
-    - target: {fileID: 366926411289235663, guid: f4158a3d9fb49744c945a783f706fac4,
-        type: 3}
-      propertyPath: maxHealthAmount
-      value: 20
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1583071584}
     - target: {fileID: 4125142600467279684, guid: f4158a3d9fb49744c945a783f706fac4,
         type: 3}
       propertyPath: rewindSlider
@@ -660,6 +639,11 @@ PrefabInstance:
       propertyPath: characterText
       value: 
       objectReference: {fileID: 497983220}
+    - target: {fileID: 4125142600467279684, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: rewindCurveCap
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4158a3d9fb49744c945a783f706fac4, type: 3}
 --- !u!1001 &4080757153160334788
