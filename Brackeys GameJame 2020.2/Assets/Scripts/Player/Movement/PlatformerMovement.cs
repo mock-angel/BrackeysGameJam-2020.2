@@ -157,7 +157,11 @@ public class PlatformerMovement : MonoBehaviour
         //Death
         if (characterStage == 0)
         {
-
+            if(healthscript.isInvincibleCounter > 0.05f)
+            {
+                healthscript.isInvincibleCounter = 0.04f;
+            }
+            healthscript.ChangeHealth(-1);
         }
         //Caveman
         else if (characterStage == 1)

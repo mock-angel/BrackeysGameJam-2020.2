@@ -4810,7 +4810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eff366f5646deb4381c61d74d21e92d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewindCurveCap: 0.2
+  rewindCurveCap: 0.1
   maxRewindAmount: 1000
   currentRewindAmount: 0
   currentRewindPercentage: 0
@@ -4832,14 +4832,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 1
-  maxHealthAmount: 10
+  maxHealthAmount: 20
   currentHealthPercentage: 0
   currentHealthAmount: 0
   invincibleTime: 0.25
   isInvincibleCounter: 0
   maxLifeAmount: 3
   currentLifeAmount: 0
-  healthSlider: {fileID: 0}
+  healthIconContainer: {fileID: 0}
+  healthIconPrefab: {fileID: 3407626060456899857, guid: 01401e1e571389d4cb248fe497bfcb90,
+    type: 3}
+  healthIconList: []
   healthText: {fileID: 0}
   lifeIconContainer: {fileID: 0}
   lifeIconPrefab: {fileID: 8788932409475688379, guid: 10662dcb9475a254b898977aadca3148,
