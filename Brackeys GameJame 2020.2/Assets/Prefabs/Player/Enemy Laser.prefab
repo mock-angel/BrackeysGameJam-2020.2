@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5620795862768028168}
   - component: {fileID: 5562035825656319783}
-  m_Layer: 0
-  m_Name: Line
-  m_TagString: Untagged
+  m_Layer: 11
+  m_Name: Enemy Laser
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
