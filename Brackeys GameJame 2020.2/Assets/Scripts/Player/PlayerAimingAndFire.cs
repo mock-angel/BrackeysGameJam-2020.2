@@ -95,7 +95,7 @@ public class PlayerAimingAndFire : MonoBehaviour
 
     public void ShootLaser()
     {  
-        RaycastHit2D hitInfo = Physics2D.Raycast(laserGun.transform.position, laserGun.transform.right);
+        RaycastHit2D hitInfo = Physics2D.Raycast(laserGun.transform.position, laserGun.transform.right, 11);
 
         if(hitInfo){
             EnemyBaseController enemy = hitInfo.transform.GetComponent<EnemyBaseController>();
