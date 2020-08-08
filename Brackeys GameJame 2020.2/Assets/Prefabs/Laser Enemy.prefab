@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1070791892213375872}
   - component: {fileID: 6861218829617829865}
   m_Layer: 10
-  m_Name: Ranged Enemy_2
+  m_Name: Laser Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,7 +123,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.12482512, y: -0.008209705}
+  m_Offset: {x: -0.12761882, y: 0.000172019}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -134,7 +134,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 0.750653, y: 1.7465997}
+  m_Size: {x: 0.75624067, y: 1.7298362}
   m_EdgeRadius: 0.08
 --- !u!95 &1070791892213375872
 Animator:
@@ -187,8 +187,9 @@ MonoBehaviour:
   isMeleeAttacking: 0
   MeleeRange: 1
   isRanged: 1
-  isLaser: 0
-  impactEffect: {fileID: 0}
+  isLaser: 1
+  impactEffect: {fileID: 1030986988675841295, guid: 6341d783cf74c1717a003b96a2dc7020,
+    type: 3}
   bulletPrefab: {fileID: 3592918496044551732, guid: 139fd771b1ad4d9368910ccb9a54d9ac,
     type: 3}
   firePoint: {fileID: 5345645203965238979}

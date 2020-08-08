@@ -23,10 +23,12 @@ public class PlatformerMovement : MonoBehaviour
 
     //Scripts & Components
     private Rigidbody2D rigidbody2d;
-    private Animator animator;
+    public Animator animator{ get; private set;}
     private SpriteRenderer spriterenderer;
     private AnimatorOverrider animatoroverrider;
     private Health healthscript;
+
+
 
     //Character Stages
     [Header("Character Stages")]
@@ -246,7 +248,7 @@ public class PlatformerMovement : MonoBehaviour
                     prevCharacterStage = characterStage;
                 }
 
-                PlayerAimingAndFire.Instance.canShootLaser = true;
+                PlayerAimingAndFire.Instance.canShootLaser = false;
             }
             //Cyborg
             else if (characterStage == 3)
@@ -496,5 +498,7 @@ public class PlatformerMovement : MonoBehaviour
         AudioManager.Instance.Play("Hurt");
         BloodSplatterParticles.Play();
     }
+
+    
 
 }
