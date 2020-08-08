@@ -214,6 +214,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1890167861}
+        m_MethodName: OnPlayClickButtonAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &93183070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,6 +333,16 @@ PrefabInstance:
         type: 3}
       propertyPath: PlayTitleMusic
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4505505857350856313, guid: f42d331fe24187f7c972b26b994e69e6,
+        type: 3}
+      propertyPath: PlayBackGroundMusic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4505505857350856313, guid: f42d331fe24187f7c972b26b994e69e6,
+        type: 3}
+      propertyPath: PlaySequenceMusic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f42d331fe24187f7c972b26b994e69e6, type: 3}
@@ -1065,6 +1086,7 @@ GameObject:
   - component: {fileID: 1890167858}
   - component: {fileID: 1890167857}
   - component: {fileID: 1890167856}
+  - component: {fileID: 1890167861}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1163,6 +1185,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f808e73a182de647972fcc634551a45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1890167861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890167855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e46f45fc2afc825bfad79975d3fce911, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1921569253

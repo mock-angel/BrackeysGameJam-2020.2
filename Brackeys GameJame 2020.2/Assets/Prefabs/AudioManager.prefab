@@ -52,7 +52,7 @@ MonoBehaviour:
   mainMenuMusicName: MainMenu Music
   sounds:
   - name: MainMenu Music
-    clip: {fileID: 8300000, guid: aa47d13d958e9e4d783930bff7dba6b9, type: 3}
+    clip: {fileID: 8300000, guid: 59cf467d5a13a9e498f4eedde70cedda, type: 3}
     volume: 1
     pitch: 1
     loop: 1
@@ -107,6 +107,69 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Bullet
     clip: {fileID: 8300000, guid: 84633e9311e22009396df47377729f9c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    activateFade: 0
+    fadeInDuration: 3
+    fadeOutDuration: 3
+    source: {fileID: 0}
+  - name: Bullet2
+    clip: {fileID: 8300000, guid: c278fc41d6f04473a8cdee6001c77b7d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    activateFade: 0
+    fadeInDuration: 3
+    fadeOutDuration: 3
+    source: {fileID: 0}
+  - name: Hurt
+    clip: {fileID: 8300000, guid: d27792fb2c83108a489a978d7691244b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    activateFade: 0
+    fadeInDuration: 3
+    fadeOutDuration: 3
+    source: {fileID: 0}
+  - name: Hurt2
+    clip: {fileID: 8300000, guid: dd0862043376041e697c064fcd17d405, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    activateFade: 0
+    fadeInDuration: 3
+    fadeOutDuration: 3
+    source: {fileID: 0}
+  - name: Land
+    clip: {fileID: 8300000, guid: 06339142f21b286ce9688243652d0df0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    activateFade: 0
+    fadeInDuration: 3
+    fadeOutDuration: 3
+    source: {fileID: 0}
+  - name: Laser
+    clip: {fileID: 8300000, guid: ff26fb2ee4cb7613a80db014f98f0c8c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    activateFade: 0
+    fadeInDuration: 3
+    fadeOutDuration: 3
+    source: {fileID: 0}
+  - name: LaserShot
+    clip: {fileID: 8300000, guid: 2e3d171de4088fddbb49862c92883ad0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    activateFade: 0
+    fadeInDuration: 3
+    fadeOutDuration: 3
+    source: {fileID: 0}
+  - name: Select
+    clip: {fileID: 8300000, guid: cb4a2125044a1fb498e28bdc7d51b4cd, type: 3}
     volume: 1
     pitch: 1
     loop: 0
