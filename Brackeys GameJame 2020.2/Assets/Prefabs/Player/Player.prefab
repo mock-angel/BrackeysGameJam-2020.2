@@ -4869,6 +4869,7 @@ MonoBehaviour:
   GainHealthParticles: {fileID: 637341654363412282}
   MovingParticles: {fileID: 4953689582069679735}
   JumpParticles: {fileID: 3975802215190763306}
+  BloodSplatterParticles: {fileID: 669053026352495122}
   characterStage: 2
   moveSpeed: 6
   jumpForce: 18
@@ -33948,6 +33949,12 @@ PrefabInstance:
 --- !u!4 &8659064496124520549 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 462001855015387636, guid: 6fd989d0df14efc49b6ab0e8cc643562,
+    type: 3}
+  m_PrefabInstance: {fileID: 9097958946033985937}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &669053026352495122 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8577815068665877379, guid: 6fd989d0df14efc49b6ab0e8cc643562,
     type: 3}
   m_PrefabInstance: {fileID: 9097958946033985937}
   m_PrefabAsset: {fileID: 0}

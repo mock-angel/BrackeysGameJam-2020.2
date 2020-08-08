@@ -10,7 +10,7 @@ public class EnemyBaseController : MonoBehaviour
     public float Health = 100f;
 
     //[Range(0f, 5f)] public float RatePerSecond;
-
+    public ParticleSystem BloodSplatterParticles;
     
     //README: 
     // Seek depends on gameObject of this script.
@@ -102,8 +102,14 @@ public class EnemyBaseController : MonoBehaviour
     public bool destroyAfterDeath = true;
 
     //Take damage from Player.
-    public void OnDamageTaken(float damage)
-    {
+    public void OnDamageTaken(float damage, GameObject obj = null)
+    {   
+        if(obj != null)
+            BloodSplatterParticles.transform.position = obj.transform.position;
+        else BloodSplatterParticles.transform.position = transform.position;
+        
+        BloodSplatterParticles.Play();
+
         Health -= damage;
         if(Health<=0) {
             Health = 0;
