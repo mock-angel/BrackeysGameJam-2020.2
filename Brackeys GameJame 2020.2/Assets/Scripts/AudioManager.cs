@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 
+using MyAttributes;
+
 [System.Serializable]
 public class Sound{
     public string name;
@@ -20,6 +22,13 @@ public class Sound{
     public float pitch = 1;
 
     public bool loop;
+
+    public bool activateFade = false;
+
+    [ConditionalField("activateFade")]
+    [Range(0, 10)] public float fadeInDuration = 3;
+    [ConditionalField("activateFade")]
+    [Range(0, 10)] public float fadeOutDuration = 3;
 
     [HideInInspector]
     public AudioSource source;
@@ -36,7 +45,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource audioSourceSounds;
     [SerializeField] private AudioSource audioSourceMusic;
 
-    public bool PlayTitleMusic;
+    public bool PlayTitleMusic = false;
+    public bool PlayBackGroundMusic = false;
+
+    public bool PlaySequenceMusic = false;
     //[SerializeField] private SoundInfo soundInfo;
 
 
@@ -74,6 +86,8 @@ public class AudioManager : MonoBehaviour
     [Header("Sounds Info")]
     public Sound[] sounds;
 
+    
+
     void Awake()
     {
         Instance = this;
@@ -91,6 +105,13 @@ public class AudioManager : MonoBehaviour
 
         if(PlayTitleMusic) Play(mainMenuMusicName);
         
+        if(PlayBackGroundMusic) Play("BackgroundMusic");
+
+        if(PlaySequenceMusic) {
+            Play(cyborgSoundName);
+            Play(teenagerSoundName);
+            Play(monkeySoundName);
+        }
 
         //PlayTitleMusic();
     }
@@ -106,11 +127,6 @@ public class AudioManager : MonoBehaviour
     {
         //numbOfPlayingSounds++;
         Sound s = GetSound(name);
-        
-        for(int i = 0; i< sounds.Length; i++){
-            if(sounds[i].name == name) print("found key");
-            print(sounds[i].name);
-        }
 
         if(s == null)
             Debug.LogWarning(string.Format("Sound: {0} not found.", name));
@@ -118,6 +134,78 @@ public class AudioManager : MonoBehaviour
         else s.source.Play();
         
         //audioSourceSounds.PlayOneShot(s.clip, s.volume);
+    }
+
+    private Sound[] currentActiveCustomSounds;
+
+    public void PlayCustomFadeTrack(string name){
+        Sound s = GetSound(name);
+
+        if(s == null)
+            Debug.LogWarning(string.Format("Sound: {0} not found.", name));
+        
+        else {
+            StopCoroutine("StartFadeLogic");
+
+            StartCoroutine(StartFadeLogic(s));
+        }
+    }
+
+    IEnumerator StartFadeLogic(Sound fadeInSound){
+
+        //currentActiveCustomSound = fadeInSound;
+        yield return FadeOutAllSounds();;
+        
+        if(fadeInSound != null)
+            yield return StartFade(fadeInSound.source, fadeInSound.fadeInDuration, 1);
+
+        yield break;
+    }
+
+    [Header("Stored Default Strings")]
+    public string cyborgSoundName = "Cyborg";
+    public string teenagerSoundName = "Teenager";
+    public string monkeySoundName = "Monkey";
+
+    IEnumerator FadeOutAllSounds(){
+
+        Sound cyborg = GetSound(cyborgSoundName);
+        Sound teenager = GetSound(teenagerSoundName);
+        Sound monkey = GetSound(monkeySoundName);
+
+        float cyborgDuration = cyborg.volume * cyborg.fadeOutDuration;
+        float teenagerDuration = teenager.volume * teenager.fadeOutDuration;
+        float monkeyDuration = monkey.volume * monkey.fadeOutDuration;
+
+        IEnumerator fadeoutSoundsIEnumerator1 = StartFade(cyborg.source, cyborgDuration, 0);
+        IEnumerator fadeoutSoundsIEnumerator2 = StartFade(teenager.source, teenagerDuration, 0);
+        IEnumerator fadeoutSoundsIEnumerator3 = StartFade(monkey.source, monkeyDuration, 0);
+
+        while(true){
+            bool a = fadeoutSoundsIEnumerator1.MoveNext();
+            bool b = fadeoutSoundsIEnumerator2.MoveNext();
+            bool c = fadeoutSoundsIEnumerator3.MoveNext();
+            
+            if(a || b || c) yield return null;
+
+            else yield break;
+        }
+    }
+
+    IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume)
+    {
+        if(audioSource == null) yield break;
+
+        float currentTime = 0;
+        float start = audioSource.volume;
+
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+            yield return null;
+        }
+        yield break;
     }
 
     #endregion playSoundOrMusicMethods
@@ -156,251 +244,3 @@ public class AudioManager : MonoBehaviour
 
     #endregion InternalSearchMethods
 }
-    /*
-    public void PlayTitleMusic()
-    {
-        //isMusicMuted = false;
-        //IsSoundsMuted = false;
-        audioSourceMusic.clip = soundInfo.titleMusicClip;
-        audioSourceMusic.loop = true;
-        audioSourceMusic.Play();
-    }
-
-    public void PlayMainMusic()
-    {
-        //isMusicMuted = false;
-        //IsSoundsMuted = false;
-        audioSourceMusic.clip = soundInfo.mainMusicClip;
-        audioSourceMusic.loop = true;
-        audioSourceMusic.Play();
-
-        //isMusicMuted = false;
-        //IsSoundsMuted = false;
-        audioSourceNatureMusic.clip = soundInfo.natureMusicClip;
-        audioSourceNatureMusic.loop = true;
-        audioSourceNatureMusic.Play();
-
-    }
-
-    public void MuteMainMusic()
-    {
-        isMusicMuted = true;
-        //IsSoundsMuted = true;
-        audioSourceMusic.Pause();
-
-        isMusicMuted = true;
-        //IsSoundsMuted = true;
-        audioSourceNatureMusic.Pause();
-
-
-    }
-
-    /*
-    public void UpdateMusicState()
-    {        
-        if (isMusicMuted) PlayMainMusic();
-
-        else MuteMainMusic();
-    }*/
-
-    /*
-    public void PlaySheepSoundAudio()
-    {
-        if (numbOfPlayingSounds < maxNumberOfSounds)
-        {
-            numbOfPlayingSounds++;
-            int rand = Random.Range(0, soundInfo.sheepSoundClips.Length);
-            if (rand == 1)
-            {
-                audioSourceSounds.PlayOneShot(soundInfo.sheepSoundClips[rand], soundInfo.sheepSoundVolume);
-            }
-            else
-            {
-                audioSourceSounds.PlayOneShot(soundInfo.sheepSoundClips[rand], soundInfo.sheepSoundVolume);
-            }
-        }
-    }
-
-    public void PlaySheepDiedAudio()
-    {
-        if (!IsSoundsMuted && numbOfPlayingSounds < maxNumberOfSounds)
-        {
-            numbOfPlayingSounds++;
-            audioSourceSounds.PlayOneShot(soundInfo.sheepDiedClip, soundInfo.sheepDiedVolume);
-        }
-    }
-
-    public void PlayWolfSoundAudio()
-    {
-        if (!IsSoundsMuted && numbOfPlayingSounds < maxNumberOfSounds)
-        {
-            numbOfPlayingSounds++;
-            audioSourceSounds.PlayOneShot(soundInfo.wolfSoundClip, soundInfo.wolfSoundVolume);
-        }
-    }
-
-    public void PlayWolfDiedAudio()
-    {
-        if (!IsSoundsMuted)
-        {
-            numbOfPlayingSounds++;
-            audioSourceSounds.PlayOneShot(soundInfo.wolfDiedClip, soundInfo.wolfDiedVolume);
-        }
-    }
-
-    public void PlayWolfHurtAudio()
-    {
-        if (!IsSoundsMuted)
-        {
-            numbOfPlayingSounds++;
-            audioSourceSounds.PlayOneShot(soundInfo.wolfHurtClip, soundInfo.wolfHurtVolume);
-        }
-    }
-
-    public void PlayWolfAttackAudio()
-    {
-        if (!IsSoundsMuted)
-        {
-            numbOfPlayingSounds++;
-            audioSourceSounds.PlayOneShot(soundInfo.wolfAttackClip, soundInfo.wolfAttackVolume);
-        }
-    }
-
-    public void PlayThrowWeaponAudio()
-    {
-        if (!IsSoundsMuted)
-        {
-            numbOfPlayingSounds++;
-            audioSourceSounds.PlayOneShot(soundInfo.throwWeaponClip, soundInfo.throwWeaponVolume);
-        }
-    }
-
-    public void PlayHitWeaponAudio()
-    {
-        if (!IsSoundsMuted && numbOfPlayingSounds < maxNumberOfSounds)
-        {
-            numbOfPlayingSounds++;
-            audioSourceSounds.PlayOneShot(soundInfo.hitWeaponClip, soundInfo.hitWeaponVolume);
-        }
-    }
-
-    public void PlayBuildTowerAudio()
-    {
-        if (!IsSoundsMuted)
-        {
-            numbOfPlayingSounds++;
-            audioSourceSounds.PlayOneShot(soundInfo.buildTowerClip, soundInfo.buildTowerVolume);
-        }
-    }
-
-    public void PlayDestroyTowerAudio()
-    {
-        if (!IsSoundsMuted)
-        {
-            numbOfPlayingSounds++;
-            audioSourceSounds.PlayOneShot(soundInfo.destroyTowerClip, soundInfo.destroyTowerVolume);
-        }
-    }
-
-    public void PlayUpgradeTowerAudio()
-    {
-        if (!IsSoundsMuted)
-        {
-            numbOfPlayingSounds++;
-            audioSourceSounds.PlayOneShot(soundInfo.upgradeTowerClip, soundInfo.upgradeTowerVolume);
-        }
-    }
-
-    public void PlayHunterDiedAudio()
-    {
-        if (!IsSoundsMuted && numbOfPlayingSounds < maxNumberOfSounds)
-        {
-            numbOfPlayingSounds++;
-            audioSourceSounds.PlayOneShot(soundInfo.hunterDiedClip, soundInfo.hunterDiedVolume);
-        }
-    }
-
-    public IEnumerator PlayIdelSheepSound()
-    {
-        while (true)
-        {
-            PlaySheepSoundAudio();
-            yield return new WaitForSeconds(10);
-        }
-    }
-
-    public IEnumerator PlayIdelWolfSound()
-    {
-        while (true)
-        {
-            PlayWolfSoundAudio();
-            yield return new WaitForSeconds(13);
-        }
-    }
-
-    //public void PlayBladHtAudio()
-    //{
-    //    if (!IsSoundsMuted && numbOfPlayingSounds < maxNumberOfSounds)
-    //    {
-    //        numbOfPlayingSounds++;
-    //        int rand = Random.Range(0, soundInfo.bladHitClips.Length);
-    //        if (rand == 1)
-    //        {
-    //            audioSourceSounds.PlayOneShot(soundInfo.bladHitClips[rand], .1f);
-    //        }
-    //        else
-    //        {
-    //            audioSourceSounds.PlayOneShot(soundInfo.bladHitClips[rand], soundInfo.bladHitVolume);
-    //        }
-    //    }
-    //}
-
-
-
-
-    //public void PlayShieldHitAudio()
-    //{
-    //    if (!IsSoundsMuted && numbOfPlayingSounds < maxNumberOfSounds)
-    //    {
-    //        numbOfPlayingSounds++;
-    //        audioSourceSounds.PlayOneShot(soundInfo.shieldHitClip, soundInfo.shieldHitVolume);
-    //    }
-    //}
-
-    //public void PlaySpearAudio()
-    //{
-    //    if (!IsSoundsMuted && numbOfPlayingSounds < maxNumberOfSounds)
-    //    {
-    //        numbOfPlayingSounds++;
-    //        audioSourceSounds.PlayOneShot(soundInfo.spearClip, soundInfo.spearVolume);
-    //    }
-    //}
-
-    //public void PlaySpellAudio()
-    //{
-    //    if (!IsSoundsMuted && numbOfPlayingSounds < maxNumberOfSounds)
-    //    {
-    //        numbOfPlayingSounds++;
-    //        audioSourceSounds.PlayOneShot(soundInfo.spellClip, soundInfo.spellVolume);
-    //    }
-    //}
-
-    //public void PlayChianAudio()
-    //{
-    //    if (!IsSoundsMuted && numbOfPlayingSounds < maxNumberOfSounds)
-    //    {
-    //        numbOfPlayingSounds++;
-    //        audioSourceSounds.PlayOneShot(soundInfo.chainClip, soundInfo.chainVolume);
-    //    }
-    //}
-
-    //public void PlayWorkerAxeAudio()
-    //{
-    //    if (!IsSoundsMuted && numbOfPlayingSounds < maxNumberOfSounds)
-    //    {
-    //        numbOfPlayingSounds++;
-    //        audioSourceSounds.PlayOneShot(soundInfo.workerAxeClips[Random.Range(0, soundInfo.bladHitClips.Length)], soundInfo.workerAxeVolume);
-    //    }
-    //}
-}
-*/
