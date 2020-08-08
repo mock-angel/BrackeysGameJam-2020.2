@@ -22,6 +22,7 @@ public class PlayerAimingAndFire : MonoBehaviour
     
     private GameObject newProjectile;
     public GameObject gun;
+    public GameObject laserGun;
     
     public int DamagePerSoot = 5;
 
@@ -55,18 +56,22 @@ public class PlayerAimingAndFire : MonoBehaviour
         spriteTime = spriteTime + Time.deltaTime;
         
         
-        if (Input.GetButton("Fire1") && canShoot)
-        {
-            if (spriteTime >= nextFire)
-            {
-                nextFire = 1f/rps;
-                spriteTime = 0.0F;
+        if (Input.GetButton("Fire1"))
+        {   if(canShoot){
+                if (spriteTime >= nextFire)
+                {
+                    nextFire = 1f/rps;
+                    spriteTime = 0.0F;
 
-                if(canShootLaser) ShootLaser();
-                else {
-                    StopShootLaser();
-                    shoot();
+                    if(canShootLaser) ShootLaser();
+                    else {
+                        StopShootLaser();
+                        shoot();
+                    }
                 }
+            }
+            else{
+                
             }
         }else StopShootLaser();
     }
@@ -90,7 +95,7 @@ public class PlayerAimingAndFire : MonoBehaviour
 
     public void ShootLaser()
     {  
-        RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.transform.position, firePoint.transform.right);
+        RaycastHit2D hitInfo = Physics2D.Raycast(laserGun.transform.position, laserGun.transform.right);
 
         if(hitInfo){
             EnemyBaseController enemy = hitInfo.transform.GetComponent<EnemyBaseController>();
@@ -103,7 +108,7 @@ public class PlayerAimingAndFire : MonoBehaviour
 
             LineRenderer lRenderer = obj.GetComponent<LineRenderer>();
             
-            lRenderer.SetPosition(0, firePoint.transform.position);
+            lRenderer.SetPosition(0, laserGun.transform.position);
             lRenderer.SetPosition(1, hitInfo.point);
         }
         else {
@@ -113,8 +118,8 @@ public class PlayerAimingAndFire : MonoBehaviour
 
             LineRenderer lRenderer = obj.GetComponent<LineRenderer>();
 
-            lRenderer.SetPosition(0, firePoint.transform.position);
-            lRenderer.SetPosition(1, firePoint.transform.position + firePoint.transform.right * 100);
+            lRenderer.SetPosition(0, laserGun.transform.position);
+            lRenderer.SetPosition(1, laserGun.transform.position + laserGun.transform.right * 100);
         }
         AudioManager.Instance.Play("Laser");
     }
@@ -123,5 +128,5 @@ public class PlayerAimingAndFire : MonoBehaviour
     {  
         AudioManager.Instance.Stop("Laser");
     }
-    
+
 }
