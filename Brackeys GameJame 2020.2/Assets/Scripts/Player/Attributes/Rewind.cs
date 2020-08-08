@@ -116,7 +116,7 @@ public class Rewind : MonoBehaviour
         //Stage 3
         if (currentRewindPercentage > 0.825f && currentRewindPercentage < 1.0f)
         {
-            if(platformermovementscript.characterStage < 3)
+            if(platformermovementscript.characterStage < 0)
             {
                 if (Input.GetButtonDown("ChangeStage"))
                 {
@@ -137,7 +137,7 @@ public class Rewind : MonoBehaviour
         //Stage 2
         else if (currentRewindPercentage > 0.25 && currentRewindPercentage < 0.825f)
         {
-            if (platformermovementscript.characterStage < 2)
+            if (platformermovementscript.characterStage < 0)
             {
                 if (Input.GetButtonDown("ChangeStage"))
                 {
@@ -158,7 +158,7 @@ public class Rewind : MonoBehaviour
         //Stage 1
         else if (currentRewindPercentage > 0 && currentRewindPercentage < 0.25f)
         {
-            if (platformermovementscript.characterStage < 1)
+            if (platformermovementscript.characterStage < 0)
             {
                 if (Input.GetButtonDown("ChangeStage"))
                 {

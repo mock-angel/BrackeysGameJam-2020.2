@@ -12,7 +12,7 @@ public class BossAttack : MonoBehaviour
 	int numberOfProjectiles;
 
 	[SerializeField]
-	GameObject projectile;
+	public GameObject projectile;
 
 	Vector2 startPoint;
 
