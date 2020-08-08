@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6889688782640785564
 Transform:
   m_ObjectHideFlags: 0
@@ -4869,6 +4869,7 @@ MonoBehaviour:
   GainHealthParticles: {fileID: 637341654363412282}
   MovingParticles: {fileID: 4953689582069679735}
   JumpParticles: {fileID: 3975802215190763306}
+  BloodSplatterParticles: {fileID: 669053026352495122}
   characterStage: 2
   moveSpeed: 6
   jumpForce: 18
@@ -5048,6 +5049,7 @@ MonoBehaviour:
   bulletForce: 30
   gun: {fileID: 6769294689940916124}
   DamagePerSoot: 5
+  canShoot: 1
 --- !u!114 &1086458848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5218,7 +5220,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5838934867147519308
 Transform:
   m_ObjectHideFlags: 0
@@ -9972,7 +9974,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &410400623480905962
 Transform:
   m_ObjectHideFlags: 0
@@ -14726,7 +14728,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3868591524297528853
 Transform:
   m_ObjectHideFlags: 0
@@ -19480,7 +19482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2248321747425984547
 Transform:
   m_ObjectHideFlags: 0
@@ -24234,7 +24236,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1279249833204706862
 Transform:
   m_ObjectHideFlags: 0
@@ -28988,7 +28990,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8490493193031107717
 Transform:
   m_ObjectHideFlags: 0
@@ -33789,6 +33791,7 @@ Transform:
   - {fileID: 2248321747425984547}
   - {fileID: 5838934867147519308}
   - {fileID: 1279249833204706862}
+  - {fileID: 8659064496124520549}
   m_Father: {fileID: 366926411289235651}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -33874,3 +33877,84 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &9097958946033985937
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8591021102999237726}
+    m_Modifications:
+    - target: {fileID: 462001855015387636, guid: 6fd989d0df14efc49b6ab0e8cc643562,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.433961
+      objectReference: {fileID: 0}
+    - target: {fileID: 462001855015387636, guid: 6fd989d0df14efc49b6ab0e8cc643562,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.0288997
+      objectReference: {fileID: 0}
+    - target: {fileID: 462001855015387636, guid: 6fd989d0df14efc49b6ab0e8cc643562,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.508562
+      objectReference: {fileID: 0}
+    - target: {fileID: 462001855015387636, guid: 6fd989d0df14efc49b6ab0e8cc643562,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.6532815
+      objectReference: {fileID: 0}
+    - target: {fileID: 462001855015387636, guid: 6fd989d0df14efc49b6ab0e8cc643562,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.2705979
+      objectReference: {fileID: 0}
+    - target: {fileID: 462001855015387636, guid: 6fd989d0df14efc49b6ab0e8cc643562,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.27059796
+      objectReference: {fileID: 0}
+    - target: {fileID: 462001855015387636, guid: 6fd989d0df14efc49b6ab0e8cc643562,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.65328157
+      objectReference: {fileID: 0}
+    - target: {fileID: 462001855015387636, guid: 6fd989d0df14efc49b6ab0e8cc643562,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 462001855015387636, guid: 6fd989d0df14efc49b6ab0e8cc643562,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -135
+      objectReference: {fileID: 0}
+    - target: {fileID: 462001855015387636, guid: 6fd989d0df14efc49b6ab0e8cc643562,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 89.99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 462001855015387636, guid: 6fd989d0df14efc49b6ab0e8cc643562,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584996559141987210, guid: 6fd989d0df14efc49b6ab0e8cc643562,
+        type: 3}
+      propertyPath: m_Name
+      value: Particle Blood Splatter
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6fd989d0df14efc49b6ab0e8cc643562, type: 3}
+--- !u!4 &8659064496124520549 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 462001855015387636, guid: 6fd989d0df14efc49b6ab0e8cc643562,
+    type: 3}
+  m_PrefabInstance: {fileID: 9097958946033985937}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &669053026352495122 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8577815068665877379, guid: 6fd989d0df14efc49b6ab0e8cc643562,
+    type: 3}
+  m_PrefabInstance: {fileID: 9097958946033985937}
+  m_PrefabAsset: {fileID: 0}
