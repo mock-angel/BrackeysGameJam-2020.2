@@ -485,6 +485,7 @@ public class PlatformerMovement : MonoBehaviour
             BloodSplatterParticles.transform.position = obj.transform.position;
         else BloodSplatterParticles.transform.position = transform.position;
         
+        AudioManager.Instance.Play("Hurt");
         BloodSplatterParticles.Play();
     }
 

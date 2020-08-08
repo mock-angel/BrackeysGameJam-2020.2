@@ -154,7 +154,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: ff26fb2ee4cb7613a80db014f98f0c8c, type: 3}
     volume: 1
     pitch: 1
-    loop: 0
+    loop: 1
     activateFade: 0
     fadeInDuration: 3
     fadeOutDuration: 3
@@ -163,7 +163,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 2e3d171de4088fddbb49862c92883ad0, type: 3}
     volume: 1
     pitch: 1
-    loop: 0
+    loop: 1
     activateFade: 0
     fadeInDuration: 3
     fadeOutDuration: 3

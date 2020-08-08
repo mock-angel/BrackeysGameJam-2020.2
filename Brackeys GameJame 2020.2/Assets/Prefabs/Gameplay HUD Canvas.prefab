@@ -437,6 +437,7 @@ GameObject:
   - component: {fileID: 5440781858725323290}
   - component: {fileID: 5440781858725323291}
   - component: {fileID: 5440781858725323292}
+  - component: {fileID: 8761955306472299632}
   m_Layer: 5
   m_Name: Gameplay HUD Canvas
   m_TagString: Untagged
@@ -541,6 +542,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8761955306472299632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5440781858725323293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e46f45fc2afc825bfad79975d3fce911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5440781859983573669
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,6 +624,7 @@ MonoBehaviour:
   text: {fileID: 0}
   image: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
+  animationDone: 0
 --- !u!114 &5440781859983573667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -853,6 +867,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8761955306472299632}
+        m_MethodName: OnPlayClickButtonAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &8451448160862951290
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -928,6 +953,36 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1383588950337614027, guid: fce9b6a8b8b174544bac4f64531ce756,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1383588950337614027, guid: fce9b6a8b8b174544bac4f64531ce756,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1383588950337614027, guid: fce9b6a8b8b174544bac4f64531ce756,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1383588950337614027, guid: fce9b6a8b8b174544bac4f64531ce756,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578957881703759860, guid: fce9b6a8b8b174544bac4f64531ce756,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578957881703759860, guid: fce9b6a8b8b174544bac4f64531ce756,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1956230590803574913, guid: fce9b6a8b8b174544bac4f64531ce756,
         type: 3}
       propertyPath: m_fontAsset
@@ -953,6 +1008,26 @@ PrefabInstance:
     - target: {fileID: 3049458948606400486, guid: fce9b6a8b8b174544bac4f64531ce756,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3173768313740263680, guid: fce9b6a8b8b174544bac4f64531ce756,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3173768313740263680, guid: fce9b6a8b8b174544bac4f64531ce756,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3173768313740263680, guid: fce9b6a8b8b174544bac4f64531ce756,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3173768313740263680, guid: fce9b6a8b8b174544bac4f64531ce756,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3392053591881369829, guid: fce9b6a8b8b174544bac4f64531ce756,

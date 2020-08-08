@@ -145,7 +145,8 @@ public class EnemyBaseController : MonoBehaviour
         if(obj != null)
             BloodSplatterParticles.transform.position = obj.transform.position;
         else BloodSplatterParticles.transform.position = transform.position;
-
+        
+        AudioManager.Instance.Play("Hurt2");
         BloodSplatterParticles.Play();
 
         Health -= damage;
