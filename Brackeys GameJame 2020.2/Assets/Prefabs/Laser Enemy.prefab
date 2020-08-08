@@ -187,7 +187,7 @@ MonoBehaviour:
   isMeleeAttacking: 0
   MeleeRange: 1
   isRanged: 1
-  isLaser: 1
+  isLaser: 0
   impactEffect: {fileID: 1030986988675841295, guid: 6341d783cf74c1717a003b96a2dc7020,
     type: 3}
   bulletPrefab: {fileID: 3592918496044551732, guid: 139fd771b1ad4d9368910ccb9a54d9ac,

@@ -63,11 +63,11 @@ public class PlayerAimingAndFire : MonoBehaviour
                     nextFire = 1f/rps;
                     spriteTime = 0.0F;
 
-                    if(canShootLaser) ShootLaser();
-                    else {
-                        StopShootLaser();
+                    //if(canShootLaser) ShootLaser();
+                    //else {
+                    //    StopShootLaser();
                         shoot();
-                    }
+                    //}
                 }
             }
             else{
@@ -95,7 +95,7 @@ public class PlayerAimingAndFire : MonoBehaviour
 
     public void ShootLaser()
     {  
-        RaycastHit2D hitInfo = Physics2D.Raycast(laserGun.transform.position, laserGun.transform.right, 11);
+        RaycastHit2D hitInfo = Physics2D.Raycast(laserGun.transform.position, laserGun.transform.right, LayerMask.GetMask("Player", "Enemy", "Ground"));
 
         if(hitInfo){
             EnemyBaseController enemy = hitInfo.transform.GetComponent<EnemyBaseController>();

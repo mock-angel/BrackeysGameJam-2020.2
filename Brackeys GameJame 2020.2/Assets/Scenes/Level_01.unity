@@ -4840,7 +4840,7 @@ PrefabInstance:
     - target: {fileID: 849951271424311632, guid: fc6ce78e201a154d291fd2d33287ce0c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 849951271424311632, guid: fc6ce78e201a154d291fd2d33287ce0c,
         type: 3}
@@ -5023,9 +5023,9 @@ GameObject:
   - component: {fileID: 646516575}
   - component: {fileID: 646516577}
   - component: {fileID: 646516576}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Movement
-  m_TagString: Bullet
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5750,9 +5750,9 @@ GameObject:
   - component: {fileID: 755472298}
   - component: {fileID: 755472300}
   - component: {fileID: 755472299}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Different Stages
-  m_TagString: Bullet
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6939,7 +6939,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1041831273}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Tutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6963,7 +6963,7 @@ Transform:
   - {fileID: 2064377820}
   - {fileID: 1134084233}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1061601170
 GameObject:
@@ -7468,9 +7468,9 @@ GameObject:
   - component: {fileID: 1134084233}
   - component: {fileID: 1134084235}
   - component: {fileID: 1134084234}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Shooting
-  m_TagString: Bullet
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41827,7 +41827,7 @@ PrefabInstance:
     - target: {fileID: 849951271424311632, guid: 5d4f48de58448fd73aba2c98be6499f5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 849951271424311632, guid: 5d4f48de58448fd73aba2c98be6499f5,
         type: 3}
@@ -42283,7 +42283,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1357999736
 MonoBehaviour:
@@ -42872,6 +42872,11 @@ PrefabInstance:
       propertyPath: checkPointGameObject
       value: 
       objectReference: {fileID: 2139257535}
+    - target: {fileID: 313935018572158110, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 366926411289235651, guid: f4158a3d9fb49744c945a783f706fac4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -42910,7 +42915,7 @@ PrefabInstance:
     - target: {fileID: 366926411289235651, guid: f4158a3d9fb49744c945a783f706fac4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 366926411289235651, guid: f4158a3d9fb49744c945a783f706fac4,
         type: 3}
@@ -42942,6 +42947,51 @@ PrefabInstance:
       propertyPath: lifeIconContainer
       value: 
       objectReference: {fileID: 217210923}
+    - target: {fileID: 366926412977992503, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 491897137036213369, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 792922792709443312, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599369674752641173, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: canShootLaser
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2181185923915743455, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2439065641925816198, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2581526285840344287, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2655069801466619546, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2778893454684160218, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4125142600467279684, guid: f4158a3d9fb49744c945a783f706fac4,
         type: 3}
       propertyPath: rewindSlider
@@ -42961,6 +43011,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125142600467279684, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: startRewindAmountPercentage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4968522005552271184, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663072310905491761, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5729148363431381531, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253419200956721420, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6769294689940916124, guid: f4158a3d9fb49744c945a783f706fac4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4158a3d9fb49744c945a783f706fac4, type: 3}
@@ -43563,7 +43643,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1517170337
 GameObject:
@@ -43822,9 +43902,9 @@ GameObject:
   - component: {fileID: 1559651611}
   - component: {fileID: 1559651613}
   - component: {fileID: 1559651612}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Rewind Mechanic
-  m_TagString: Bullet
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44920,7 +45000,7 @@ Transform:
   - {fileID: 494859737}
   - {fileID: 589713924}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1770676520
 GameObject:
@@ -79803,7 +79883,7 @@ PrefabInstance:
     - target: {fileID: 849951271424311632, guid: 5d4f48de58448fd73aba2c98be6499f5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 849951271424311632, guid: 5d4f48de58448fd73aba2c98be6499f5,
         type: 3}
@@ -80576,9 +80656,9 @@ GameObject:
   - component: {fileID: 2064377820}
   - component: {fileID: 2064377822}
   - component: {fileID: 2064377821}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Double Jump
-  m_TagString: Bullet
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -81307,7 +81387,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2141026417
 GameObject:
