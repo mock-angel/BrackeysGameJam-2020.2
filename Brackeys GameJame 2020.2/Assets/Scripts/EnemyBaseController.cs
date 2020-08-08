@@ -49,13 +49,51 @@ public class EnemyBaseController : MonoBehaviour
         }
     }
 
+    public bool isFacingRight = true;
+
     private void DoMovement(){
         if(isPlayerInSeekRange){
             //Is moving.
             transform.position = new Vector2(transform.position.x + Time.deltaTime * moveInput * MoveSpeed, transform.position.y);
+
+            float valx = PlatformerMovement.Instance.transform.position.x - transform.position.x;
+
+            if(valx > 0) valx = 1;
+            else if(valx < 0) valx = -1;
+
+            moveInput = valx;
+
+            if(moveInput != 0) FlipEnemySprite();
         }
         else{
             //Not moving.
+        }
+    }
+
+    public void FlipEnemySprite()
+    {
+        if (moveInput > 0)
+        {
+            //Look to the right
+            if(!isFacingRight){
+                transform.Rotate(0, 180, 0);
+
+                //animator.SetTrigger("turn");
+                isFacingRight = true;
+            }
+
+        }
+        if (moveInput < 0)
+        {
+            //Look to the left
+
+            if(isFacingRight){
+                transform.Rotate(0, 180, 0);
+
+                //animator.SetTrigger("turn");
+                isFacingRight = false;
+            }
+
         }
     }
 
@@ -107,7 +145,7 @@ public class EnemyBaseController : MonoBehaviour
         if(obj != null)
             BloodSplatterParticles.transform.position = obj.transform.position;
         else BloodSplatterParticles.transform.position = transform.position;
-        
+
         BloodSplatterParticles.Play();
 
         Health -= damage;
