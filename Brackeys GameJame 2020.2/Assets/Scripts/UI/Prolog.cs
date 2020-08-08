@@ -37,11 +37,11 @@ public class Prolog : MonoBehaviour
             {
                 if(mainMenu)
                 {
-                    SceneManager.LoadScene(2);
+                    SceneManager.LoadScene(1);
                 }
                 else
                 {
-                    SceneManager.LoadScene(0);
+                    SceneManager.LoadScene(2);
                 }
             }
         }
