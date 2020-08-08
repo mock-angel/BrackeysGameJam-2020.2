@@ -347,7 +347,7 @@ public class EnemyBaseController : MonoBehaviour
 
     public void ShootLaser()
     {  
-        RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.transform.position, firePoint.transform.right);
+        RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.transform.position, firePoint.transform.right, 11);
 
         if(hitInfo){
             PlatformerMovement enemy = hitInfo.transform.GetComponent<PlatformerMovement>();
