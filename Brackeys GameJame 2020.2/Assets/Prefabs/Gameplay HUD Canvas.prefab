@@ -203,7 +203,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'You can move the Player around using
 
-    the buttons W, A & Space'
+    the buttons A, D & Space'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2031f7aeec913d271bf5c0f1f4de620b, type: 2}
   m_sharedMaterial: {fileID: -881314442758239901, guid: 2031f7aeec913d271bf5c0f1f4de620b,
@@ -2049,7 +2049,7 @@ PrefabInstance:
     - target: {fileID: 4880832049084104021, guid: ed8f5dfa2e58f1d409b4e867d3a02ad6,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4880832049423508394, guid: ed8f5dfa2e58f1d409b4e867d3a02ad6,
         type: 3}
