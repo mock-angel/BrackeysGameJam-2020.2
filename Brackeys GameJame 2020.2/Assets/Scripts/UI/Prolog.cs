@@ -11,6 +11,8 @@ public class Prolog : MonoBehaviour
 
     public GameObject pressButtonText;
 
+    public bool mainMenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +35,14 @@ public class Prolog : MonoBehaviour
             }
             else
             {
-                SceneManager.LoadScene(2);
+                if(mainMenu)
+                {
+                    SceneManager.LoadScene(2);
+                }
+                else
+                {
+                    SceneManager.LoadScene(0);
+                }
             }
         }
     }
