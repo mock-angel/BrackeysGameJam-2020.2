@@ -245,6 +245,8 @@ public class EnemyBaseController : MonoBehaviour
     [Header("Ranged Attack")]
 
     public bool isRanged;
+    public bool isLaser;
+    public GameObject impactEffect;
 
     [ConditionalField("isRanged")]
     public GameObject bulletPrefab;
@@ -321,11 +323,12 @@ public class EnemyBaseController : MonoBehaviour
         lookDir.y = playerPos.y - thisEntityPos.y;
 
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-        gun.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        if(!isLaser) gun.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
         #endregion rotateGun
 
-        Shoot();
+        if(!isLaser) Shoot();
+        else ShootLaser();
     }
     
     void Shoot()
@@ -340,6 +343,37 @@ public class EnemyBaseController : MonoBehaviour
         //rb_projectile.AddForce( firePoint.transform.right * bulletForce, ForceMode2D.Impulse);
         
         Destroy( newProjectile, 5f );
+    }
+
+    public void ShootLaser()
+    {  
+        RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.transform.position, firePoint.transform.right);
+
+        if(hitInfo){
+            PlatformerMovement enemy = hitInfo.transform.GetComponent<PlatformerMovement>();
+            if(enemy != null){
+                enemy.OnDamageTaken(DamagePerHitRanged);
+            }
+
+            GameObject obj = Instantiate(impactEffect, hitInfo.point, Quaternion.identity);
+            Destroy(obj, .2f);
+
+            LineRenderer lRenderer = obj.GetComponent<LineRenderer>();
+            
+            lRenderer.SetPosition(0, firePoint.transform.position);
+            lRenderer.SetPosition(1, hitInfo.point);
+        }
+        else {
+
+            GameObject obj = Instantiate(impactEffect, hitInfo.point, Quaternion.identity);
+            Destroy(obj, .2f);
+
+            LineRenderer lRenderer = obj.GetComponent<LineRenderer>();
+
+            lRenderer.SetPosition(0, firePoint.transform.position);
+            lRenderer.SetPosition(1, firePoint.transform.position + firePoint.transform.right * 100);
+        }
+        AudioManager.Instance.Play("Laser2");
     }
 
     private bool isPlayerInRangedAttackRadius(){
