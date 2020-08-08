@@ -52,7 +52,7 @@ MonoBehaviour:
   mainMenuMusicName: MainMenu Music
   sounds:
   - name: MainMenu Music
-    clip: {fileID: 8300000, guid: aa47d13d958e9e4d783930bff7dba6b9, type: 3}
+    clip: {fileID: 8300000, guid: 59cf467d5a13a9e498f4eedde70cedda, type: 3}
     volume: 1
     pitch: 1
     loop: 1
