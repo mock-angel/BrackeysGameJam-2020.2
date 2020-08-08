@@ -27,6 +27,10 @@ public class PlayerAimingAndFire : MonoBehaviour
 
     public bool canShoot = true;
 
+    public bool canShootLaser = false;
+
+    public LineRenderer lineRenderer;
+
     public void Awake(){
         Instance = this;
     }
@@ -57,9 +61,14 @@ public class PlayerAimingAndFire : MonoBehaviour
             {
                 nextFire = 1f/rps;
                 spriteTime = 0.0F;
-                shoot();
+
+                if(canShootLaser) ShootLaser();
+                else {
+                    StopShootLaser();
+                    shoot();
+                }
             }
-        }
+        }else StopShootLaser();
     }
     
     void shoot()
@@ -75,8 +84,44 @@ public class PlayerAimingAndFire : MonoBehaviour
         rb_projectile.AddForce( firePoint.transform.right * bulletForce, ForceMode2D.Impulse);
         
         Destroy(newProjectile, 5f);
+    }
 
-        
+    public GameObject impactEffect;
+
+    public void ShootLaser()
+    {  
+        RaycastHit2D hitInfo = Physics2D.Raycast(firePoint.transform.position, firePoint.transform.right);
+
+        if(hitInfo){
+            EnemyBaseController enemy = hitInfo.transform.GetComponent<EnemyBaseController>();
+            if(enemy != null){
+                enemy.OnDamageTaken(DamagePerSoot);
+            }
+
+            GameObject obj = Instantiate(impactEffect, hitInfo.point, Quaternion.identity);
+            Destroy(obj, .2f);
+
+            LineRenderer lRenderer = obj.GetComponent<LineRenderer>();
+            
+            lRenderer.SetPosition(0, firePoint.transform.position);
+            lRenderer.SetPosition(1, hitInfo.point);
+        }
+        else {
+
+            GameObject obj = Instantiate(impactEffect, hitInfo.point, Quaternion.identity);
+            Destroy(obj, .2f);
+
+            LineRenderer lRenderer = obj.GetComponent<LineRenderer>();
+
+            lRenderer.SetPosition(0, firePoint.transform.position);
+            lRenderer.SetPosition(1, firePoint.transform.position + firePoint.transform.right * 100);
+        }
+        AudioManager.Instance.Play("Laser");
+    }
+
+    public void StopShootLaser()
+    {  
+        AudioManager.Instance.Stop("Laser");
     }
     
 }

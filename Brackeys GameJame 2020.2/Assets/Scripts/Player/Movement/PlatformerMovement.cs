@@ -199,6 +199,8 @@ public class PlatformerMovement : MonoBehaviour
                     AudioManager.Instance.PlayCustomFadeTrack(convertEnumToString(CustomSound.MONKEY));
                     prevCharacterStage = characterStage;
                 }
+
+                PlayerAimingAndFire.Instance.canShootLaser = false;
             }
             //Caveman
             else if (characterStage == 1)
@@ -220,6 +222,8 @@ public class PlatformerMovement : MonoBehaviour
                 //AudioManager.Instance.PlayCustomFadeTrack(convertEnumToString(CustomSound.CAVEMAN));
                     prevCharacterStage = characterStage;
                 }
+
+                PlayerAimingAndFire.Instance.canShootLaser = false;
             }
             //Teenager
             else if (characterStage == 2)
@@ -241,6 +245,8 @@ public class PlatformerMovement : MonoBehaviour
                     AudioManager.Instance.PlayCustomFadeTrack(convertEnumToString(CustomSound.TEENAGER));
                     prevCharacterStage = characterStage;
                 }
+
+                PlayerAimingAndFire.Instance.canShootLaser = true;
             }
             //Cyborg
             else if (characterStage == 3)
@@ -262,6 +268,8 @@ public class PlatformerMovement : MonoBehaviour
                     AudioManager.Instance.PlayCustomFadeTrack(convertEnumToString(CustomSound.CYBORG));
                     prevCharacterStage = characterStage;
                 }
+
+                PlayerAimingAndFire.Instance.canShootLaser = true;
             }
 
             #endregion#

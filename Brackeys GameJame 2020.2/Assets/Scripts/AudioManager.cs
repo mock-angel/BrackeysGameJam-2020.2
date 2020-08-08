@@ -136,6 +136,19 @@ public class AudioManager : MonoBehaviour
         //audioSourceSounds.PlayOneShot(s.clip, s.volume);
     }
 
+    public void Stop(string name)
+    {
+        //numbOfPlayingSounds++;
+        Sound s = GetSound(name);
+
+        if(s == null)
+            Debug.LogWarning(string.Format("Sound: {0} not found.", name));
+        
+        else s.source.Stop();
+        
+        //audioSourceSounds.PlayOneShot(s.clip, s.volume);
+    }
+
     private Sound[] currentActiveCustomSounds;
 
     public void PlayCustomFadeTrack(string name){
